@@ -1,0 +1,7 @@
+cd /opt/vue
+git init
+git checkout stable
+git pull origin-app stable
+sudo chmod 777 -R /opt/vue
+sudo chown -R ubuntu:ubuntu /opt/vue
+

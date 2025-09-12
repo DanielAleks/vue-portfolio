@@ -1,0 +1,17 @@
+{
+  "@quasar/apollo": {
+    "typescript": false,
+    "graphql_uri": "https://portal.aislabs.com/graphql"
+  },
+  "@quasar/testing-e2e-cypress": {
+    "options": [
+      "scripts"
+    ]
+  },
+  "@quasar/testing": {
+    "harnesses": [
+      "e2e-cypress"
+    ]
+  },
+  "@quasar/qcalendar": {}
+}

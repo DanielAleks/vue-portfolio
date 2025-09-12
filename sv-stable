@@ -1,0 +1,8 @@
+#!/bin/bash
+chmod 777 -R /opt/vue
+cd /opt/vue
+git init
+git checkout stable
+git add .
+git commit -a -m "automated deployment script"
+git push -u origin-app stable

@@ -1,0 +1,3 @@
+scp ubuntu@vue-testing-obk.ais.cm:/home/gitlab-runner/builds/NXh_EUJK/0/ais-project-planner/vue-app/ais-app/test/cypress/videos/a_home.cy.js.mp4 /folder/you/want/to/copy/to
+
+sudo su - gitlab-runner
