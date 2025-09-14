@@ -60,7 +60,7 @@ module.exports = {
       "vue/no-unused-components": "off",
       "vue/no-side-effects-in-computed-properties": "off",
       "camelcase": ["error", { "properties": true }],
-
+      strict: "off", // Disables the 'strict' rule
       // 'eslint-comments/camelcase': ['error', {
       //   ignoreDestructuring: false,
       //   ignoreImports: false,

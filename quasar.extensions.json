@@ -4,14 +4,12 @@
     "graphql_uri": "https://portal.aislabs.com/graphql"
   },
   "@quasar/testing-e2e-cypress": {
+    "port": 8080,
     "options": [
-      "scripts"
+      "code-coverage"
     ]
   },
   "@quasar/testing": {
-    "harnesses": [
-      "e2e-cypress"
-    ]
-  },
-  "@quasar/qcalendar": {}
+    "harnesses": []
+  }
 }

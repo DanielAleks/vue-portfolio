@@ -1,0 +1,28 @@
+.responsive-overview-container {
+  width: 71vw;
+}
+
+@media (min-width: 1700px) {
+  .responsive-overview-container {
+    width: 60vw !important;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1150px) {
+  .responsive-overview-container {
+    width: 100%;
+  }
+}
+@media (max-width: 700px) {
+  .responsive-overview-container {
+    width: 90% !important;
+  }
+}
+@media (max-width: 550px) {
+  .responsive-overview-container {
+    width: 100vw !important;
+  }
+}

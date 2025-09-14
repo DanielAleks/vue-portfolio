@@ -1,0 +1,26 @@
+// stores all colors, fonts, etc. used in the app (&darkmode)
+$primary-color: #007bff;
+
+$light-page: #fafafa;
+$dark-page : #232D45;
+// dark containers, that overlay on the dark-page
+$dark      : #28334E;
+$dark-q-input      : #202a46;
+
+// not referenced, used to track needed colors
+$dark-popup: #26324C;
+$dark-search : #2C3856;
+// dark-text is used when darkmode is active
+$dark-text : #CBD5E1;
+$light-text: #64748B;
+
+// q-table colors
+$dark-table-header: #2f3a57;
+$dark-table-border: #3a4666;
+$light-table-border: #f5f4f4;
+
+
+
+// list-q-table border color
+$dark-list-table-border: #5f6679;
+$light-list-table-border: #dddddd;

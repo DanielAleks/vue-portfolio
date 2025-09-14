@@ -14,4 +14,4 @@
 // ***********************************************************
 
 import './commands';
-import "cypress-localstorage-commands";
+import '@cypress/code-coverage/support';
