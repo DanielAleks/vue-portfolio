@@ -35,14 +35,14 @@
 </template>
 
 <script>
-import { defineComponent, reactive, watchEffect, ref, watch, inject, computed } from "vue";
-import { useQuery } from "@vue/apollo-composable";
+import { defineComponent, reactive, ref, watch, inject, computed } from "vue";
+// import { useQuery } from "@vue/apollo-composable";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 import { useSmartRouteStore } from "src/stores/smart-routing";
 import store from "src/boot/pinia";
-import { ProjectsQuery } from "src/graphql/query/Project.js";
+// import { ProjectsQuery } from "src/graphql/query/Project.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 
 export default defineComponent({
@@ -122,22 +122,22 @@ export default defineComponent({
       }
     );
 
-    const { result: projectData } = useQuery(ProjectsQuery, () => ({
-      projectName: state.search,
-      page: state.page,
-    }));
+    // const { result: projectData } = useQuery(ProjectsQuery, () => ({
+    //   projectName: state.search,
+    //   page: state.page,
+    // }));
 
-    watchEffect(() => {
-      if (projectData.value) {
-        state.loading = false;
-        // console.log("Projects: ", projects);
-        projects.value = projectData.value.Projects.data;
-        // projectData.value.Projects.data.forEach((project) => {
-        //   projects.value.push(project);
-        // });
-        state.totalPages = projectData.value.Projects.paginatorInfo.lastPage;
-      }
-    });
+    // watchEffect(() => {
+    //   if (projectData.value) {
+    //     state.loading = false;
+    //     // console.log("Projects: ", projects);
+    //     projects.value = projectData.value.Projects.data;
+    //     // projectData.value.Projects.data.forEach((project) => {
+    //     //   projects.value.push(project);
+    //     // });
+    //     state.totalPages = projectData.value.Projects.paginatorInfo.lastPage;
+    //   }
+    // });
 
     const columns = reactive([
       {

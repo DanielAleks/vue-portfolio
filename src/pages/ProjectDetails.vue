@@ -452,7 +452,7 @@ export default defineComponent({
 
         state.isLoading = false;
         sowRequirements.value
-          .map((item, id) => {
+          .map((item) => {
             if (
               !taskNames.value.includes(
                 item &&
@@ -477,7 +477,7 @@ export default defineComponent({
         });
 
         sowRequirements.value.map((item) => {
-          myRequirements.value.map((task, id) => {
+          myRequirements.value.map((task) => {
             if (
               item &&
               item.ImplementationTaskNames &&
@@ -877,14 +877,14 @@ export default defineComponent({
       },
     ]);
 
-    function formatUnixDate(unixTimestamp) {
-      const formattedDate = new Date(unixTimestamp * 1000).toLocaleDateString("en-US", {
-        month: "2-digit",
-        day: "2-digit",
-        year: "2-digit",
-      });
-      return formattedDate;
-    }
+    // function formatUnixDate(unixTimestamp) {
+    //   const formattedDate = new Date(unixTimestamp * 1000).toLocaleDateString("en-US", {
+    //     month: "2-digit",
+    //     day: "2-digit",
+    //     year: "2-digit",
+    //   });
+    //   return formattedDate;
+    // }
 
     const phases = ref([]);
     // remove these, should all be handled by the phases ref

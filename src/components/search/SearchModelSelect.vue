@@ -555,12 +555,11 @@ export default defineComponent({
       }
     }
 
-    function resetInfinateScrollIndex(newIndex) {
+    function resetInfinateScrollIndex() {
       scrollIndex.value = 0;
     }
 
-    function setInfinateScrollIndex(newIndex) {
-      newIndex = state.indexPage;
+    function setInfinateScrollIndex() {
       // state.triggerInfinateScrollLoadQuery = true;
       resetInfinateScrollIndex();
       // loadQuery(newIndex, () => {

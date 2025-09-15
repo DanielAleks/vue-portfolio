@@ -46,7 +46,6 @@
 import {
   defineComponent,
   reactive,
-  computed,
   watchEffect,
   ref,
   inject,
@@ -98,7 +97,6 @@ export default defineComponent({
     const {
       result: requirementData,
       error: errorRequirements,
-      refetch: refetchRequirements,
       load: fetchRequirements,
     } = useLazyQuery(SowGuidelineRequirementsQuery, () => ({
       sow_id: sow_id.value,

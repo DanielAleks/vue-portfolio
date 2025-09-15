@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, inject, computed } from "vue";
+import { defineComponent, inject, computed } from "vue";
 import {useDarkModeStore} from "src/stores/dark-mode.js";
 
 export default defineComponent({

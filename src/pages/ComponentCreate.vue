@@ -461,9 +461,6 @@ import {
 import { useMutation, useLazyQuery, useQuery } from "@vue/apollo-composable";
 import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
-import Trix from "trix";
-import "trix/dist/trix.css";
-import TrixComponent from "src/components/reusables/TrixComponent.vue";
 import { useSmartRouteStore } from "src/stores/smart-routing";
 import store from "src/boot/pinia";
 import {
@@ -488,15 +485,13 @@ import { useDarkModeStore } from "src/stores/dark-mode.js";
 export default defineComponent({
   name: "ComponentCreate",
   components: {
-    Trix,
-    TrixComponent,
     SearchModel,
   },
   setup() {
     const smartRouteStore = useSmartRouteStore(store);
     const implementationRouteID = computed(() => smartRouteStore.implementationID);
     const darkmode = computed(() => useDarkModeStore().darkmode);
-    const adminSearch = computed(() => smartRouteStore.adminSearch);
+    // const adminSearch = computed(() => smartRouteStore.adminSearch);
     function setAdminSearch() {
       smartRouteStore.setAdminSearch(true);
     }
@@ -609,16 +604,16 @@ export default defineComponent({
     }
 
     onErrorImplementationType((err) => {
-      errorNotification(errorImplementationType.value);
+      errorNotification(errorImplementationType.value, err);
     });
     onErrorImplementationGuideline((err) => {
-      errorNotification(errorGuideline.value);
+      errorNotification(errorGuideline.value, err);
     });
     onErrorImplementationTask((err) => {
-      errorNotification(errorTask.value);
+      errorNotification(errorTask.value, err);
     });
     onErrorRequirement((err) => {
-      errorNotification(errorRequirement.value);
+      errorNotification(errorRequirement.value, err);
     });
 
     const $q = useQuasar();

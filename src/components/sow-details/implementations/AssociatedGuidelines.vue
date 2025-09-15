@@ -309,6 +309,7 @@ export default defineComponent({
       if (state.isAlreadyImplemented || state.isOptional) {
         state.totalPrice = 0;
       }
+      console.log(value, type, idx)
     }
 
     return {

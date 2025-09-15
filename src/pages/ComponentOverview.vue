@@ -146,13 +146,6 @@ export default defineComponent({
         name: "actions",
         label: "Actions",
         align: "center",
-        format: (val, row) => {
-          return `
-        <div>
-          <q-btn label="VIEW" @click="handleViewButtonClick(row)"/>
-        </div>
-      `;
-        },
       },
     ]);
 
@@ -197,22 +190,6 @@ export default defineComponent({
       field: (row) => (row.Description ? row.Description : "N/A"),
       format: (val) => `${val}`,
       sortable: true,
-    };
-
-    const periodTypeColumn = {
-      name: "periodType",
-      required: true,
-      label: "Period Type",
-      align: "left",
-      field: (row) =>
-        row.PeriodType === "m"
-          ? "Monthly"
-          : row.PeriodType === "y"
-          ? "Yearly"
-          : row.PeriodType === "o"
-          ? "One-Time"
-          : row.PeriodType,
-      format: (val) => `${val}`,
     };
 
     const isRecurringColumn = {
@@ -465,7 +442,6 @@ export default defineComponent({
     const {
       result: implementationData,
       load: loadImplementations,
-      refetch: refetchImplementations,
       loading: loadingImplementationTypes,
       error: errorR,
     } = useLazyQuery(AdminImplementationTypesQuery, () => ({

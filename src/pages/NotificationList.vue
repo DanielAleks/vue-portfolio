@@ -43,8 +43,6 @@
 import { defineComponent, ref, watchEffect, reactive, inject, watch } from "vue";
 import { useQuery } from "@vue/apollo-composable";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
-import { useRouter } from "vue-router";
-import NotificationCreate from "src/pages/NotificationCreate.vue";
 import SearchModel from "src/components/search/SearchModel.vue";
 import { AccountNotificationsQuery } from "src/graphql/query/AccountNotification.js";
 import { AccountsQuery } from "src/graphql/query/Account.js";
@@ -54,7 +52,6 @@ export default defineComponent({
   name: "ImplementationTypes",
   components: {
     ListQTable,
-    NotificationCreate,
     SearchModel,
   },
   setup() {
@@ -68,20 +65,20 @@ export default defineComponent({
     });
     const pagination = ref({ currentPage: 1, perPage: 15 });
 
-    function formattedPhoneNumber(phoneNumberVal) {
-      const phoneNumberString = phoneNumberVal.toString();
-      let formattedPhoneNumber = phoneNumberString.replace(
-        /^1?(\d{3})(\d{3})(\d{4})/,
-        function (match, p1, p2, p3) {
-          if (match.startsWith("1")) {
-            return `(${p1}) ${p2}-${p3}`;
-          } else {
-            return `(${p1}) ${p2}-${p3}`;
-          }
-        }
-      );
-      return formattedPhoneNumber;
-    }
+    // function formattedPhoneNumber(phoneNumberVal) {
+    //   const phoneNumberString = phoneNumberVal.toString();
+    //   let formattedPhoneNumber = phoneNumberString.replace(
+    //     /^1?(\d{3})(\d{3})(\d{4})/,
+    //     function (match, p1, p2, p3) {
+    //       if (match.startsWith("1")) {
+    //         return `(${p1}) ${p2}-${p3}`;
+    //       } else {
+    //         return `(${p1}) ${p2}-${p3}`;
+    //       }
+    //     }
+    //   );
+    //   return formattedPhoneNumber;
+    // }
 
     function computedPriorityLevels(severity) {
       if (severity) {
@@ -119,9 +116,7 @@ export default defineComponent({
         name: "priorityLevels",
         label: "Status",
         align: "center",
-        field: "",
         field: (row) => computedPriorityLevels(row.severity),
-        format: (val) => `${val}`,
         sortable: true,
       },
       {
@@ -146,7 +141,6 @@ export default defineComponent({
             name: "priorityLevels",
             label: "Status",
             align: "center",
-            field: "",
             field: (row) => computedPriorityLevels(row.severity),
             format: (val) => `${val}`,
             sortable: true,
@@ -183,8 +177,6 @@ export default defineComponent({
       state.page = value;
     }
 
-    const router = useRouter();
-
     const contextMenuSetter = inject("contextMenuSetter");
 
     const handleRowClick = (id, row, evt) => {
@@ -212,7 +204,7 @@ export default defineComponent({
       // }
     };
 
-    function setAccountId(type, searchVal) {
+    function setAccountId(type) {
       state.selectedAccountId = type.autotask_id;
     }
 

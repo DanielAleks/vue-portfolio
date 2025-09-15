@@ -593,14 +593,12 @@ import {
   provide,
   watchEffect,
   inject,
-  watch,
 } from "vue";
 import { useRoute } from "vue-router";
 import ExclusionPage from "src/components/sow-details/requirements/ExclusionPage.vue";
 import { useQuery, useLazyQuery, useMutation } from "@vue/apollo-composable";
 import AssumptionPage from "src/components/sow-details/requirements/AssumptionPage.vue";
 import RequirementPage from "src/components/sow-details/requirements/RequirementPage.vue";
-import ImplementationTasks from "src/components/sow-details/ImplementationTasks.vue";
 import SowDetailOverview from "src/components/sow-details/SowDetailOverview.vue";
 import ImplementationPage from "src/components/sow-details/ImplementationPage.vue";
 import SowHistory from "src/components/sow-details/SowHistory.vue";
@@ -636,7 +634,6 @@ export default defineComponent({
     SowContracts,
     SowProjects,
     SearchModel,
-    ImplementationTasks,
     SowBuilder,
   },
   setup() {
@@ -672,8 +669,8 @@ export default defineComponent({
         let month = date.getMonth() + 1;
         let day = date.getDate();
         let year = date.getFullYear();
-        let hours = date.getHours();
-        let minutes = "0" + date.getMinutes();
+        // let hours = date.getHours();
+        // let minutes = "0" + date.getMinutes();
         let formattedDate = month + "/" + day + "/" + year + " ";
         // + hours + ":" + minutes.substr(-2);
         return formattedDate;
@@ -1244,18 +1241,12 @@ export default defineComponent({
 
     const {
       mutate: getDropboxSignatureRequestUpdate,
-      onDone: onDoneGetDropboxSignatureRequestUpdate,
       onError: onErrorGetDropboxSignatureRequestUpdate,
     } = useMutation(GetDropboxSignatureRequestUpdateBySowMutation, () => ({
       variables: {
         sow_idNew: sow.value._id,
       },
     }));
-
-    onDoneGetDropboxSignatureRequestUpdate((result) => {
-      //Refetch Sow
-      //fetchSow();
-    });
 
     onErrorGetDropboxSignatureRequestUpdate((err) => {
       console.log(err);
@@ -1324,19 +1315,6 @@ export default defineComponent({
       getDropboxSignatureRequestUpdate,
       syncOpportunity,
       syncQuote,
-    };
-  },
-  data: function () {
-    return {
-      computed: {
-        grossProfitUrl() {
-          if (sow && sow.opportunity_id) {
-            return `https://ww5.autotask.net/Autotask/AutotaskExtend/ExecuteCommand.aspx?Code=OpenOpportunity&OpportunityID=${sow.opportunity_id}`;
-          } else {
-            return "";
-          }
-        },
-      },
     };
   },
 });

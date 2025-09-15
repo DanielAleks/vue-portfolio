@@ -67,7 +67,7 @@ import { defineComponent, computed } from "vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 
 export default defineComponent({
-  setup(props) {
+  setup() {
     const darkModeStore = useDarkModeStore();
     const darkmode = computed(() => darkModeStore.darkMode);
 

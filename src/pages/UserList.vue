@@ -122,39 +122,12 @@
 
 <script>
 import { defineComponent, reactive, ref, watchEffect, watch, computed, onMounted } from "vue";
-import {
-  Search,
-  Users,
-  MessageCircle,
-  Plus,
-  Usb,
-  Key,
-  MoreHorizontal,
-  ChevronsRight,
-  ChevronRight,
-  ChevronLeft,
-  ChevronsLeft,
-} from "lucide-vue-next";
 import { useRouter } from "vue-router";
-import { useQuasar } from "quasar";
 import { useQuery } from "@vue/apollo-composable";
 import { UsersQuery } from "src/graphql/query/User.js";
 import { useDarkModeStore } from "src/stores/dark-mode";
 
 export default defineComponent({
-  components: {
-    Plus,
-    Search,
-    Users,
-    MessageCircle,
-    Usb,
-    Key,
-    MoreHorizontal,
-    ChevronsRight,
-    ChevronRight,
-    ChevronLeft,
-    ChevronsLeft,
-  },
   setup() {
     const state = reactive({
       showModal: false,
@@ -243,8 +216,6 @@ export default defineComponent({
       // setId(id);
       router.push({ name: "UserDetails", params: { id: _id } });
     }
-
-    const $q = useQuasar();
 
     function setPage(value) {
       state.page = value;

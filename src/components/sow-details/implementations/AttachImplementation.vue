@@ -206,7 +206,7 @@ export default defineComponent({
     const guidelines = ref([]);
     function setNeededGuideline(guideline, isGuidelineNeeded) {
       if (!guidelines.value.some((item) => item._id === guideline._id)) {
-        guidelines.value.push(guideline);
+        guidelines.value.push(guideline, isGuidelineNeeded);
       } else {
         guidelines.value.forEach((item) => {
           if (item._id === guideline._id) {
@@ -264,7 +264,7 @@ export default defineComponent({
 
     const implementationStore = useImplementationStore();
 
-    async function createImplementation(id) {
+    async function createImplementation() {
       try {
         const { mutate } = useMutation(CreateSowImplementationTypeMutation, () => ({
           variables: {

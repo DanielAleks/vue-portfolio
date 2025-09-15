@@ -220,7 +220,6 @@ import store from "src/boot/pinia";
 import QCardDetails from "src/components/reusables/QCardDetails.vue";
 import BasicAttachModal from "src/components/reusables/BasicAttachModal.vue";
 import SearchModel from "src/components/search/SearchModel.vue";
-import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
 import { IntrospectionQuery } from "src/graphql/query/Introspection.js";
 import {
   UpdateImplementationTypeMutation,
@@ -247,7 +246,6 @@ export default defineComponent({
     QCardDetails,
     BasicAttachModal,
     SearchModel,
-    SowCollaborator,
     AccordianQTableDeep,
     CreateAdminComponentModal,
   },
@@ -258,7 +256,7 @@ export default defineComponent({
     function setGuidelineRouteID(id) {
       smartRouteStore.setGuidelineID(id);
     }
-    const implementationRouteID = computed(() => smartRouteStore.implementationID);
+    // const implementationRouteID = computed(() => smartRouteStore.implementationID);
     function setImplementationRouteID(id) {
       smartRouteStore.setImplementationID(id);
     }
@@ -398,8 +396,6 @@ export default defineComponent({
     });
 
     const {
-      result: relatedImplementationGuidelineDate,
-      error: relatedImplementationGuidelineError,
       load: loadRelatedImplementationGuideline,
       onResult: onResultRelatedImplementationGuideline,
     } = useLazyQuery(AdminImplementationTypeQuery_AdminImplementationGuidelines, () => ({
@@ -428,7 +424,7 @@ export default defineComponent({
     });
 
     // update also in ListQTable.vue
-    function setPage(value, type, operation) {
+    function setPage(value) {
       state.page = value;
     }
 
@@ -470,6 +466,7 @@ export default defineComponent({
           evt === "openNewWindow" ||
           evt === "openIncognitoWindow"
         ) {
+          console.log("hi")
         } else {
           setTimeout(() => {
             router.push("/implementation-guideline/create");
@@ -604,8 +601,6 @@ export default defineComponent({
           {
             label: "Undo",
             color: "white",
-            handler: () =>
-              undoDeletionGuideline(result.data.DeleteImplementationGuidelineMutation._id),
           },
         ],
       });
@@ -977,8 +972,6 @@ export default defineComponent({
     const selectedGuideline = ref({});
     const {
       mutate: updateGuidelineMutation,
-      onDone: onDUpd,
-      onError: onErrG,
     } = useMutation(UpdateImplementationGuidelineMutation, () => ({
       variables: {
         _id: selectedGuideline.value._id,
@@ -1096,7 +1089,6 @@ export default defineComponent({
       );
 
       const guidelineTasks = ref([]);
-      const guidelineProjectProcesses = ref([]);
 
       guidelines.value.map((guideline) => {
         if (guideline.ImplementationTasks) {

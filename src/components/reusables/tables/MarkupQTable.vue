@@ -92,14 +92,14 @@
 <script>
 import draggable from "vuedraggable";
 import { ref, onMounted, watch, computed, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useDarkModeStore } from "src/stores/dark-mode";
-import ContextMenu from "../ContextMenu.vue";
+// import ContextMenu from "../ContextMenu.vue";
 
 export default {
   components: {
     draggable,
-    ContextMenu,
+    // ContextMenu,
   },
   props: {
     title: {
@@ -149,12 +149,11 @@ export default {
     });
 
     const route = useRoute();
-    const router = useRouter();
 
     watch(
       () => props.rows,
       () => {
-        console.log(props.rows, "rows just changed markup table");
+        console.log(props.rows, route, "rows just changed markup table");
         componentRows.value = props.rows;
       }
     );

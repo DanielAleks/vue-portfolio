@@ -264,14 +264,12 @@ import {
   reactive,
   computed,
   watch,
-  inject,
   ref,
   onMounted,
   onUnmounted,
   watchEffect,
 } from "vue";
-import WopProject from "./project/WopProject.vue";
-import WopContract from "./contract/WopContract.vue";
+// import WopProject from "./project/Woproject.vue";
 import ProjectReview from "./review/ProjectReview.vue";
 import ContractReview from "./review/ContractReview.vue";
 import { useMutation, useQuery } from "@vue/apollo-composable";
@@ -291,8 +289,7 @@ import SearchModel from "src/components/search/SearchModel.vue";
 
 export default defineComponent({
   components: {
-    WopProject,
-    WopContract,
+    // WopProject,
     ProjectReview,
     ContractReview,
     SearchModel,
@@ -325,13 +322,11 @@ export default defineComponent({
       isWopConfigure: false,
       isWopReview: false,
       aisCostsModal: false,
-      isReq: false,
       createWop: false,
       loadingTime: 10000,
       endDate: "",
       newProjectContracts: [],
       aisCosts: null,
-      isReq: false,
       showRenewWop: false,
       accountID: null,
       createProject: false,
@@ -434,7 +429,7 @@ export default defineComponent({
         }
       });
 
-      const { result: sowProjectData, error, loading } = useQuery(
+      const { result: sowProjectData } = useQuery(
         SowProjectsQuery,
         () => ({
           sow_idNew: sow_id.value,
@@ -495,7 +490,9 @@ export default defineComponent({
        * I modified this function to also accept arrays, to allow for multiple services to be added to the WOP
        * Nathan Fickett nfickett@aislabs.com
        */
+          let serviceIDs = [];
       var serviceOrBundleID = {};
+          let serviceBundleIDs = [];
       switch (typeof sow_service_id) {
         case "string":
           serviceOrBundleID = { sow_service_bundle_id: sow_service_id };
@@ -504,8 +501,6 @@ export default defineComponent({
           serviceOrBundleID = { sow_service_id: sow_service_id };
           break;
         case "object":
-          let serviceIDs = [];
-          let serviceBundleIDs = [];
           for (let serviceItem of sow_service_id) {
             if (typeof serviceItem === "string") {
               serviceBundleIDs.push(serviceItem);
@@ -545,8 +540,6 @@ export default defineComponent({
         today.getDate() +
         "/" +
         today.getFullYear().toString();
-      const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-      const dateTime = date + " " + time;
 
       let endDate =
         today.getMonth() +
@@ -741,7 +734,7 @@ export default defineComponent({
       state.wop.ServiceContractName = "";
     }
 
-    function openWopModal(type, value) {
+    function openWopModal(type) {
       if (type === "wopConfigure") {
         resetWopState();
         state.isWop = false;
@@ -853,27 +846,27 @@ export default defineComponent({
       () => {
         let tempObject = {};
         for (let sowService of sowServices.value) {
-          if (
-            tempObject.hasOwnProperty(
-              sowService.SowImplementationTypeName + "" + sowService.BillingFrequency
-            ) == false
-          ) {
-            if (sowService.SowImplementationTypeName === null) {
-              if (
-                tempObject.hasOwnProperty(
-                  "No Related Implementation Type - " + sowService.BillingFrequency
-                ) == false
-              ) {
-                tempObject[
-                  "No Related Implementation Type - " + sowService.BillingFrequency
-                ] = [];
-              }
-            } else {
-              tempObject[
-                sowService.SowImplementationTypeName + " - " + sowService.BillingFrequency
-              ] = [];
-            }
-          }
+          // if (
+          //   tempObject.hasOwnProperty(
+          //     sowService.SowImplementationTypeName + "" + sowService.BillingFrequency
+          //   ) == false
+          // ) {
+          //   if (sowService.SowImplementationTypeName === null) {
+          //     if (
+          //       tempObject.hasOwnProperty(
+          //         "No Related Implementation Type - " + sowService.BillingFrequency
+          //       ) == false
+          //     ) {
+          //       tempObject[
+          //         "No Related Implementation Type - " + sowService.BillingFrequency
+          //       ] = [];
+          //     }
+          //   } else {
+          //     tempObject[
+          //       sowService.SowImplementationTypeName + " - " + sowService.BillingFrequency
+          //     ] = [];
+          //   }
+          // }
           if (sowService.SowImplementationTypeName === null) {
             tempObject[
               "No Related Implementation Type - " + sowService.BillingFrequency

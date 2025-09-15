@@ -207,19 +207,15 @@
 </template>
 
 <script>
-import { useMutation, useQuery } from "@vue/apollo-composable";
-import { defineComponent, reactive, watch, ref, watchEffect, computed } from "vue";
+import { useMutation } from "@vue/apollo-composable";
+import { defineComponent, reactive, watch, computed } from "vue";
 import { useQuasar } from "quasar";
-import SearchModel from "src/components/search/SearchModel.vue";
 import { CreateImplementationGuidelineMutation } from "src/graphql/mutation/ImplementationGuideline.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { useRoute } from "vue-router";
 
 export default defineComponent({
   name: "CreateGuidelineTaskModal",
-  components: {
-    SearchModel,
-  },
   props: {
     setShowModal: {
       type: Function,
@@ -365,19 +361,19 @@ export default defineComponent({
           {
             label: "One-Time",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
             },
           },
           {
             label: "Monthly",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
             },
           },
           {
             label: "Annual",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
             },
           },
         ];
@@ -386,49 +382,49 @@ export default defineComponent({
           {
             label: "Tier 1",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "Tier1";
             },
           },
           {
             label: "Tier 2",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "Tier2";
             },
           },
           {
             label: "Tier 3",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "Tier3";
             },
           },
           {
             label: "Project Manager",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "ProjectManager";
             },
           },
           {
             label: "Consultant",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "Consultant";
             },
           },
           {
             label: "After Hours",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "AfterHours";
             },
           },
           {
             label: "Infrastructure",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
               state.skillTier = "Infrastructure";
             },
           },
@@ -438,13 +434,13 @@ export default defineComponent({
           {
             label: "Labor",
             handler: (item) => {
-              state.editingField = "";
+              state.editingField = item;
             },
           },
           {
             label: "Non Labor",
-            handler: (item) => {
-              state.editingField = "";
+            handler: () => {
+              state.editingField = item;
             },
           },
         ];

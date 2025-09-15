@@ -23,7 +23,7 @@
                 <br />
                 <div class="flex flex-col">
                   <q-btn
-                    v-if="userData.account_id === 633"
+                    v-if="userData && userData.account_id === 633"
                     class="q-mt-lg q-px-lg"
                     color="primary"
                     style="border: 1px solid #1976d2"
@@ -46,7 +46,7 @@
             </div>
           </q-carousel-slide>
           <q-carousel-slide
-            v-if="userData.account_id === 633"
+            v-if="userData && userData.account_id === 633"
             name="tickets"
             class="column no-wrap flex-center"
           >
@@ -127,7 +127,7 @@
                 <br />
                 <div class="flex flex-col">
                   <q-btn
-                    v-if="userData.account_id === 633"
+                    v-if="userData && userData.account_id === 633"
                     class="q-mt-lg q-px-lg"
                     color="primary"
                     style="border: 1px solid #1976d2"
@@ -196,54 +196,43 @@
 import {
   defineComponent,
   ref,
-  watchEffect,
   watch,
   reactive,
-  onMounted,
   inject,
   computed
 } from "vue";
-import VueApexCharts from "vue3-apexcharts";
 import { LocalStorage } from "quasar";
-import { useQuery } from "@vue/apollo-composable";
-import { AccountQueryTicketSummary } from "src/graphql/query/Account.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import {useQuasar} from "quasar";
-import ComponentA from "src/pages/test-anything/trix-editing/ComponentA.vue";
 
 export default defineComponent({
   name: "DashBoard",
-  components: {
-    apexchart: VueApexCharts, ComponentA
-  },
   setup() {
     const darkmode = computed(() => useDarkModeStore().darkmode);
 
-    function formatDate(dateUnix) {
-      if (dateUnix) {
-        let parsedUnixDate = parseInt(dateUnix);
+    // function formatDate(dateUnix) {
+    //   if (dateUnix) {
+    //     let parsedUnixDate = parseInt(dateUnix);
 
-        // const myDate = format(new Date(parsedUnixDate), 'YYYY-MM-DDTHH:mm:ss');
-        let date = new Date(parsedUnixDate * 1000);
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        let year = date.getFullYear();
-        let hours = date.getHours();
-        let minutes = "0" + date.getMinutes();
-        let formattedDate =
-          month + "/" + day + "/" + year + " " + hours + ":" + minutes.substr(-2);
-        return formattedDate;
-      } else {
-        return "N/A";
-      }
-    }
+    //     // const myDate = format(new Date(parsedUnixDate), 'YYYY-MM-DDTHH:mm:ss');
+    //     let date = new Date(parsedUnixDate * 1000);
+    //     let month = date.getMonth() + 1;
+    //     let day = date.getDate();
+    //     let year = date.getFullYear();
+    //     let hours = date.getHours();
+    //     let minutes = "0" + date.getMinutes();
+    //     let formattedDate =
+    //       month + "/" + day + "/" + year + " " + hours + ":" + minutes.substr(-2);
+    //     return formattedDate;
+    //   } else {
+    //     return "N/A";
+    //   }
+    // }
 
     // formatDate(1589778000000);
-    var currentTime = new Date().getTime() / 1000;
+    // var currentTime = new Date().getTime() / 1000;
     let data = "";
     let userData = "";
-    let helloVal = "";
-    let helloFormatted = "";
+    // let helloVal = "";
     try {
       data = LocalStorage.getItem("userData");
       userData = JSON.parse(data);
@@ -283,44 +272,39 @@ export default defineComponent({
       }, 
     );
 
-    function formatAccountJSON(accountProp) {
-      // console.log("TicketSummaryJSON:", accountProp.Account.TicketSummaryJSON);
-      try {
-        let parsedJSON = JSON.parse(
-          accountProp && accountProp.Company && accountProp.Company.TicketSummaryJSON
-        );
+    // function formatAccountJSON(accountProp) {
+    //   // console.log("TicketSummaryJSON:", accountProp.Account.TicketSummaryJSON);
+    //   try {
+    //     let parsedJSON = JSON.parse(
+    //       accountProp && accountProp.Company && accountProp.Company.TicketSummaryJSON
+    //     );
 
-        Object.keys(parsedJSON).forEach((key) => {
-          if (key !== "Complete" && key !== "TotalTicketCount" && key !== "undefined") {
-            state.ticket.push({
-              key: key.replaceAll(" ", "_"),
-              value: parsedJSON[key],
-              name: key,
-            });
-            state.ticketKeys.push(key);
-          } else
-            state.countTotals.push({
-              key: key,
-              value: parsedJSON[key],
-              name: key,
-            });
-        });
-        setTimeout(() => {
-          ticketTotal();
-          state.displayChart = true;
-          chartOptions.value.labels = state.ticket.map((data) => data.key);
-          chartSeries.value = state.ticket.map((data) => data.value);
-        }, 1000);
-      } catch (error) {
-        console.log("Parsing ERR", error);
-      }
-    }
+    //     Object.keys(parsedJSON).forEach((key) => {
+    //       if (key !== "Complete" && key !== "TotalTicketCount" && key !== "undefined") {
+    //         state.ticket.push({
+    //           key: key.replaceAll(" ", "_"),
+    //           value: parsedJSON[key],
+    //           name: key,
+    //         });
+    //         state.ticketKeys.push(key);
+    //       } else
+    //         state.countTotals.push({
+    //           key: key,
+    //           value: parsedJSON[key],
+    //           name: key,
+    //         });
+    //     });
+    //     setTimeout(() => {
+    //       ticketTotal();
+    //       state.displayChart = true;
+    //       chartOptions.value.labels = state.ticket.map((data) => data.key);
+    //       chartSeries.value = state.ticket.map((data) => data.value);
+    //     }, 1000);
+    //   } catch (error) {
+    //     console.log("Parsing ERR", error);
+    //   }
+    // }
 
-    function ticketTotal() {
-      for (var i = 0; i < state.ticket.length; i++) {
-        state.ticketTotal.push(state.ticket[i].value);
-      }
-    }
     // chart: {
     //   foreColor: "#F5F5F5", // set the color of chart labels to white
     // },
@@ -355,7 +339,7 @@ export default defineComponent({
           horizontal: 20,
           vertical: 0,
         },
-        formatter: function (seriesName, opts) {
+        formatter: function (seriesName) {
           return seriesName.replaceAll("_", " ");
         },
       },
@@ -381,41 +365,31 @@ export default defineComponent({
       }
     );
 
-    const fetchAccount = async () => {
-      const { result: accountsData } = useQuery(AccountQueryTicketSummary, () => ({
-        autotask_id: userData.account_id,
-      }));
+    // const fetchAccount = async () => {
+    //   const { result: accountsData } = useQuery(AccountQueryTicketSummary, () => ({
+    //     autotask_id: userData.account_id,
+    //   }));
 
-      watchEffect(() => {
-        if (accountsData.value) {
-          // accounts.value = accountsData.value.Accounts.data;
-          // JSON.parse(data);
-          // const parsedSummary = JSON.parse(accountsData.value.Account.TicketSummaryJSON);
-          formatAccountJSON(accountsData.value);
-          // accountTicketSummary.value = JSON.parse(accountsData.value.TicketSummaryJSON);
-        }
-      });
-    };
+    //   watchEffect(() => {
+    //     if (accountsData.value) {
+    //       // accounts.value = accountsData.value.Accounts.data;
+    //       // JSON.parse(data);
+    //       // const parsedSummary = JSON.parse(accountsData.value.Account.TicketSummaryJSON);
+    //       formatAccountJSON(accountsData.value);
+    //       // accountTicketSummary.value = JSON.parse(accountsData.value.TicketSummaryJSON);
+    //     }
+    //   });
+    // };
 
-    onMounted(async () => {
-      await fetchAccount();
-    });
+    // onMounted(async () => {
+    //   await fetchAccount();
+    // });
 
     const chartContainerOptions = ref({
       classNames: ["chart-container"],
     });
 
-    const carouselData = ref([
-      // {
-      //   name: "SOWS",
-      //   icon: "browse_gallery",
-      //   buttonText: "View SOWs",
-      //   buttonAction: $router.push("/sows"),
-      // },
-      {},
-    ]);
-
-    // <q-carousel-slide name="ais_sows" class="column no-wrap flex-center">
+     // <q-carousel-slide name="ais_sows" class="column no-wrap flex-center">
     //         <q-icon name="browse_gallery" color="blue" size="148px" />
     //         <div class="q-mt-md text-center">
     //           SOWS
@@ -429,8 +403,6 @@ export default defineComponent({
     //           ></q-btn>
     //         </div>
     //       </q-carousel-slide>
-
-    const $q = useQuasar();
 
     return {
       chartContainerOptions,

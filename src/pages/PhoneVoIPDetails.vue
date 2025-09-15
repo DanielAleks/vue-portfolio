@@ -61,10 +61,6 @@ import QCardDetails from "src/components/reusables/QCardDetails.vue";
 import { useQuasar } from "quasar";
 import { PhoneQuery } from "src/graphql/query/Phone.js";
 import { IntrospectionQuery } from "src/graphql/query/Introspection.js";
-import {
-  UpdateVulnerabilityScanMutation,
-  DeleteVulnerabilityScanMutation,
-} from "src/graphql/mutation/VulnerabilityScan.js";
 import { useSmartRouteStore } from "src/stores/smart-routing";
 import store from "src/boot/pinia";
 import { UpdatePhoneMutation, DeletePhoneMutation } from "src/graphql/mutation/Phone.js";
@@ -186,8 +182,9 @@ export default defineComponent({
           };
           updateScan();
         } else {
-          if (val === false) {
-          } else deleteVulnerabilityScan();
+          if (val !== false) {
+          deleteVulnerabilityScan();
+          } 
         }
       } else {
         deleteVulnerabilityScan();

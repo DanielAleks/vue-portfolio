@@ -41,7 +41,7 @@ export default defineComponent({
       this.top = evt.pageY || evt.clientY;
       // make element focused
       // @ts-ignore
-      Vue.nextTick(() => this.$el.focus());
+      // Vue.nextTick(() => this.$el.focus());
       this.show = true;
     },
   },

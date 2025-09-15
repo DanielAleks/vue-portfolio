@@ -89,7 +89,7 @@ import {
   onMounted,
 } from "vue";
 import { useQuery, useLazyQuery, useMutation } from "@vue/apollo-composable";
-import ProjectOverview from "src/components/sow-details/projects/ProjectOverview.vue";
+// import ProjectOverview from "src/components/sow-details/projects/ProjectOverview.vue";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 import { useRouter } from "vue-router";
 import { useSmartRouteStore } from "src/stores/smart-routing";
@@ -103,7 +103,6 @@ import { ProjectQueryTasksAndRequirements } from "src/graphql/query/Project.js";
 export default defineComponent({
   name: "SowProjects",
   components: {
-    ProjectOverview,
     ListQTable,
     AccordianQTableDeep,
   },
@@ -204,7 +203,7 @@ export default defineComponent({
         required: true,
         label: "Actions",
         align: "center",
-        field: (row) => "View",
+        field: () => "View",
         format: (val) => `${val}`,
       },
     ]);
@@ -429,9 +428,9 @@ export default defineComponent({
             uniqueTasks.push(task);
           }
         });
-        uniqueTasks.forEach((task) => {
+        // uniqueTasks.forEach((task) => {
           // console.log(task, "TASK");
-          const phaseIndex = phases.value.findIndex((phase) => phase.autotask_id === task.phaseID);
+          // const phaseIndex = phases.value.findIndex((phase) => phase.autotask_id === task.phaseID);
           // if (phaseIndex !== -1) {
           //   phases.value.splice(phaseIndex + 1, 0, {
           //     ...task,
@@ -449,7 +448,7 @@ export default defineComponent({
           //     relatedItems: tasks.value,
           //   });
           // }
-        });
+        // });
 
         // sort phase A with tasks that hav phase A, then phase B with tasks that have phase B, etc.
 
@@ -490,7 +489,7 @@ export default defineComponent({
 
         state.isLoading = false;
         sowRequirements.value
-          .map((item, id) => {
+          .map((item) => {
             if (
               !taskNames.value.includes(
                 item &&
@@ -515,7 +514,7 @@ export default defineComponent({
         });
 
         sowRequirements.value.map((item) => {
-          myRequirements.value.map((task, id) => {
+          myRequirements.value.map((task) => {
             if (
               item &&
               item.ImplementationTaskNames &&

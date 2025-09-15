@@ -521,6 +521,7 @@ export default defineComponent({
     }
 
     function updateFields(type, value) {
+      console.log(type,value, ":test")
       updateRequirement();
       setTimeout(() => {
         state.editMode = "";

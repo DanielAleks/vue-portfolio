@@ -32,24 +32,21 @@
 import {
   defineComponent,
   reactive,
-  computed,
   watchEffect,
   ref,
   inject,
   watch,
 } from "vue";
-import { useQuery, useMutation, useLazyQuery } from "@vue/apollo-composable";
+import { useQuery, useMutation } from "@vue/apollo-composable";
 import { useRoute, useRouter } from "vue-router";
-import MiniCardContainer from "src/components/reusables/MiniCardContainer.vue";
+// import MiniCardContainer from "src/components/reusables/MiniCardContainer.vue";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
-import { useQuasar } from "quasar";
 import QCardDetails from "src/components/reusables/QCardDetails.vue";
 import { ProductQuery } from "src/graphql/query/Product.js";
 import { GetATUpdateProductMutation } from "src/graphql/mutation/Product.js";
 
 export default defineComponent({
   components: {
-    MiniCardContainer,
     ListQTable,
     QCardDetails,
   },

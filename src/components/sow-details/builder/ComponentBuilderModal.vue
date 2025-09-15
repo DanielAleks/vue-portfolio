@@ -177,7 +177,6 @@ import {
   reactive,
   watch,
   ref,
-  inject,
   computed,
   onMounted,
   onUnmounted,
@@ -404,7 +403,7 @@ export default defineComponent({
     };
 
     const fetchServices = async () => {
-      const { result: serviceData, refetch: refetchServiceData, loading } = useQuery(
+      const { result: serviceData, loading } = useQuery(
         ServicesQuery,
         () => ({
           name: searchOptions.getState.search,
@@ -427,7 +426,6 @@ export default defineComponent({
           isLoading.value = false;
           const originalLength = services.value;
           if (serviceData.value && serviceData.value.Services) {
-            let serviceExcluded = props.excludedItems && props.excludedItems.services;
             services.value = [
               ...services.value,
               ...serviceData.value.Services.data.filter(
@@ -630,7 +628,6 @@ export default defineComponent({
           break;
         case "Service Bundle":
           createSowServiceBundle();
-          break;
       }
       addComponentNotif(state.name);
       if (close === "close") {
@@ -671,16 +668,12 @@ export default defineComponent({
       switch (props.showComponentModal) {
         case "Guideline":
           return guidelines.value;
-          break;
         case "Product":
           return products.value;
-          break;
         case "Service":
           return services.value;
-          break;
         case "Service Bundle":
           return serviceBundles.value;
-          break;
         default:
           return "no results were found";
       }

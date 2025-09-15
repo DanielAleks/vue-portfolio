@@ -55,7 +55,7 @@ export default defineComponent({
     formatTotal: { type: Function, default: () => {} },
     sowProjects: { type: Array, default: () => [] },
   },
-  setup(props) {
+  setup() {
     const state = reactive({
       pageValue: 1,
     });

@@ -262,8 +262,6 @@ export default defineComponent({
 
     async function createSowMutate() {
       try {
-        const variables = {};
-
         const { mutate: createSowGQL } = useMutation(CreateSowMutation, () => ({
           variables: {
             account_id: state.accountId,

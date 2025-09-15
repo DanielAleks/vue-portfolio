@@ -175,7 +175,6 @@ import {
   computed,
   watch,
   inject,
-  onMounted,
 } from "vue";
 import { useLazyQuery, useQuery } from "@vue/apollo-composable";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
@@ -352,7 +351,6 @@ export default defineComponent({
     const {
       result: implementationTaskData,
       load: loadImplementationTask,
-      error: myErro,
       refetch: refetchTasks,
     } = useLazyQuery(ImplementationTasksQuery, () => ({
       Name: state.search,
@@ -403,13 +401,6 @@ export default defineComponent({
         name: "actions",
         label: "Actions",
         align: "center",
-        format: (val, row) => {
-          return `
-        <div>
-          <q-btn label="VIEW" @click="handleViewButtonClick(row)"/>
-        </div>
-      `;
-        },
       },
     ]);
 

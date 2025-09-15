@@ -323,7 +323,7 @@ import {
   watchEffect,
   inject,
 } from "vue";
-import { useMutation, useQuery, useLazyQuery } from "@vue/apollo-composable";
+import { useMutation, useQuery } from "@vue/apollo-composable";
 import { useQuasar } from "quasar";
 import AssociatedGuidelines from "./AssociatedGuidelines.vue";
 import { useRoute } from "vue-router";
@@ -478,7 +478,7 @@ export default defineComponent({
 
     const newSowImplementationType = ref({});
 
-    async function createImplementation(id) {
+    async function createImplementation() {
       try {
         const { mutate } = useMutation(CreateSowImplementationTypeMutation, () => ({
           variables: {
@@ -676,12 +676,9 @@ export default defineComponent({
 
     const totalProducts = ref(0);
     const totalServices = ref(0);
-    const totalServiceBundles = ref(0);
 
     const {
       result: productsData,
-      refetch: refetchProducts,
-      onResult: onResultProducts,
     } = useQuery(ProductsQuery, () => ({
       first: 15,
       page: state.page,
@@ -692,8 +689,6 @@ export default defineComponent({
 
     const {
       result: servicesData,
-      refetch: refetchServices,
-      onResult: onResultServices,
     } = useQuery(ServicesQuery, () => ({
       first: 15,
       page: state.page,
@@ -704,8 +699,6 @@ export default defineComponent({
 
     const {
       result: serviceBundlesData,
-      refetch: refetchServiceBundles,
-      onResult: onResultServiceBundles,
     } = useQuery(ServiceBundlesQuery, () => ({
       first: 15,
       page: state.page,
@@ -804,8 +797,8 @@ export default defineComponent({
           }
         );
 
-        totalServiceBundles.value =
-          serviceBundlesData.value.ServiceBundles.paginatorInfo.lastPage;
+        // totalServiceBundles.value =
+          // serviceBundlesData.value.ServiceBundles.paginatorInfo.lastPage;
         // state.loading = data.loading;
       }
     });
@@ -830,7 +823,7 @@ export default defineComponent({
       () => state.showComponentType,
       () => {
         if (state.showComponentType === "Guidelines") {
-          state.totalPages = guidelines.value.length;
+          // state.totalPages = guidelines.value.length;
           state.page = 1;
           if (!componentColumns.some((col) => col.name === "isAlreadyImplemented")) {
             componentColumns.splice(1, 0, alreadyImplementedColumn);
@@ -876,14 +869,14 @@ export default defineComponent({
         return guidelines.value;
       } else if (state.showComponentType === "Products") {
         console.log(products.value, productsData.value, "COMPONENT ROWS");
-        state.totalPages = totalProducts.value;
+        // state.totalPages = totalProducts.value;
         return products.value;
       } else if (state.showComponentType === "Services") {
-        state.totalPages = totalServices.value;
+        // state.totalPages = totalServices.value;
         console.log(services.value, "COMPONENT ROWS");
         return services.value;
       } else if (state.showComponentType === "Service Bundles") {
-        state.totalPages = totalServiceBundles.value;
+        // state.totalPages = totalServiceBundles.value;
         console.log(serviceBundles.value, "COMPONENT ROWS");
         return serviceBundles.value;
       }

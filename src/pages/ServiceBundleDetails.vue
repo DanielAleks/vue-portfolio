@@ -171,7 +171,6 @@ export default defineComponent({
     ]);
 
     const windowWidth = inject("windowWidth");
-    const formatTotal = inject("formatTotal");
 
     const updateColumns = () => {
       if (windowWidth.value <= 600) {

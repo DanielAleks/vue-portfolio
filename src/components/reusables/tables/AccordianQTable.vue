@@ -570,18 +570,12 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, reactive, inject, computed, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
+import { defineComponent, ref, watch, reactive, inject, computed } from "vue";
+import { useRoute } from "vue-router";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import ContextMenu from "../ContextMenu.vue";
 
 export default defineComponent({
   name: "AccordianQTable",
-  components: {
-    SowCollaborator,
-    ContextMenu,
-  },
   props: {
     columns: {
       type: Array,
@@ -762,7 +756,6 @@ export default defineComponent({
     watch(
       () => windowWidth.value,
       () => {
-        let previousWindowWidth = windowWidth.value;
         if (windowWidth.value < 600) {
           // only be activatable when the title changes too
           isMobileUser.value = true;
@@ -892,7 +885,7 @@ export default defineComponent({
       }
     }
 
-    const showTasksTable = ref(false);
+    // const showTasksTable = ref(false);
 
 function setShowRelatedTasksTable(val) {
   // showTasksTable.value = val;

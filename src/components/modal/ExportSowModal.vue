@@ -658,7 +658,7 @@ export default defineComponent({
       await SendESignMutation();
     }
 
-    const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+    // const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
 
     watch(
       () => state.helloSignEmail,
@@ -668,11 +668,11 @@ export default defineComponent({
     );
 
     function validateEmail() {
-      if (reg.test(state.helloSignEmail)) {
+      // if (reg.test(state.helloSignEmail)) {
         return true;
-      } else {
-        return false;
-      }
+      // } else {
+        // return false;
+      // }
     }
 
     const disableEngagementSummaryLaborType = computed(() => {

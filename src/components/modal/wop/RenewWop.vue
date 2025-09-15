@@ -19,12 +19,11 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed, inject, watchEffect } from "vue";
-import { useMutation, useQuery } from "@vue/apollo-composable";
+import { defineComponent, reactive } from "vue";
+import { useMutation } from "@vue/apollo-composable";
 import { useQuasar } from "quasar";
-import { useState, useMutations } from "src/helpers.js";
+import { useMutations } from "src/helpers.js";
 import { useRouter } from "vue-router";
-import gql from "graphql-tag";
 import renew_sow from "src/graphql/mutations/RenewSow/RenewSowMutation.gql";
 
 export default defineComponent({
@@ -39,7 +38,6 @@ export default defineComponent({
       renewedID: null,
     });
 
-    const { project_id } = useState(["project_id"]);
     const { setProjectId } = useMutations(["setProjectId"]);
     const setId = (payload) => setProjectId(payload);
 
@@ -50,7 +48,7 @@ export default defineComponent({
       });
     }
 
-    const { sow, refetchSow } = inject("refetchSow");
+    // const { sow, refetchSow } = inject("refetchSow");
 
     const { mutate: renewSowMutation, onDone, onError } = useMutation(renew_sow, () => ({
       variables: {
@@ -67,7 +65,7 @@ export default defineComponent({
         query: { id: state.renewedID },
       });
       setTimeout(() => {
-        refetchSow();
+        // refetchSow();
       }, 1000);
 
       setTimeout(() => {

@@ -47,7 +47,7 @@
 
 <script>
 import { defineComponent, onMounted, ref, computed, watchEffect } from "vue";
-import { useQuery, useLazyQuery } from "@vue/apollo-composable";
+import { useLazyQuery } from "@vue/apollo-composable";
 import { UserQuery } from "src/graphql/query/User.js";
 
 export default defineComponent({

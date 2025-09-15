@@ -583,16 +583,6 @@ export default defineComponent({
     });
     const $q = useQuasar();
 
-    function deleteNotification(name) {
-      $q.notify({
-        color: "negative",
-        message: "Task Deleted: " + name,
-        icon: "warning",
-        position: "bottom",
-        timeout: 1000,
-      });
-    }
-
     const editingTask = ref({});
 
     const loading = ref(true);
@@ -614,64 +604,63 @@ export default defineComponent({
       result: guidelineData,
       load: loadImplementationGuidelines,
       error: err,
-      refetch: refetchGuideline,
     } = useLazyQuery(AdminImplementationGuidelineQuery, () => ({
       _id: route.params.id,
     }));
 
-    function addProjectViewItem(item) {
+    // function addProjectViewItem(item) {
       // initialize projectProcesses
-      item.ImplementationTasks.map((task) => {
-        if (
-          !projectProcesses.value.some((process) => process._id === task.ProjectProcess._id)
-        ) {
-          projectProcesses.value.push({
-            ...task.ProjectProcess,
-            ProjectProcessName: task.ProjectProcess.Name,
-            ImplementationTasks: ref([]),
-          });
-        }
-      });
+      // item.ImplementationTasks.map((task) => {
+      //   if (
+      //     !projectProcesses.value.some((process) => process._id === task.ProjectProcess._id)
+      //   ) {
+      //     projectProcesses.value.push({
+      //       ...task.ProjectProcess,
+      //       ProjectProcessName: task.ProjectProcess.Name,
+      //       ImplementationTasks: ref([]),
+      //     });
+      //   }
+      // });
 
       // initialize relatedTasks
-      item.ImplementationTasks.map((task) => {
-        if (!relatedTasks.value.some((guideline) => guideline._id === task._id)) {
-          relatedTasks.value.push({
-            ...task,
-            TaskName: task.Name,
-            isSelected: false,
-          });
-        }
-      });
+      // item.ImplementationTasks.map((task) => {
+      //   if (!relatedTasks.value.some((guideline) => guideline._id === task._id)) {
+      //     relatedTasks.value.push({
+      //       ...task,
+      //       TaskName: task.Name,
+      //       isSelected: false,
+      //     });
+      //   }
+      // });
 
       // add projectProcesses and relatedItems
-      guidelines.value = projectProcesses.value;
+      // guidelines.value = projectProcesses.value;
 
-      projectProcesses.value.map((process, idx) => {
-        item.ImplementationTasks.map((taskItem) => {
-          if (taskItem.project_process_id === process._id) {
-            guidelines.value[idx].ImplementationTasks.push(taskItem);
-          }
-        });
-      });
+      // projectProcesses.value.map((process, idx) => {
+      //   item.ImplementationTasks.map((taskItem) => {
+      //     if (taskItem.project_process_id === process._id) {
+      //       guidelines.value[idx].ImplementationTasks.push(taskItem);
+      //     }
+      //   });
+      // });
 
       // add relatedRequirements
-      item.ImplementationTasks.map((task) => {
-        task.ImplementationTaskRequirements.map((requirement) => {
-          if (
-            !guidelines.value.some((guideline) => guideline._id === requirement._id) &&
-            requirement.Requirement !== null
-          ) {
-            guidelines.value.push({
-              ...requirement,
-              RequirementName: requirement.Requirement.Name,
-              Name: requirement.Requirement.Name,
-              Description: requirement.Requirement.Description,
-            });
-          }
-        });
-      });
-    }
+      // item.ImplementationTasks.map((task) => {
+      //   task.ImplementationTaskRequirements.map((requirement) => {
+      //     if (
+      //       !guidelines.value.some((guideline) => guideline._id === requirement._id) &&
+      //       requirement.Requirement !== null
+      //     ) {
+      //       guidelines.value.push({
+      //         ...requirement,
+      //         RequirementName: requirement.Requirement.Name,
+      //         Name: requirement.Requirement.Name,
+      //         Description: requirement.Requirement.Description,
+      //       });
+      //     }
+      //   });
+      // });
+    // }
 
     const requirements = ref([]);
     const guideline = ref({});
@@ -980,7 +969,7 @@ export default defineComponent({
       variables: variablesUpdating.value,
     }));
 
-    onDUpd((res) => {
+    onDUpd(() => {
       doNotRefetch.value = false;
     });
 
@@ -1067,8 +1056,8 @@ export default defineComponent({
 
     function updateImplementationGuideline(value, operation) {
       // item props: key, value, originalKey
-      let key = Object.keys(value)[0];
-      let val = Object.values(value)[0];
+      // let key = Object.keys(value)[0];
+      // let val = Object.values(value)[0];
       if (operation !== "delete") {
         variablesUpdating.value = {
           _id: route.params.id,
@@ -2224,8 +2213,7 @@ export default defineComponent({
       state.showTasksTable = val;
       if (val === true) {
         guidelinePhaseTasks.value;
-      } else {
-      }
+      } 
     }
 
     const requirementColumns = reactive([

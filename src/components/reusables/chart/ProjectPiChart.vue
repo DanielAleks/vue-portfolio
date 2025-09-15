@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive, computed, watch } from "vue";
+import { defineComponent, ref, reactive, computed } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 

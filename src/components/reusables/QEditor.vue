@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, reactive } from "vue";
+import { defineComponent, watch, reactive } from "vue";
 
 export default defineComponent({
   props: {

@@ -988,9 +988,8 @@
 
 <script>
 import { defineComponent, ref, watch, reactive, inject, computed, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
-import ContextMenu from "../ContextMenu.vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { SkillTiers } from "src/graphql/query/static/SkillTier.js";
 import SelectOptionalQuantity from "./table-content/SelectOptionalQuantity.vue";
@@ -1000,7 +999,6 @@ export default defineComponent({
   name: "ListQTable",
   components: {
     SowCollaborator,
-    ContextMenu,
     SelectOptionalQuantity,
     ListBuilderName,
   },
@@ -1181,7 +1179,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const sows = ref([]);
+    // const sows = ref([]);
     const pagination = ref({ currentPage: 1, perPage: 15 });
     const paginator = ref([]);
     const darkmode = computed(() => useDarkModeStore().darkmode);
@@ -1284,7 +1282,6 @@ export default defineComponent({
     watch(
       () => windowWidth.value,
       () => {
-        let previousWindowWidth = windowWidth.value;
         if (windowWidth.value < 600) {
           // only be activatable when the title changes too
           isMobileUser.value = true;
@@ -1503,7 +1500,6 @@ export default defineComponent({
         //   }
         // });
         // });
-        state.shouldPageUpdate = !state.shouldPageUpdate;
         return props.rows.map((rowItem) => {
           if (!props.selectedRelatedItems.includes(rowItem)) {
             // rowItem.isSelected = true;

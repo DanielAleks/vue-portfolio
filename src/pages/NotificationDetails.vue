@@ -226,7 +226,6 @@ import {
   watch,
   onMounted,
 } from "vue";
-import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { useRoute, useRouter } from "vue-router";
 import { useQuasar } from "quasar";
@@ -243,8 +242,7 @@ import { useStoreBase } from "src/stores/searchStore.js";
 export default defineComponent({
   name: "NotificationDetails",
   components: {
-    ListQTable,
-    SearchModel,
+  SearchModel,
   },
   setup() {
     const state = reactive({
@@ -267,7 +265,7 @@ export default defineComponent({
     });
     const route = useRoute();
     const router = useRouter();
-    const route_id = computed(() => parseInt(route.params.id));
+    // const route_id = computed(() => parseInt(route.params.id));
     const darkmode = computed(() => useDarkModeStore().darkmode);
 
     const userNotifications = ref([]);

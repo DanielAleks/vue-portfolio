@@ -557,7 +557,7 @@ import {
   inject,
 } from "vue";
 import { useQuery, useMutation } from "@vue/apollo-composable";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import SearchModel from "src/components/search/SearchModel.vue";
 import { useQuasar } from "quasar";
 import { UserQuery } from "src/graphql/query/User.js";
@@ -600,8 +600,6 @@ export default defineComponent({
       order: null,
       allowOrderEdit: false,
     });
-
-    const router = useRouter();
 
     const formatDate = inject("formatDate");
 
@@ -830,15 +828,13 @@ export default defineComponent({
       }
     }
 
-    function setAccountId(id, value) {
+    function setAccountId(id) {
       if (id !== null && id !== "close") {
         state.newAccountId = id.id;
         state.company = id.companyName;
         cancelEditing("account", id);
       } else cancelEditing("");
     }
-
-    function setOwnedAccountId(id, value) {}
 
     const $q = useQuasar();
     function updateUserNotif(type, value) {

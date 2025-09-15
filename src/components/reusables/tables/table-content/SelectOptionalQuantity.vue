@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { ref, defineComponent, reactive, watch, computed } from "vue";
+import { defineComponent, reactive, watch, computed } from "vue";
 import { useRoute } from "vue-router";
 
 export default defineComponent({

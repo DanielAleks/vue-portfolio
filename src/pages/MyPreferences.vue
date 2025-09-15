@@ -151,10 +151,9 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, watchEffect, computed, watch } from "vue";
-import ListQTable from "src/components/reusables/tables/ListQTable.vue";
+import { defineComponent, reactive, ref, watchEffect, watch } from "vue";
 import { useQuery, useMutation } from "@vue/apollo-composable";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { useQuasar, LocalStorage } from "quasar";
 import { AccountNotificationsQuery } from "src/graphql/query/AccountNotification.js";
 import { AccountQuery } from "src/graphql/query/Account.js";
@@ -165,9 +164,6 @@ import {
 
 export default defineComponent({
   name: "MyPreferences",
-  components: {
-    ListQTable,
-  },
   setup() {
     const state = reactive({
       totalPages: 10,
@@ -185,9 +181,8 @@ export default defineComponent({
       notificationTypeID: null,
       unwatchItem: false,
     });
-    const route = useRoute();
     const router = useRouter();
-    const route_id = computed(() => parseInt(route.params.id));
+    // const route_id = computed(() => parseInt(route.params.id));
 
     let data = "";
     let userData = "";

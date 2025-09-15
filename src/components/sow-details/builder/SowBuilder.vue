@@ -598,13 +598,13 @@ import {
   inject,
 } from "vue";
 import AttachImplementation from "src/components/sow-details/implementations/AttachImplementation.vue";
-import SearchModel from "src/components/search/SearchModel.vue";
+// import SearchModel from "src/components/search/SearchModel.vue";
 import { useStoreImplementationType } from "src/stores/searchStore.js";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { ImplementationTypesQuery } from "src/graphql/query/ImplementationType.js";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import ComponentBuilderModal from "./ComponentBuilderModal.vue";
+// import ComponentBuilderModal from "./ComponentBuilderModal.vue";
 import { ProductsQuery } from "src/graphql/query/Product.js";
 import { ServicesQuery } from "src/graphql/query/Service.js";
 import { ServiceBundlesQuery } from "src/graphql/query/ServiceBundle.js";
@@ -619,9 +619,8 @@ export default defineComponent({
   name: "SowBuilder",
   components: {
     AttachImplementation,
-    SearchModel,
+    // SearchModel,
     ListQTable,
-    ComponentBuilderModal,
   },
   props: {
     sow: {
@@ -778,9 +777,6 @@ export default defineComponent({
         console.log(implementationTypesData.value, "implementationTypesData");
         isLoadingImplementationTypes.value = false;
         const prevLength = implementationTypes.value;
-        const filteredImplementationTypes =
-          implementationTypesData.value.ImplementationTypes.data;
-
         implementationTypes.value =
           implementationTypesData.value.ImplementationTypes.data;
 
@@ -893,7 +889,7 @@ export default defineComponent({
       },
     ];
 
-    function pushNewResponseData(a, b, c, d) {
+    function pushNewResponseData(a, b, c) {
       console.log(a, b, c, "implementation Created");
     }
 
@@ -944,7 +940,7 @@ export default defineComponent({
           // IsOptional: state.isOpt,
         };
 
-        const { mutate: createService, error } = useMutation(CreateSowServiceMutation);
+        const { mutate: createService } = useMutation(CreateSowServiceMutation);
 
         const { data } = await createService(variables);
         const newService = data.CreateSowServiceMutation;
@@ -1211,18 +1207,18 @@ export default defineComponent({
 
     const computedComponentRows = computed(() => {
       if (state.showComponentType === "Products") {
-        state.totalPages = totalProducts.value;
-        state.page = 1;
+        // state.totalPages = totalProducts.value;
+        // state.page = 1;
         console.log(products.value, "COMPONENT ROWS");
         return products.value;
       } else if (state.showComponentType === "Services") {
-        state.totalPages = totalServices.value;
-        state.page = 1;
+        // state.totalPages = totalServices.value;
+        // state.page = 1;
         console.log(services.value, "COMPONENT ROWS");
         return services.value;
       } else if (state.showComponentType === "Service Bundles") {
-        state.totalPages = totalServiceBundles.value;
-        state.page = 1;
+        // state.totalPages = totalServiceBundles.value;
+        // state.page = 1;
         console.log(serviceBundles.value, "COMPONENT ROWS");
         return serviceBundles.value;
       }

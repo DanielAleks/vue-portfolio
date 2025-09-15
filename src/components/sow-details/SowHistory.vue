@@ -96,7 +96,6 @@ import {
 import { useRoute } from "vue-router";
 import ExportSowModal from "../modal/ExportSowModal.vue";
 import { useQuery, useMutation } from "@vue/apollo-composable";
-import BasicQTable from "src/components/reusables/tables/BasicQTable.vue";
 import { SowDocumentsQuery } from "src/graphql/query/sow/SowDocument.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { GetDropboxSignatureRequestS3UrlMutation } from "src/graphql/mutation/DropboxSignatureRequest.js";
@@ -104,8 +103,7 @@ import { GetDropboxSignatureRequestS3UrlMutation } from "src/graphql/mutation/Dr
 export default defineComponent({
   components: {
     ExportSowModal,
-    BasicQTable,
-  },
+},
   props: {
     sow: {
       type: Object,
@@ -245,7 +243,6 @@ export default defineComponent({
     const {
       mutate: GetDropboxSignatureRequestS3Url,
       onDone: onDoneGetDropboxSignatureRequestS3UrlMutation,
-      onError: onErrorGetDropboxSignatureRequestS3UrlMutation,
     } = useMutation(GetDropboxSignatureRequestS3UrlMutation);
 
     onDoneGetDropboxSignatureRequestS3UrlMutation((data) => {

@@ -175,7 +175,7 @@ export default defineComponent({
       //   "saving component sow_order in 5 seconds if no further changes are applied"
       // );
       timeoutId = setTimeout(() => {
-        components.value.sowServices.forEach((item, idx) => {
+        components.value.sowServices.forEach((item) => {
           // item.sow_order = idx;
           if (item.__typename === "SowService") {
             implementationStore.updateSowService({ row: item, field: "sow_order" });

@@ -990,7 +990,7 @@
 
 <script>
 import { defineComponent, ref, watch, reactive, inject, computed } from "vue";
-import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
+// import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { useQuasar } from "quasar";
 import draggable from "vuedraggable";
@@ -1000,7 +1000,7 @@ export default defineComponent({
   // ComponentQTable is used for Guideline, Product, Service, Bundle, Assumption, Exclusion (editable table)
   name: "ComponentQTable",
   components: {
-    SowCollaborator,
+    // SowCollaborator,
     ExpansionItem,
     draggable,
   },
@@ -1127,7 +1127,7 @@ export default defineComponent({
 
     let previousEditfield = "";
     let previousSelectedRow = null;
-    function handleFocusOut(row, index) {
+    function handleFocusOut(row) {
       let selectedRow = previousSelectedRow;
       setTimeout(() => {
         // console.log(selectedRow, previousSelectedRow, "selectedRow previousSelectedRow handleFocusOut")
@@ -1206,7 +1206,7 @@ export default defineComponent({
       implementationRefs[index] = el;
     };
 
-    function editImpleName(index, impleRow) {
+    function editImpleName(index) {
       state.impleIsEditing = true;
       setTimeout(() => {
         implementationRefs[index].focus();
@@ -1426,7 +1426,7 @@ export default defineComponent({
       drag.value = val;
     }
 
-    function toggleRecurringAccordian(item, billingFreq) {
+    function toggleRecurringAccordian(item) {
       console.log(item, "item toggleRecurringAccordian()");
       // billingFreq.isOpen = !billingFreq.isOpen;
       if (item.type === "TotalHeader") {

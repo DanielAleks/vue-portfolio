@@ -496,9 +496,8 @@ import {
   computed,
   watchEffect,
   watch,
-  nextTick
 } from "vue";
-import { useMutation, useQuery } from "@vue/apollo-composable";
+import { useMutation } from "@vue/apollo-composable";
 import EssentialLink from "components/EssentialLink.vue";
 import EssentialAISLink from "components/EssentialLink.vue";
 import { useQuasar, LocalStorage } from "quasar";
@@ -649,8 +648,6 @@ export default defineComponent({
         let month = date.getMonth() + 1;
         let day = date.getDate();
         let year = date.getFullYear();
-        let hours = date.getHours();
-        let minutes = "0" + date.getMinutes();
         let formattedDate = month + "/" + day + "/" + year;
         //  + " " + hours + ":" + minutes.substr(-2);
         return formattedDate;
@@ -1371,9 +1368,6 @@ export default defineComponent({
     //   }
     // );
 
-    const resData = ref(null);
-    const loading = ref(false);
-    const fetchError = ref(null);
 
     onMounted(() => {
       document.getElementById("loading__container").style.display = "none";
@@ -1396,36 +1390,36 @@ export default defineComponent({
       }, 1000)
     });
 
-    const fetchData = async () => {
-      try {
-        loading.value = true;
-        fetchError.value = null;
+    // const fetchData = async () => {
+    //   try {
+    //     loading.value = true;
+    //     fetchError.value = null;
 
-        const { result, error: queryError } = await onResult();
+    //     const { result, error: queryError } = await onResult();
 
-        if (queryError.value) {
-          fetchError.value = queryError.value;
-          console.log(error.value, "error");
-          throw new Error(error.value.message);
-        }
+    //     if (queryError.value) {
+    //       fetchError.value = queryError.value;
+    //       console.log(error.value, "error");
+    //       throw new Error(error.value.message);
+    //     }
 
-        resData.value = result.value.User;
-        loading.value = false;
-        console.log(resData.value, "resData");
-      } catch (e) {
-        loading.value = false;
-        console.log(e, "e 302");
+    //     resData.value = result.value.User;
+    //     loading.value = false;
+    //     console.log(resData.value, "resData");
+    //   } catch (e) {
+    //     loading.value = false;
+    //     console.log(e, "e 302");
 
-        // Handling HTTP redirect
-        if (e.networkError?.statusCode === 302) {
-          const newLocation = e.networkError.response.headers.get("location");
-          console.log(newLocation, "302");
-          // Perform your desired action with newLocation
-          // For example, redirect the user using Vue Router:
-          // router.push(newLocation);
-        }
-      }
-    };
+    //     // Handling HTTP redirect
+    //     if (e.networkError?.statusCode === 302) {
+    //       const newLocation = e.networkError.response.headers.get("location");
+    //       console.log(newLocation, "302");
+    //       // Perform your desired action with newLocation
+    //       // For example, redirect the user using Vue Router:
+    //       // router.push(newLocation);
+    //     }
+    //   }
+    // };
 
     function getWidth(windowXWidth) {
       // used for top toolbar width (seperate from left drawer width)
@@ -1520,11 +1514,11 @@ export default defineComponent({
       scrollYPosition.value = details.position.top;
     }
 
-    const { result: sowsData, loading: isLoading } = useQuery(SowsQueryMinimal, () => ({
-      Name: searchOptions.search,
-      page: searchOptions.page,
-      first: 15,
-    }));
+    // const { result: sowsData, loading: isLoading } = useQuery(SowsQueryMinimal, () => ({
+    //   Name: searchOptions.search,
+    //   page: searchOptions.page,
+    //   first: 15,
+    // }));
 
     const sows = ref([]);
     const isLoadingSows = ref(false);
@@ -1680,7 +1674,7 @@ export default defineComponent({
       // console.log("added dark-mode classList")
     });
 
-    function setMobileSearchInput(booleanVal) {
+    function setMobileSearchInput() {
       state.delayMobileSearchInputHide = true;
 
       setTimeout(
@@ -1698,13 +1692,13 @@ export default defineComponent({
     //   window.scrollBy(100, 0);
     // }, 8000)
 
-    function setScrollPositionX() {
-      const axis = "vertical"; // or 'horizontal'
-      const offset = 1000; // desired offset value
-      const duration = 500; // duration in milliseconds for animation
+    // function setScrollPositionX() {
+    //   const axis = "vertical"; // or 'horizontal'
+    //   const offset = 1000; // desired offset value
+    //   const duration = 500; // duration in milliseconds for animation
 
-      // this.$refs.scrollArea.setScrollPosition(axis, offset, duration);
-    }
+    //   // this.$refs.scrollArea.setScrollPosition(axis, offset, duration);
+    // }
 
     const observerRef = ref(null);
 
@@ -1717,7 +1711,7 @@ export default defineComponent({
     return {
       getWidth,
       onRouteChange,
-      user,
+      // user,
       state,
       getInitials,
       essentialLinks: linksList,
@@ -1758,7 +1752,7 @@ export default defineComponent({
   created() {
     window.addEventListener("storage", (event) => {
       if (event.key === "AUTH_TOKEN" && !event.newValue) {
-        router.push("/login");
+        // router.push("/login");
         // this.$router.push("/login");
       }
     });
@@ -1776,7 +1770,7 @@ export default defineComponent({
       LocalStorage.remove("AUTH_TOKEN");
       LocalStorage.remove("hello");
       // LocalStorage.remove("redirectLink");
-      this.$router.push("/login");
+      // this.$router.push("/login");
     },
   },
 });

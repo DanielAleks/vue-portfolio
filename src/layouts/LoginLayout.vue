@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from "vue";
-import { useQuasar, LocalStorage, Cookies } from "quasar";
-import { GraphQLClient, gql, request } from "graphql-request";
+import { defineComponent, ref } from "vue";
+import { LocalStorage, Cookies } from "quasar";
+import { gql, request } from "graphql-request";
 import { tsParticles } from "@tsparticles/engine";
 import { loadFull } from "tsparticles";
 
@@ -602,7 +602,8 @@ export default defineComponent({
       }
     `;
 
-    const isCypressRunning = typeof Cypress !== "undefined" && Cypress.env("CYPRESS");
+    const isCypressRunning = typeof Cypress !== "undefined"
+    //  && Cypress.env("CYPRESS");
 
     async function submitCypressForm() {
       const CypressLoginStart = await request(
@@ -635,7 +636,8 @@ export default defineComponent({
   },
   data() {
     return {
-      isCypress: typeof Cypress !== "undefined" && Cypress.env("CYPRESS"),
+      isCypress: typeof Cypress !== "undefined",
+      // && Cypress.env("CYPRESS"),
       expires: "",
     };
   },

@@ -38,19 +38,7 @@
 
             <q-skeleton v-if="loading" class="h-2 w-40 mt-2" />
 
-            <SearchModel
-              v-if="editField === 'Opportunity'"
-              label="Opportunity"
-              value="title"
-              :rows="opportunities"
-              :loading="isOpportunityLoading"
-              filled
-              class="w-5/6"
-              dense
-              :focusTracker="focusTracker"
-              :store="searchOptionsOpportunity"
-              :perPageAmount="20"
-            />
+          
           </div>
           <div
             class="col-4 col-sm-4 mr-10 text-light text-slate-900 dark:text-slate-300"
@@ -799,7 +787,6 @@ import {
 } from "vue";
 import { useQuasar, LocalStorage } from "quasar";
 import { useRoute, useRouter } from "vue-router";
-import VueApexCharts from "vue3-apexcharts";
 import WorkLocation from "src/components/sow-details/overview/WorkLocation.vue";
 import AccountModal from "src/components/modal/AccountModal.vue";
 import { useMutation, useQuery, useLazyQuery } from "@vue/apollo-composable";
@@ -836,8 +823,7 @@ import {SowServicesQuery} from "src/graphql/query/sow/SowService.js";
 import {SowServiceBundlesQuery} from "src/graphql/query/sow/SowServiceBundle.js";
 
 export default defineComponent({
-  components: {
-    apexchart: VueApexCharts,
+  components: {s
     SearchModel,
     WorkLocation,
     WopModal,

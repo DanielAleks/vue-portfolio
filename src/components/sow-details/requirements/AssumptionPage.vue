@@ -38,7 +38,7 @@ import {
   watchEffect,
 } from "vue";
 import { useRoute } from "vue-router";
-import { useQuery, useMutation, provideApolloClient } from "@vue/apollo-composable";
+import { useQuery, useMutation } from "@vue/apollo-composable";
 import CreateAssumptionModal from "src/components/modal/CreateAssumptionModal.vue";
 import AssumptionExclusionQTable from "src/components/reusables/tables/AssumptionExclusionQTable.vue";
 import {

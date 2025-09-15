@@ -88,7 +88,6 @@
       @keydown="updateKeyPressed"
     >
       <q-list
-        ref="listRef"
         :style="
           (loading && rows.length === 0 && initialLoad) || (rows.length === 0 && !loading)
             ? 'height: 5rem'
@@ -104,7 +103,6 @@
         >
           <q-infinite-scroll
             :offset="200"
-            :reset="resetInfinateScrollIndex"
             :trigger="state.triggerInfinateScrollLoadQuery"
             :setIndex="setInfinateScrollIndex"
             :debounce="100"
@@ -612,14 +610,14 @@ export default defineComponent({
       }
     }
 
-    function resetInfinateScrollIndex(newIndex) {
-      scrollIndex.value = 0;
-    }
+    // function resetInfinateScrollIndex(newIndex) {
+    //   scrollIndex.value = 0;
+    // }
 
-    function setInfinateScrollIndex(newIndex) {
-      newIndex = state.indexPage;
+    function setInfinateScrollIndex() {
+      // newIndex = state.indexPage;
       // state.triggerInfinateScrollLoadQuery = true;
-      resetInfinateScrollIndex();
+      // resetInfinateScrollIndex();
       // loadQuery(newIndex, () => {
       //   state.triggerInfinateScrollLoadQuery = false;
       // });
@@ -627,33 +625,26 @@ export default defineComponent({
 
     const myMenuFocus = ref(false);
     const menuRef = ref(null);
-    const listRef = ref(null);
     const menuItemRefs = ref([]);
     const menuTarget = ref(false);
-    function focusFirstItem(event) {
-      menuRef.value.focus();
-      listRef.value.focus();
-      console.log(menuRef.value, "menuRef");
-    }
-
-    function focusMenu(event) {
-      event.preventDefault();
-      console.log(event, "focusMenu");
-      setTimeout(() => {
-        focusFirstItem(event);
-        // event.target.enter
-        // press enter
-        const enterEvent = new KeyboardEvent("keydown", {
-          key: "Enter",
-          code: "Enter",
-          keyCode: 13,
-          which: 13,
-          bubbles: true,
-          cancelable: true,
-        });
-        event.target.dispatchEvent(enterEvent);
-      }, 100);
-    }
+    // function focusMenu(event) {
+    //   event.preventDefault();
+    //   console.log(event, "focusMenu");
+    //   setTimeout(() => {
+    //     focusFirstItem(event);
+    //     // event.target.enter
+    //     // press enter
+    //     const enterEvent = new KeyboardEvent("keydown", {
+    //       key: "Enter",
+    //       code: "Enter",
+    //       keyCode: 13,
+    //       which: 13,
+    //       bubbles: true,
+    //       cancelable: true,
+    //     });
+    //     event.target.dispatchEvent(enterEvent);
+    //   }, 100);
+    // }
 
     // focusMenu() {
     //   this.$refs.menu.show();
@@ -664,7 +655,7 @@ export default defineComponent({
     //   });
     // },
 
-    function helloThere(evt) {
+    function helloThere() {
       // should only fire when focused on, not when clicking
       // console.log(evt, "helloThere");
       //   setTimeout(() => {
@@ -689,7 +680,7 @@ export default defineComponent({
       searchOptionsX,
       setComponentID,
       setInfinateScrollIndex,
-      resetInfinateScrollIndex,
+      // resetInfinateScrollIndex,
       queryResultsAmount,
       computedRows,
       darkmode,

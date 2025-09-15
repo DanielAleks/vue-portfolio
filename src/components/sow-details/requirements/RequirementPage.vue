@@ -67,12 +67,11 @@ import {
   ref,
   watchEffect,
   onUnmounted,
-  computed,
   inject,
 } from "vue";
 import { useLazyQuery, useMutation } from "@vue/apollo-composable";
 import { useQuasar } from "quasar";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useSmartRouteStore } from "src/stores/smart-routing";
 import store from "src/boot/pinia";
 import AccordianQTable from "src/components/reusables/tables/AccordianQTable.vue";
@@ -91,13 +90,13 @@ export default defineComponent({
       default: () => ({}),
     },
   },
-  setup(props) {
+  setup() {
     const smartRouteStore = useSmartRouteStore(store);
     function setSowID(id) {
       smartRouteStore.setSowID(id);
     }
 
-    const router = useRouter();
+    // const router = useRouter();
     const state = reactive({
       showModal: false,
       isLoading: true,
@@ -272,7 +271,7 @@ export default defineComponent({
           ImplementationTaskRequirements: sowRequirements.value,
         }));
 
-        let implementationNames = [];
+        // let implementationNames = [];
         console.log(newData, "newData");
         if (newData.length > 0) {
           sowImplementationTables.value = newData.reduce((result, item) => {

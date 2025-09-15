@@ -111,7 +111,6 @@
             <hr class="border-dashed dark:border-slate-500 mt-3 mb-5"/>
 
             <div class="intro-y mb-5">
-              <!-- @input="handlePhoneInput" -->
               <q-input
                 v-model.number="state.phone"
                 filled
@@ -180,7 +179,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, watch, ref, inject, computed } from "vue";
+import { defineComponent, reactive, watch, ref, computed } from "vue";
 import { USStates } from "src/components/modal/USStates";
 import { useQuasar } from "quasar";
 import { useMutation } from "@vue/apollo-composable";
@@ -354,11 +353,6 @@ export default defineComponent({
       } else state.isCreateNew = false;
     }
 
-    function handlePhoneInput(input) {
-      var x = e.target.value.replace(/\D/g, "").match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-      this.value = !x[2] ? x[1] : "(" + x[1] + ") " + x[2] + (x[3] ? "-" + x[3] : "");
-    }
-
     function setUSState(value) {
       state.stateSelected = value;
       setTimeout(() => {
@@ -400,7 +394,6 @@ export default defineComponent({
       setCreateNew,
       disableCreate,
       selectHelperMessage,
-      handlePhoneInput,
       USStates,
       setUSState,
       filteredList,

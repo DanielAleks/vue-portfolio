@@ -1184,7 +1184,6 @@ import {
   inject,
 } from "vue";
 // import AttachImplementation from "src/components/sow-details/implementations/AttachImplementation.vue";
-import SearchModel from "src/components/search/SearchModel.vue";
 import { useStoreImplementationType } from "src/stores/searchStore.js";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { ImplementationTypesQuery } from "src/graphql/query/ImplementationType.js";
@@ -1202,7 +1201,7 @@ import { CreateImplementationGuidelineServiceBundleMutation } from "src/graphql/
 import { CreateImplementationTypeMutation } from "src/graphql/mutation/ImplementationType.js";
 import { CreateImplementationGuidelineMutation } from "src/graphql/mutation/ImplementationGuideline.js";
 import { useQuasar } from "quasar";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { useImplementationStore } from "src/stores/implementationStore.js";
 import { ManageRelationshipsImplementationGuidelineMutation } from "src/graphql/mutation/ImplementationGuideline.js";
 import { ManageRelationshipsImplementationTaskMutation } from "src/graphql/mutation/ImplementationTask.js";
@@ -1214,7 +1213,6 @@ export default defineComponent({
   name: "SowBuilder",
   components: {
     // AttachImplementation,
-    SearchModel,
     ListQTable,
     // ComponentBuilderModal,
   },
@@ -1360,7 +1358,6 @@ export default defineComponent({
 
     const searchOptions = useStoreImplementationType();
 
-    const route = useRoute();
     const router = useRouter();
     const sow_id = ref(2222);
 
@@ -1400,8 +1397,6 @@ export default defineComponent({
         console.log(implementationTypesData.value, "implementationTypesData");
         isLoadingImplementationTypes.value = false;
         const prevLength = implementationTypes.value;
-        const filteredImplementationTypes =
-          implementationTypesData.value.ImplementationTypes.data;
 
         implementationTypes.value =
           implementationTypesData.value.ImplementationTypes.data;
@@ -1507,8 +1502,7 @@ export default defineComponent({
       required: true,
       label: "Actions",
       align: "center",
-      field: (row) => "View",
-      format: (val) => `${val}`,
+      field: () => "View",
     };
     const optionalColumn = {
       name: "isOptional",
@@ -1597,7 +1591,7 @@ export default defineComponent({
       { immediate: true }
     );
 
-    function pushNewResponseData(a, b, c, d) {
+    function pushNewResponseData(a, b, c) {
       console.log(a, b, c, "implementation Created");
     }
 
@@ -1648,21 +1642,21 @@ export default defineComponent({
     async function createGuideline(guideline, implementation) {
       try {
         console.log(guideline, "createGuideline", implementation);
-        const variables = {
-          Name: guideline.Name,
-          Description: guideline.Description,
-          ImplementationType_id: implementation._id,
-          PerUnitPricingBasis: guideline.PerUnitPricingBasis,
-          InternalNotes: guideline.InternalNotes,
-          DocURL: guideline.DocURL,
-          RecommendedBlockHours: guideline.recommendedBlockHours,
-          SkillTier: guideline.SkillTier,
-          BillingUnitType: guideline.BillingUnitType,
-          BillingFrequency: guideline.BillingFrequency,
-          includeByDefault: guideline.includeByDefault,
-          isDraft: guideline.isDraft,
-          QualificationQuestion: guideline.QualificationQuestion,
-        };
+        // const variables = {
+        //   Name: guideline.Name,
+        //   Description: guideline.Description,
+        //   ImplementationType_id: implementation._id,
+        //   PerUnitPricingBasis: guideline.PerUnitPricingBasis,
+        //   InternalNotes: guideline.InternalNotes,
+        //   DocURL: guideline.DocURL,
+        //   RecommendedBlockHours: guideline.recommendedBlockHours,
+        //   SkillTier: guideline.SkillTier,
+        //   BillingUnitType: guideline.BillingUnitType,
+        //   BillingFrequency: guideline.BillingFrequency,
+        //   includeByDefault: guideline.includeByDefault,
+        //   isDraft: guideline.isDraft,
+        //   QualificationQuestion: guideline.QualificationQuestion,
+        // };
 
         const { mutate: createGuideline, onDone, error } = useMutation(
           CreateImplementationGuidelineMutation
@@ -2264,7 +2258,6 @@ export default defineComponent({
 
     const computedComponentRows = ref([]);
 
-    function computeRows() {}
     watchEffect(
       () => {
         console.log(state.showComponentType, "computedComponentRows");
@@ -2316,7 +2309,7 @@ export default defineComponent({
     );
 
     const onCreateActionType = ref(null);
-    function createImplementationType(type, isSkipImplementation) {
+    function createImplementationType(type) {
       console.log(type, "createImplementationType");
 
       setTimeout(() => {
@@ -2563,7 +2556,7 @@ export default defineComponent({
             icon: "check_circle",
             label: "Active",
             color: "green",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
@@ -2571,7 +2564,7 @@ export default defineComponent({
             icon: "cancel",
             label: "Draft",
             color: "red",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               // update this field(item)
             },
@@ -2581,21 +2574,21 @@ export default defineComponent({
         dropdownList = [
           {
             label: "AIS Labs",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.implementationCategory = "AIS Labs";
             },
           },
           {
             label: "Consulting",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.implementationCategory = "Consulting";
             },
           },
           {
             label: "Managed Services",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.implementationCategory = "Managed Services";
             },
@@ -2605,19 +2598,19 @@ export default defineComponent({
         dropdownList = [
           {
             label: "One-Time",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
           {
             label: "Monthly",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
           {
             label: "Annual",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
@@ -2626,49 +2619,49 @@ export default defineComponent({
         dropdownList = [
           {
             label: "Tier 1",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "Tier1";
             },
           },
           {
             label: "Tier 2",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "Tier2";
             },
           },
           {
             label: "Tier 3",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "Tier3";
             },
           },
           {
             label: "Project Manager",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "ProjectManager";
             },
           },
           {
             label: "Consultant",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "Consultant";
             },
           },
           {
             label: "After Hours",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "AfterHours";
             },
           },
           {
             label: "Infrastructure",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
               state.skillTier = "Infrastructure";
             },
@@ -2678,13 +2671,13 @@ export default defineComponent({
         dropdownList = [
           {
             label: "Labor",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
           {
             label: "Non Labor",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
@@ -2693,13 +2686,13 @@ export default defineComponent({
         dropdownList = [
           {
             label: "Labor",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
           {
             label: "Non Labor",
-            handler: (item) => {
+            handler: () => {
               state.editingField = "";
             },
           },
@@ -2757,17 +2750,14 @@ export default defineComponent({
 
     const {
       result: introspectionImplementationData,
-      error: introspectionError,
     } = useQuery(IntrospectionQuery, () => ({
       name: "ImplementationType",
     }));
     const {
       result: introspectionGuidelineData,
-      error: introspectionGuidelineError,
     } = useQuery(IntrospectionQuery, () => ({
       name: "ImplementationGuideline",
     }));
-    const confluenceLink = ref("");
     const introspect = ref([]);
     watch(
       () => introspectionImplementationData.value,
@@ -2833,14 +2823,6 @@ export default defineComponent({
       state.componentSearch = val;
     }
 
-
-    function removeItemViaButton(item) { 
-      item.relatedItems.find(
-        (relatedItem) => relatedItem._id === subItem._id
-      ).isSelected = true;
-      setSelectedRow({ ...subItem, isSelected: true });
-    }
-
     return {
       state,
       setShowComponentModal,
@@ -2882,7 +2864,6 @@ export default defineComponent({
       projectProcesses,
       setSearchInput,
       skillCategories,
-      removeItemViaButton
     };
   },
 });

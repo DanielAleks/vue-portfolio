@@ -110,7 +110,6 @@
 
 <script>
 import { defineComponent, reactive, ref, inject, computed, watch } from "vue";
-import { useQuery } from "@vue/apollo-composable";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import ProjectPiChart from "src/components/reusables/chart/ProjectPiChart.vue";
 

@@ -338,7 +338,7 @@ export default defineComponent({
       });
     };
 
-    const requirements = ref([])
+    // const requirements = ref([])
     const fetchRequirements = async () => {
       const { result: requirementsData, loading, error: error } = useQuery(
         RequirementsQuery,

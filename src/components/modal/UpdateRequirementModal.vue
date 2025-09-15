@@ -133,15 +133,12 @@
 import {
   defineComponent,
   reactive,
-  watch,
-  ref,
   computed,
   onMounted,
-  watchEffect,
 } from "vue";
 import { useQuasar } from "quasar";
 import { useRoute } from "vue-router";
-import { useMutation, useQuery } from "@vue/apollo-composable";
+import { useMutation } from "@vue/apollo-composable";
 import { UpdateRequirementMutation } from "src/graphql/mutation/Requirement.js";
 
 export default defineComponent({
@@ -203,22 +200,6 @@ export default defineComponent({
       } else return true;
     });
 
-    let timeoutId;
-    const debounce = (func, delay) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(func, delay);
-    };
-
-    // watch(
-    //   () => state.componentSearch,
-    //   () => {
-    //     debounce(async () => {
-    //       state.page = 1;
-    //       assumptions.value = [];
-    //     }, 500);
-    //   }
-    // );
-
     onMounted(() => {
       state.showModal = true;
     });
@@ -236,7 +217,7 @@ export default defineComponent({
       },
     }));
 
-    onDoneReq((result) => {
+    onDoneReq(() => {
       props.fetchRequirements();
     });
 

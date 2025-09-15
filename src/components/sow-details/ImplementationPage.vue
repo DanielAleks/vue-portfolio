@@ -255,7 +255,7 @@ import { useStoreImplementationType } from "src/stores/searchStore.js";
 import { ImplementationTypesQueryMinimal } from "src/graphql/query/ImplementationType.js";
 import draggable from "vuedraggable";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import SkeletonQTable from "src/components/reusables/tables/SkeletonQTable.vue";
+// import SkeletonQTable from "src/components/reusables/tables/SkeletonQTable.vue";
 import AccordianQTableDeep from "src/components/reusables/tables/AccordianQTableDeep.vue";
 import { SowGuidelineRequirementsQuery } from "src/graphql/query/sow/SowGuidelineRequirement.js";
 
@@ -270,7 +270,7 @@ export default defineComponent({
     ComponentQTable,
     SearchModel,
     draggable,
-    SkeletonQTable,
+    // SkeletonQTable,
     AccordianQTableDeep,
   },
   props: {
@@ -600,6 +600,7 @@ export default defineComponent({
       if (!pushComponentExecuted.value) {
         pushComponentExecuted.value = true;
         for (var impleIdx = 0; sowImplementations.value.length > impleIdx; impleIdx++) {
+          console.log(impleIdx);
           const newData = sowImplementations.value.map((item) => ({
             ...item,
             guidelines: ref([]),
@@ -634,10 +635,11 @@ export default defineComponent({
           }
         }, 500);
 
-        for (var impleIdx = 0; sowImplementations.value.length > impleIdx; impleIdx++) {
+        for (var impleIdx2 = 0; sowImplementations.value.length > impleIdx; impleIdx++) {
           const oneTimeItems = ref([]);
           const monthlyItems = ref([]);
           const yearlyItems = ref([]);
+          console.log(impleIdx2);
           for (
             var guidelineIdx = 0;
             sowGuidelines.value.length > guidelineIdx;
@@ -994,7 +996,7 @@ export default defineComponent({
         componentArray.value.map((implementation) => {
           let wasItFound = false;
 
-          sowProducts.value.map((product, idx) => {
+          sowProducts.value.map((product) => {
             if (implementation.recurring.map((item) => item._id).includes(product._id)) {
               wasItFound = true;
             }
@@ -1054,7 +1056,7 @@ export default defineComponent({
 
         componentArray.value.map((implementation) => {
           let wasItFound = false;
-          sowServices.value.map((service, idx) => {
+          sowServices.value.map((service) => {
             // if (implementation.recurring.map((item) => item.Name).includes(service.Name)) {
             // if (!implementation.recurring.some((item) => item.Name === service.Name)) {
             if (implementation.recurring.map((item) => item.Name).includes(service.Name)) {
@@ -1137,7 +1139,7 @@ export default defineComponent({
         componentArray.value.map((implementation) => {
           let wasItFound = false;
 
-          sowServiceBundles.value.map((service, idx) => {
+          sowServiceBundles.value.map((service) => {
             if (implementation.recurring.map((item) => item._id).includes(service._id)) {
               wasItFound = true;
             }
@@ -1238,7 +1240,7 @@ export default defineComponent({
       }
 
       guidelineTimeoutId = setTimeout(() => {
-        sowGuidelineComponents.value.forEach((item, idx) => {
+        sowGuidelineComponents.value.forEach((item) => {
           if (item) {
             implementationStore.updateSowGuideline({ row: item, field: "sow_order" });
           }
@@ -1874,7 +1876,6 @@ export default defineComponent({
     };
 
     const formatTotal = inject("formatTotal");
-    const count = ref(0);
     // draggable is not re-rendering the items, change function to computed property
 
     function matchImplementation(imple, index) {
@@ -1975,7 +1976,7 @@ export default defineComponent({
       impleItem.showProdServ = prodServValue;
     }
 
-    function refetchComponentType(hasProducts, hasServices, guideline) {
+    function refetchComponentType(hasProducts, hasServices) {
       // fetches here, but acts as call-action when creating products, services, bundles in Builder tab
 
       setTimeout(() => {
@@ -2099,7 +2100,7 @@ export default defineComponent({
       }
     }
 
-    function onUpdate(event) {
+    function onUpdate() {
       trackSowImplementationOrder();
     }
 

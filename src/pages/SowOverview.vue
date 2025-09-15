@@ -216,6 +216,7 @@ export default defineComponent({
     );
 
     const fetchSows = async (page, first) => {
+console.log(page,first)
       const { result: data, error } = useQuery(SowsQuery, () => ({
         page: state.page,
         first: state.perPage,
@@ -411,14 +412,7 @@ export default defineComponent({
       }
     };
 
-    function fetchData() {
-      try {
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    function setSowSearch(id, type) {
+    function setSowSearch(id) {
       // type: "account, sow"
       if (id !== "close") {
         state.accountID = id.id;
@@ -529,7 +523,6 @@ export default defineComponent({
       loadSows,
       setPage,
       state,
-      fetchData,
       windowWidth,
       setShowMobileSearch,
       userData,

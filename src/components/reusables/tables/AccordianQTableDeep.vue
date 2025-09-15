@@ -737,18 +737,14 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, reactive, inject, computed, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
+import { defineComponent, ref, watch, reactive, inject, computed } from "vue";
+import { useRoute } from "vue-router";
+// import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import ContextMenu from "../ContextMenu.vue";
+// import ContextMenu from "../ContextMenu.vue";
 
 export default defineComponent({
   name: "AccordianQTable",
-  components: {
-    SowCollaborator,
-    ContextMenu,
-  },
   props: {
     columns: {
       type: Array,
@@ -991,7 +987,6 @@ export default defineComponent({
     watch(
       () => windowWidth.value,
       () => {
-        let previousWindowWidth = windowWidth.value;
         if (windowWidth.value < 600) {
           // only be activatable when the title changes too
           isMobileUser.value = true;
@@ -1022,7 +1017,7 @@ export default defineComponent({
         props.expandOrHideRows(expandTypes.value, row);
       }
     }
-    const shouldAddOtherItems = ref(false);
+    // const shouldAddOtherItems = ref(false);
 
     const expansionHeaders = computed(() => {
       let guidelineHeaders = ref([]);
@@ -1037,7 +1032,7 @@ export default defineComponent({
           }
         });
       console.log(guidelineHeaders.value, "expansionHeaders");
-      shouldAddOtherItems.value = true;
+      // shouldAddOtherItems.value = true;
       return guidelineHeaders.value;
     });
 
@@ -1147,20 +1142,20 @@ export default defineComponent({
       }
     }
 
-    watch(
-      () => shouldAddOtherItems.value,
-      () => {
-        setTimeout(() => {
-          expansionHeaders.value.forEach((expansionItem) => {
-            guidelineRelations({
-              ...expansionItem.ImplementationGuideline,
-              SowGuidelineName: expansionItem.Name,
-            });
-          });
-        }, 1000);
-      },
-      { once: true }
-    );
+    // watch(
+    //   () => shouldAddOtherItems.value,
+    //   () => {
+    //     setTimeout(() => {
+    //       expansionHeaders.value.forEach((expansionItem) => {
+    //         guidelineRelations({
+    //           ...expansionItem.ImplementationGuideline,
+    //           SowGuidelineName: expansionItem.Name,
+    //         });
+    //       });
+    //     }, 1000);
+    //   },
+    //   { once: true }
+    // );
 
     const copiedRef = ref([]);
     const guidelineRelationItems = ref([]);

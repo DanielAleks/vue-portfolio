@@ -251,12 +251,10 @@ import {
   watch,
   computed,
   inject,
-  onMounted,
   watchEffect,
 } from "vue";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { useRoute } from "vue-router";
-import SearchModel from "src/components/search/SearchModel.vue";
 import { useQuasar } from "quasar";
 import { UserQuery } from "src/graphql/query/User.js";
 import {
@@ -271,7 +269,7 @@ import { IntrospectionQuery } from "src/graphql/query/Introspection.js";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 
 export default defineComponent({
-  components: { SearchModel, ListQTable, TestAnything },
+  components: { ListQTable, TestAnything },
   setup() {
     const route = useRoute();
     const userData = inject("userData");

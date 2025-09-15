@@ -1,13 +1,13 @@
 import gql from 'graphql-tag';
 
 // CreateQuoteMutation is referenced in mutation/sow/Sow.js
-const CreateQuoteMutation = gql`
-  mutation CreateQuoteMutation($sow_id: Int!) {
-    CreateQuoteMutation(sow_id: $sow_id) {
-      id
-    }
-  }
-`;
+// const CreateQuoteMutation = gql`
+//   mutation CreateQuoteMutation($sow_id: Int!) {
+//     CreateQuoteMutation(sow_id: $sow_id) {
+//       id
+//     }
+//   }
+// `;
 
 const UpdateQuoteMutation = gql`
 mutation UpdateQuoteMutation(

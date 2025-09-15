@@ -1,16 +1,14 @@
 import { createApp } from "vue";
 import { Quasar } from "quasar";
-import { createPinia, setActivePinia } from "pinia";
+// import { createPinia, setActivePinia } from "pinia";
 import { router } from "./router";
 import globalComponents from "./src/global-components";
-import { piniaInstance } from "src/stores/global";
 import utils from "./src/utils";
 import "./assets/css/app.css";
 // Vue Tippy should be removed, using q-tooltip
 import { plugin as VueTippy } from "vue-tippy";
 import "tippy.js/dist/tippy.css";
 import {
-  ApolloClient,
   createHttpLink,
   InMemoryCache,
 } from "@apollo/client/core";
@@ -30,7 +28,8 @@ import "quasar/src/css/index.sass";
 // and placed in same folder as main.js
 import App from "./src/App.vue";
 
-const isCypressRunning = typeof Cypress !== "undefined" && Cypress.env("CYPRESS");
+const isCypressRunning = typeof Cypress !== "undefined" 
+// && Cypress.env("CYPRESS");
 
 const httpLink = createHttpLink({
   uri:
@@ -40,33 +39,35 @@ const httpLink = createHttpLink({
   credentials: "include",
 });
 
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = LocalStorage.getItem("AUTH_TOKEN");
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      authorization: token ? "Bearer " + token : "",
-      accept: "application/json",
-    },
-  };
-});
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   const token = LocalStorage.getItem("AUTH_TOKEN");
+//   // return the headers to the context so httpLink can read them
+//   return {
+//     headers: {
+//       authorization: token ? "Bearer " + token : "",
+//       accept: "application/json",
+//     },
+//   };
+// });
 
 const apolloClient = createApolloClient({
-  link: authLink.concat(httpLink),
+  // link: authLink.concat(httpLink),
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
 // not used
 // const app = createApp(App).use(router).use(createPinia());
 
-Vue.http.headers.common["Access-Control-Allow-Origin"] = true;
+// Vue.http.headers.common["Access-Control-Allow-Origin"] = true;
 
 const myApp = createApp(App);
 
 console.log(
   "myApp main.js",
-  typeof Cypress !== "undefined" && Cypress.env("CYPRESS")
+  typeof Cypress !== "undefined" 
+  // && Cypress.env("CYPRESS")
 );
 // Create Pinia instance and use it
 // const pinia = createPinia();
@@ -86,7 +87,7 @@ utils(myApp);
 //   plugins: {}, // Import and add Quasar plugins here
 console.log(
   "myApp main.js",
-  typeof Cypress !== "undefined" && Cypress.env("CYPRESS")
+  typeof Cypress !== "undefined" 
 );
 // });
 myApp.use(

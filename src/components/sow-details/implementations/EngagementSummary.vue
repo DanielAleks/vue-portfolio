@@ -130,13 +130,9 @@
 
 <script>
 import { defineComponent, inject, watch, reactive, ref, onMounted, computed } from "vue";
-import BasicQTable from "src/components/reusables/tables/BasicQTable.vue";
 import {useDarkModeStore} from "src/stores/dark-mode.js";
 
 export default defineComponent({
-  components: {
-    BasicQTable,
-  },
   props: {
     sow: {
       type: Object,
@@ -287,7 +283,6 @@ export default defineComponent({
           type: "Summary",
           name: "Total Type",
           price: "Total",
-          bold: true,
           bold: true,
         },
         {

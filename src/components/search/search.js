@@ -1,38 +1,33 @@
 import {
-  defineComponent,
   reactive,
-  onMounted,
   ref,
-  watch,
   watchEffect,
 } from "vue";
 
-let timeoutId;
-const debounce = (func, delay) => {
-  clearTimeout(timeoutId);
-  timeoutId = setTimeout(func, delay);
-};
+// let timeoutId;
+// const debounce = (func, delay) => {
+//   clearTimeout(timeoutId);
+//   timeoutId = setTimeout(func, delay);
+// };
 
 const openTimeout = ref(null);
 const closeTimeout = ref(null);
 
-const openMenu = (menuOpen) => {
+const openMenu = () => {
   clearTimeout(closeTimeout.value);
   openTimeout.value = setTimeout(() => {
     //   state.menuOpen = true;
-    menuOpen = true;
+    // menuOpen = true;
   }, 1000);
 };
 
-function closeMenu(menuOpen) {
+function closeMenu() {
   clearTimeout(openTimeout.value);
   const timeoutValue = closeTimeout.value;
   clearTimeout(timeoutValue);
   closeTimeout.value = setTimeout(() => {
     setTimeout(() => {
-      // state.menuOpen = false;
       searchOptions.setValue("close");
-      menuOpen = false;
     }, 200);
   }, 100);
   closeTimeout.value = null;

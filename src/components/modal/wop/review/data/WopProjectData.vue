@@ -60,7 +60,7 @@ export default defineComponent({
     project: { type: Object, required: true },
     formatTotal: { type: Function, default: () => {} },
   },
-  setup(props) {
+  setup() {
     // const { result: contract } = useQuery(get_contract, () => ({
     //   id: props.project.ContractID,
     // }));

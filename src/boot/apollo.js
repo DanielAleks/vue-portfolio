@@ -1,15 +1,11 @@
 import {
   ApolloClient,
-  createHttpLink,
   InMemoryCache,
-  gql,
 } from "@apollo/client/core";
 import { ApolloClients, provideApolloClient } from "@vue/apollo-composable";
-import { setContext } from "@apollo/client/link/context";
 import { boot } from "quasar/wrappers";
 import { getClientOptions } from "src/apollo";
 import routes from "src/router/routes";
-import { LocalStorage } from "quasar";
 import { createRouter, createWebHistory } from "vue-router";
 import { createUploadLink } from "apollo-upload-client";
 
@@ -43,22 +39,24 @@ router.beforeEach((to, from, next) => {
   });
 
 export default boot(async ({ app, router }) => {
-  const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const token = LocalStorage.getItem("AUTH_TOKEN");
-    // return the headers to the context so httpLink can read them
-    return {
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    };
-  });
+  // muted  dan - 9/14
+  // const authLink = setContext((_, { headers }) => {
+  //   // get the authentication token from local storage if it exists
+  //   const token = LocalStorage.getItem("AUTH_TOKEN");
+  //   // return the headers to the context so httpLink can read them
+  //   return {
+  //     headers: {
+  //       authorization: token ? `Bearer ${token}` : "",
+  //     },
+  //   };
+  // });
   const options = /* await */ getClientOptions(
     { router, app } /* {app, router ...} */
   );
 
   const isCypressRunning =
-    typeof Cypress !== "undefined" && Cypress.env("CYPRESS");
+    typeof Cypress !== "undefined"; 
+    // && Cypress.env("CYPRESS");
 
   // this allows File Uploads
   const uploadLink = createUploadLink({
@@ -68,7 +66,8 @@ export default boot(async ({ app, router }) => {
         : process.env.PVUE_APP_APIURL + "/graphql",
   });
 
-  const link = authLink.concat(uploadLink);
+  // const link = authLink.concat(uploadLink);
+  const link = uploadLink;
 
   const aisGraphQL = new ApolloClient({
     link: link,

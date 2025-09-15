@@ -214,9 +214,8 @@ import {
   inject,
   watch,
 } from "vue";
-import { useQuery, useMutation, useLazyQuery } from "@vue/apollo-composable";
+import { useQuery, useMutation } from "@vue/apollo-composable";
 import { useRoute, useRouter } from "vue-router";
-import MiniCardContainer from "src/components/reusables/MiniCardContainer.vue";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 import { useQuasar } from "quasar";
 import CreateRequirementModal from "src/components/modal/CreateRequirementModal.vue";
@@ -252,7 +251,6 @@ import {
 
 export default defineComponent({
   components: {
-    MiniCardContainer,
     ListQTable,
     CreateRequirementModal,
     QCardDetails,
@@ -307,25 +305,10 @@ export default defineComponent({
     const $q = useQuasar();
     const windowWidth = inject("windowWidth");
 
-    function deleteNotification(name) {
-      $q.notify({
-        color: "negative",
-        message: "Task Deleted: " + name,
-        icon: "warning",
-        position: "bottom",
-        timeout: 1000,
-      });
-    }
-
     const editingTask = ref({});
 
     function setShowTaskModal(val) {
       state.showTaskModal = val;
-    }
-
-    function setShowUpdateTaskModal(item, booleanVal, operation) {
-      // should NEVER be updated or deleted in this file... ):
-      router.push({ name: "ImplementationDetails", params: { id: id } });
     }
 
     function setImplementationRoute() {
@@ -446,7 +429,6 @@ export default defineComponent({
       })
     );
 
-    const deletedTaskID = ref(null);
     const {
       mutate: restoreImplementationMutation,
       onDone: onDoneRestoreTask,
@@ -579,7 +561,7 @@ export default defineComponent({
       console.log(err, "ERR Requirements");
     });
 
-    onDoneDeleteReq((res) => {
+    onDoneDeleteReq(() => {
       state.confirmDeleteRequirement = false;
       $q.notify({
         color: "negative",
@@ -613,7 +595,7 @@ export default defineComponent({
       variables: variablesUpdating.value,
     }));
 
-    onDoneTaskEdit((result) => {
+    onDoneTaskEdit(() => {
       refetchTasks();
     });
     onTaskError((result) => {
@@ -719,8 +701,8 @@ export default defineComponent({
     function updateTaskData(value, operation) {
       // item props: key, value, originalKey
       // restoreImplementationMutation, state.deletedTaskID
-      let key = Object.keys(value)[0];
-      let val = Object.values(value)[0];
+      // let key = Object.keys(value)[0];
+      // let val = Object.values(value)[0];
       if (operation !== "delete") {
         variablesUpdating.value = {
           _id: route.params.id,
@@ -1010,11 +992,11 @@ export default defineComponent({
 
     const computeSortedRequirements = computed(() => {
       return requirements.value
-        .sort((a, b) => a.order - b.order)
-        .filter(
-          (item) =>
-            item.Name && item.Name.toLowerCase().includes(state.search.toLowerCase())
-        );
+        // .sort((a, b) => a.order - b.order)
+        // .filter(
+        //   (item) =>
+        //     item.Name && item.Name.toLowerCase().includes(state.search.toLowerCase())
+        // );
     });
 
     function attachRequirementToTask(item) {
@@ -1195,7 +1177,6 @@ export default defineComponent({
       errorTask,
       implementationTask,
       setShowTaskModal,
-      setShowUpdateTaskModal,
       columns,
       refetchTasks,
       editingTask,

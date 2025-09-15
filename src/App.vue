@@ -7,7 +7,7 @@
 <script>
 //import { defineComponent } from 'vue'
 import { defineComponent, provide } from "vue";
-import { DefaultApolloClient, provideApolloClient } from "@vue/apollo-composable";
+import { DefaultApolloClient } from "@vue/apollo-composable";
 import ApolloClient from "apollo-boost";
 import "src/css/app.scss";
 

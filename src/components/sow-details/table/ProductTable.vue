@@ -167,8 +167,8 @@ export default defineComponent({
       }
 
       timeoutId = setTimeout(() => {
-        components.value.sowProducts.forEach((item, idx) => {
-          // item.sow_order = idx;
+        components.value.sowProducts.forEach((item) => {
+          // item.sow_order = idx;d
           if (item.__typename === "SowProduct") {
             implementationStore.updateSowProduct({ row: item, field: "sow_order" });
           } else if (item.__typename === "SowService") {

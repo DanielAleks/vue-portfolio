@@ -259,7 +259,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, watch, ref, onMounted, computed } from "vue";
+import { defineComponent, reactive, watch, onMounted, computed } from "vue";
 
 export default defineComponent({
   props: {
@@ -504,7 +504,7 @@ export default defineComponent({
       }
     );
 
-    //This could be simplified and refactored
+    //This could be simplified and refsactored
     function updateDate(type, dateType, date) {
       console.log(type, date, "updateDate");
       if (date !== "") {

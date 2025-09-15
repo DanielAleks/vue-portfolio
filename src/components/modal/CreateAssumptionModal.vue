@@ -453,12 +453,6 @@ export default defineComponent({
       }
     };
 
-    function hideMenuEvent(event) {
-      if (event !== undefined) {
-        closeMenu();
-      }
-    }
-
     function updateSearch(search) {
       state.componentSearch = search;
     }
@@ -478,7 +472,6 @@ export default defineComponent({
       setComponentValue,
       fetchComponent,
       sow_id,
-      hideMenuEvent,
       setPage,
       updateSearch,
       isLoading,

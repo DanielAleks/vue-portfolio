@@ -255,7 +255,7 @@ export default defineComponent({
     }
 
     function handleFocusOut(type) {
-      state.editField = "";
+      state.editField = type;
     }
 
     const addressInput = ref(null);
@@ -278,15 +278,6 @@ export default defineComponent({
     watch(() => props.sow, () => {
       lazyLoadLocations();
     })
-
-    watch(
-      () => state.accountId,
-      () => {
-        if (state.accountId !== null) {
-          fetchLocations();
-        }
-      }
-    );
 
     function computeSetAddress(loc) {
       if (loc === "Search Location") {

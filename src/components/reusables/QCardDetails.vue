@@ -932,7 +932,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, inject, ref, reactive, onMounted, watch } from "vue";
+import { computed, defineComponent, inject, ref, reactive, watch } from "vue";
 import { useRoute } from "vue-router";
 import AdminHierarchyModal from "src/components/modal/AdminHierarchyModal.vue";
 import { PriorityLevels } from "src/graphql/query/PriorityLevels.js";
@@ -1165,8 +1165,7 @@ export default defineComponent({
       if (props.introspectionValue) {
         console.log(props.introspectionValue, "introspectionValue");
         props.introspectionValue.map((item) => {
-          if (item.name.includes("Confluence")) {
-          } else {
+          if (!item.name.includes("Confluence")) {
             let type = item.type.name;
             if (type === "Boolean") {
               booleanTypes.push(item.name);
