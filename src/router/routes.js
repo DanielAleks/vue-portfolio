@@ -342,6 +342,12 @@ const routes = [
     component: () => import("src/pages/AwaitingApproval.vue"),
     beforeEnter: beforeEnterFunction,
   },
+   {
+    path: "/daniel-aleksandrov",
+    name: "MyPortfolio",
+    component: () => import("src/pages/MyPortfolio.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
 
   // Always leave this as last one,
   // but you can also remove it
