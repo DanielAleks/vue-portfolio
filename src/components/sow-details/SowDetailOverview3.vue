@@ -802,6 +802,7 @@ import {
   CreateCopySowMutation,
   DeleteSowMutation,
 } from "src/graphql/mutation/sow/Sow.js";
+import SearchModel from "src/components/search/SearchModel.vue";
 import { searchOptions } from "src/components/search/search.js";
 import { Milestones } from "src/graphql/query/Milestone.js";
 import { LaborTypes } from "src/graphql/query/LaborType.js";
@@ -823,6 +824,7 @@ import {SowServiceBundlesQuery} from "src/graphql/query/sow/SowServiceBundle.js"
 
 export default defineComponent({
   components: {s
+    SearchModel,
     WorkLocation,
     WopModal,
     AccountModal,
