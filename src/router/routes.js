@@ -87,12 +87,6 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       {
-        path: "",
-        name: "Dashboard",
-        component: () => import("pages/Dashboard.vue"),
-        beforeEnter: beforeEnterFunction,
-      },
-      {
         path: "projects",
         name: "ProjectOverview",
         component: () => import("src/pages/ProjectOverview.vue"),
@@ -342,10 +336,16 @@ const routes = [
     component: () => import("src/pages/AwaitingApproval.vue"),
     beforeEnter: beforeEnterFunction,
   },
-   {
+  {
     path: "/daniel-aleksandrov",
     name: "MyPortfolio",
     component: () => import("src/pages/MyPortfolio.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "",
+    name: "Dashboard",
+    component: () => import("pages/MyPortfolio.vue"),
     beforeEnter: beforeEnterFunction,
   },
 

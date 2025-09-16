@@ -353,7 +353,7 @@
             label="Print Sow"
             @click="setShowModal(true)"
           />
-        <!-- Added SowTotals to assist with determining if a Recurring Block Contract should be used -Nathan Fickett--->
+        <!-- Added SowTotals to assist with determining if a Recurring Block Contract should be used -Nathan Fickett-->
           <WopModal 
             :sow="sow"
             :sowTotals="sowTotals"  
@@ -785,7 +785,7 @@ import {
   watchEffect,
   inject,
 } from "vue";
-import { useQuasar, LocalStorage } from "quasar";
+import { useQuasar } from "quasar";
 import { useRoute, useRouter } from "vue-router";
 import WorkLocation from "src/components/sow-details/overview/WorkLocation.vue";
 import AccountModal from "src/components/modal/AccountModal.vue";
@@ -823,7 +823,7 @@ import {SowServicesQuery} from "src/graphql/query/sow/SowService.js";
 import {SowServiceBundlesQuery} from "src/graphql/query/sow/SowServiceBundle.js";
 
 export default defineComponent({
-  components: {s
+  components: {
     SearchModel,
     WorkLocation,
     WopModal,
@@ -876,11 +876,11 @@ export default defineComponent({
       showPiChart: true,
     });
 
-    let data = "";
-    let values = "";
+    // let data = "";
+    // let values = "";
     try {
-      data = LocalStorage.getItem("userData");
-      values = JSON.parse(data);
+      // data = LocalStorage.getItem("userData");
+      // values = JSON.parse(data);
     } catch (e) {
       console.log(e);
     }
@@ -944,8 +944,8 @@ export default defineComponent({
       } else if (name === "Quote") {
         createQuote();
       } else if (name === "Project") {
-        createProject();
-        projectATCreated();
+        // createProject();
+        // projectATCreated();
       }
     };
 
@@ -1017,17 +1017,6 @@ export default defineComponent({
       let newValue = formattedValue.replace("$", "$ ");
       return newValue;
     }
-
-    const sowTotalsRef = ref({
-      ...props.sowTotals,
-      Tier1Rate: props.sowTotals && props.sowTotals.Tier1Rate,
-      Tier2Rate: props.sowTotals && props.sowTotals.Tier2Rate,
-      Tier3Rate: props.sowTotals && props.sowTotals.Tier3Rate,
-      ProjectManagerRate: props.sowTotals && props.sowTotals.ProjectManagerRate,
-      ConsultantRate: props.sowTotals && props.sowTotals.ConsultantRate,
-      AfterHoursRate: props.sowTotals && props.sowTotals.AfterHoursRate,
-      InfrastructureRate: props.sowTotals && props.sowTotals.InfrastructureRate,
-    });
 
     const tiers = ref([
       {
