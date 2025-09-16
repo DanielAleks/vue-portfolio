@@ -26,6 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: yarn add nvm
+    - run: nvm install 18
     - run: nvm use 18
     - run: yarn
     - run: yarn build
