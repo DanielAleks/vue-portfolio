@@ -121,10 +121,8 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, watchEffect, watch, computed, onMounted } from "vue";
+import { defineComponent, reactive, ref, watch, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { useQuery } from "@vue/apollo-composable";
-import { UsersQuery } from "src/graphql/query/User.js";
 import { useDarkModeStore } from "src/stores/dark-mode";
 
 export default defineComponent({
@@ -159,12 +157,12 @@ export default defineComponent({
       }
     );
 
-    const { result: userData } = useQuery(UsersQuery, () => ({
-      first: 15,
-      page: state.page,
-      name: state.userSearch,
-      // orderBy: [{column: 'ORDER', order: 'DESC'}],
-    }));
+    // const { result: userData } = useQuery(UsersQuery, () => ({
+    //   first: 15,
+    //   page: state.page,
+    //   name: state.userSearch,
+    //   // orderBy: [{column: 'ORDER', order: 'DESC'}],
+    // }));
     const users = ref([]);
     const totalUserAmount = ref(null);
 
@@ -174,18 +172,18 @@ export default defineComponent({
     }
     });
 
-    watchEffect(() => {
-      if (userData.value) {
-        loading.value = false;
-        console.log(
-          userData.value.Users.paginatorInfo,
-          "USER",
-          userData.value.Users.data
-        );
-        users.value = userData.value.Users.data;
-        totalUserAmount.value = userData.value.Users.paginatorInfo.lastPage;
-      }
-    });
+    // watchEffect(() => {
+    //   if (userData.value) {
+    //     loading.value = false;
+    //     console.log(
+    //       userData.value.Users.paginatorInfo,
+    //       "USER",
+    //       userData.value.Users.data
+    //     );
+    //     users.value = userData.value.Users.data;
+    //     totalUserAmount.value = userData.value.Users.paginatorInfo.lastPage;
+    //   }
+    // });
 
     function setUserSearch() {
       state.page = 1;

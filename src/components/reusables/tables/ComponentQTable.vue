@@ -912,20 +912,6 @@
                   : 'animate__fadeOut'
               "
             >
-              <ExpansionItem
-                :title="billingFreq.type"
-                :rows="computedAccordianRows"
-                :componentType="componentType"
-                :breakdownByPeriodType="breakdownByPeriodType"
-                :updateComponent="updateComponent"
-                :setShowProdServ="setShowProdServ"
-                :id="index"
-                :sow="sow"
-                :item="item"
-                :state="state"
-                :billingFreq="billingFreq"
-                :showProdServ="state.showProdServ"
-              />
             </div>
             <!-- other items -->
           </div>
@@ -994,14 +980,12 @@ import { defineComponent, ref, watch, reactive, inject, computed } from "vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { useQuasar } from "quasar";
 import draggable from "vuedraggable";
-import ExpansionItem from "./expansion/ExpansionItem.vue";
 
 export default defineComponent({
   // ComponentQTable is used for Guideline, Product, Service, Bundle, Assumption, Exclusion (editable table)
   name: "ComponentQTable",
   components: {
     // SowCollaborator,
-    ExpansionItem,
     draggable,
   },
   props: {

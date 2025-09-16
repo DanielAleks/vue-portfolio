@@ -67,19 +67,6 @@
       </q-menu>
     </q-btn>
 
-    <AdminHierarchyModal
-      v-if="
-        (type === 'ImplementationType' ||
-          type === 'ImplementationGuideline' ||
-          type === 'ImplementationTask' ||
-          type === 'Requirement') &&
-        state.showModal
-      "
-      :setModal="setShowModal"
-      :showModal="state.showModal"
-      :response="response"
-    />
-
     <div
       v-if="
         response &&
@@ -934,12 +921,10 @@
 <script>
 import { computed, defineComponent, inject, ref, reactive, watch } from "vue";
 import { useRoute } from "vue-router";
-import AdminHierarchyModal from "src/components/modal/AdminHierarchyModal.vue";
 import { PriorityLevels } from "src/graphql/query/PriorityLevels.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 
 export default defineComponent({
-  components: { AdminHierarchyModal },
   props: {
     // will return all fields unless filtered out
     response: {

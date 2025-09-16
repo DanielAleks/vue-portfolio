@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, computed, watchEffect } from "vue";
-import { useLazyQuery } from "@vue/apollo-composable";
-import { UserQuery } from "src/graphql/query/User.js";
+import { defineComponent, onMounted, ref, computed } from "vue";
+// import { useLazyQuery } from "@vue/apollo-composable";
+// import { UserQuery } from "src/graphql/query/User.js";
 
 export default defineComponent({
   props: {
@@ -65,30 +65,30 @@ export default defineComponent({
   setup(props) {
     const user = ref([]);
 
-    const fetchUser = async () => {
-      const { result: userInfo, load: loadUser } = useLazyQuery(UserQuery, () => ({
-        _id: props.userId,
-      }));
+    // const fetchUser = async () => {
+    //   const { result: userInfo, load: loadUser } = useLazyQuery(UserQuery, () => ({
+    //     _id: props.userId,
+    //   }));
 
-      onMounted(() => {
-        if (props.userId !== null && props.userId !== undefined) {
-          loadUser();
-        }
-      });
+    //   onMounted(() => {
+    //     if (props.userId !== null && props.userId !== undefined) {
+    //       loadUser();
+    //     }
+    //   });
 
-      watchEffect(() => {
-        if (userInfo.value) {
-          user.value = userInfo.value.User;
-        }
-      });
-    };
+    //   watchEffect(() => {
+    //     if (userInfo.value) {
+    //       user.value = userInfo.value.User;
+    //     }
+    //   });
+    // };
 
     onMounted(() => {
       if (
         props.userId &&
         (typeof props.userId === "string" || props.userId instanceof String)
       ) {
-        fetchUser();
+        // fetchUser();
       }
     });
 

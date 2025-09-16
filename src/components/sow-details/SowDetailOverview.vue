@@ -790,7 +790,7 @@ import { useRoute, useRouter } from "vue-router";
 import WorkLocation from "src/components/sow-details/overview/WorkLocation.vue";
 import AccountModal from "src/components/modal/AccountModal.vue";
 import { useMutation, useQuery, useLazyQuery } from "@vue/apollo-composable";
-import WopModal from "src/components/modal/wop_original/WopModal.vue";
+import WopModal from "src/components/modal/WopModal.vue";
 import ExportSowModal from "src/components/modal/ExportSowModal.vue";
 import PiChart from "src/components/reusables/PiChart.vue";
 import { SowLocationsQuery } from "src/graphql/query/sow/SowLocation.js";

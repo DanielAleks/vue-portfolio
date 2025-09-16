@@ -188,7 +188,6 @@
           :handleRowClick="goToTaskDetails"
           :showPagination="false"
           rowName="Name"
-          :dropdownList="SkillTiers"
           filterByRowName="Name"
           filterByRowNameSecondary="Name"
           :relatedHeaderTitle="state.showTasksTable === true ? 'Requirements' : 'Tasks'"
@@ -432,17 +431,6 @@
         :updateComponent="updateAttachedComponent"
       />
     </div>
-    <!-- Skills Mutation Pop-up -->
-    <CreateGuidelineSkillModal
-      v-if="guideline"
-      :route="route"
-      :setShowSkillModal="setShowSkillModal"
-      :showSkillModal="state.showSkillModal"
-      :guideline="guideline"
-      :refetchSkillData="refetchSkillData"
-      :addSkillToGuideline="addSkillToGuideline"
-    />
-
     <!-- Tasks Mutation Pop-ups -->
     <CreateGuidelineTaskModal
       v-if="guideline"
@@ -478,7 +466,6 @@ import {
 } from "vue";
 import { useQuery, useMutation, useLazyQuery } from "@vue/apollo-composable";
 import { useRoute, useRouter } from "vue-router";
-import CreateGuidelineSkillModal from "src/components/modal/CreateGuidelineSkillModal.vue";
 import CreateGuidelineTaskModal from "src/components/modal/CreateGuidelineTaskModal.vue";
 import MiniCardContainer from "src/components/reusables/MiniCardContainer.vue";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
@@ -516,14 +503,12 @@ import { ImplementationTypesQueryMinimal } from "src/graphql/query/Implementatio
 import SearchModel from "src/components/search/SearchModel.vue";
 import { useStoreImplementationType } from "src/stores/searchStore.js";
 import AccordianQTableDeep from "src/components/reusables/tables/AccordianQTableDeep.vue";
-import { SkillTiers } from "src/graphql/query/static/SkillTier.js";
 import DeleteConfirmationModal from "src/components/modal/DeleteConfirmationModal.vue";
 import { RemoveAssociatedRequirement } from "src/graphql/mutation/ImplementationTask.js";
 import { CreateImplementationTaskRequirement } from "src/graphql/mutation/ImplementationTaskRequirement.js";
 
 export default defineComponent({
   components: {
-    CreateGuidelineSkillModal,
     CreateGuidelineTaskModal,
     MiniCardContainer,
     ListQTable,
@@ -2362,7 +2347,6 @@ export default defineComponent({
       isLoadingImplementationTypes,
       searchOptions,
       cancelEditing,
-      SkillTiers,
       setSection,
       activeColor,
       sowToggleOptions,

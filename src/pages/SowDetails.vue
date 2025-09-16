@@ -613,7 +613,7 @@ import { SowContractsQuery } from "src/graphql/query/sow/SowContract.js";
 import { SowProjectsQuery } from "src/graphql/query/sow/SowProject.js";
 import { SowQuery, SowQueryTotals } from "src/graphql/query/sow/Sow.js";
 import { UpdateQuoteMutation } from "src/graphql/mutation/Quote.js";
-import { UsersQuery } from "src/graphql/query/User.js";
+// import { UsersQuery } from "src/graphql/query/User.js";
 import { AccountsQuery } from "src/graphql/query/Account.js";
 import { useStoreAccount, useStoreUser } from "src/stores/searchStore.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
@@ -1174,43 +1174,43 @@ export default defineComponent({
 
     const users = ref([]);
     const isUsersLoading = ref(false);
-    const prevSearchUser = ref("");
-    const { result: usersData, loading: usersLoading, error: er } = useQuery(
-      UsersQuery,
-      () => ({
-        name: searchOptionsUser.search,
-        page: searchOptionsUser.page,
-        first: 15,
-      })
-    );
-    watchEffect(() => {
-      if (er.value) {
-        console.log(er.value);
-      }
-      if (usersLoading.value) {
-        isUsersLoading.value = true;
-      }
-      if (searchOptionsUser.search) {
-        if (prevSearchUser.value !== searchOptionsUser.search) {
-          isUsersLoading.value = true;
-          users.value = [];
-          prevSearchUser.value = searchOptionsUser.search;
-        }
-      }
-      if (usersData.value) {
-        isUsersLoading.value = false;
-        const originalLength = users.value;
-        const filteredUsers = usersData.value.Users.data.filter(
-          (user) => !users.value.some((a) => a._id === user._id)
-        );
-        if (searchOptionsUser.page > 1) {
-          users.value = [...users.value, ...filteredUsers];
-        } else {
-          users.value = [...filteredUsers, ...users.value];
-        }
-        searchOptionsUser.setSpinner(users.value, originalLength);
-      }
-    });
+    // const prevSearchUser = ref("");
+    // const { result: usersData, loading: usersLoading, error: er } = useQuery(
+    //   UsersQuery,
+    //   () => ({
+    //     name: searchOptionsUser.search,
+    //     page: searchOptionsUser.page,
+    //     first: 15,
+    //   })
+    // );
+    // watchEffect(() => {
+    //   if (er.value) {
+    //     console.log(er.value);
+    //   }
+    //   if (usersLoading.value) {
+    //     isUsersLoading.value = true;
+    //   }
+    //   if (searchOptionsUser.search) {
+    //     if (prevSearchUser.value !== searchOptionsUser.search) {
+    //       isUsersLoading.value = true;
+    //       users.value = [];
+    //       prevSearchUser.value = searchOptionsUser.search;
+    //     }
+    //   }
+    //   if (usersData.value) {
+    //     isUsersLoading.value = false;
+    //     const originalLength = users.value;
+    //     const filteredUsers = usersData.value.Users.data.filter(
+    //       (user) => !users.value.some((a) => a._id === user._id)
+    //     );
+    //     if (searchOptionsUser.page > 1) {
+    //       users.value = [...users.value, ...filteredUsers];
+    //     } else {
+    //       users.value = [...filteredUsers, ...users.value];
+    //     }
+    //     searchOptionsUser.setSpinner(users.value, originalLength);
+    //   }
+    // });
 
     function focusTracker(type, isClose) {
       if (isClose === "close") {

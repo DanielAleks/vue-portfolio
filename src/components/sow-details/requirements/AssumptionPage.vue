@@ -8,22 +8,6 @@
       :setComponentModal="setComponentModal"
       :pushNewResponseData="pushNewResponseData"
     />
-
-    <AssumptionExclusionQTable
-      :rows="sowAssumptions"
-      :columns="columns"
-      title="Product Assumptions"
-      :handleRowClick="handleRowClick"
-      :pagination="null"
-      :stateValue="state"
-      componentType="Assumption"
-      :setShowComponentModal="setComponentModal"
-      :updateComponent="updateComponent"
-      :readonly="readonly"
-      customNoDataText="No Product Assumptions found in this SOW"
-      class="animate__fadeInUp"
-      style="animation-duration: 0.5s"
-    />
   </div>
 </template>
 
@@ -40,7 +24,6 @@ import {
 import { useRoute } from "vue-router";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import CreateAssumptionModal from "src/components/modal/CreateAssumptionModal.vue";
-import AssumptionExclusionQTable from "src/components/reusables/tables/AssumptionExclusionQTable.vue";
 import {
   UpdateSowAssumptionMutation,
   DeleteSowAssumptionMutation,
@@ -48,7 +31,7 @@ import {
 import { SowAssumptionsQuery } from "src/graphql/query/sow/SowAssumption.js";
 
 export default defineComponent({
-  components: { CreateAssumptionModal, AssumptionExclusionQTable },
+  components: { CreateAssumptionModal },
   props: {
     readonly: {
       type: Boolean,

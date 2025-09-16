@@ -234,9 +234,6 @@
 
         <q-card-section style="height: 100%">
           <p class="header">Contracts</p>
-          <div class="contract-review-cont">
-            <ContractReview :checkDate="checkDate" :sowContracts="sowContracts" />
-          </div>
         </q-card-section>
 
         <q-card-actions
@@ -270,8 +267,7 @@ import {
   watchEffect,
 } from "vue";
 // import WopProject from "./project/Woproject.vue";
-import ProjectReview from "./review/ProjectReview.vue";
-import ContractReview from "./review/ContractReview.vue";
+import ProjectReview from "./wop/review/ProjectReview.vue";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 import { useQuasar, LocalStorage } from "quasar";
 import { useRoute } from "vue-router";
@@ -282,7 +278,7 @@ import { SowProjectsQuery } from "src/graphql/query/sow/SowProject.js";
 import { CreateWopMutation } from "src/graphql/mutation/Wop.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { SowServiceBundlesQuery } from "src/graphql/query/sow/SowServiceBundle.js";
-import WopInputContainer from "./components/WopInputContainer.vue";
+import WopInputContainer from "./wop/components/WopInputContainer.vue";
 import { ContractsQuery } from "src/graphql/query/Contract.js";
 import { searchOptions } from "src/components/search/search.js";
 import SearchModel from "src/components/search/SearchModel.vue";
@@ -291,7 +287,6 @@ export default defineComponent({
   components: {
     // WopProject,
     ProjectReview,
-    ContractReview,
     SearchModel,
     WopInputContainer,
   },

@@ -7,21 +7,6 @@
       :setComponentModal="setComponentModal"
       :pushNewResponseData="pushNewResponseData"
     />
-
-    <AssumptionExclusionQTable
-      title="Exclusions"
-      :rows="sowExclusions"
-      :columns="columns"
-      :handleRowClick="handleRowClick"
-      :stateValue="state"
-      componentType="Exclusion"
-      :setShowComponentModal="setComponentModal"
-      :updateComponent="updateComponent"
-      :readonly="readonly"
-      customNoDataText="No Exclusions found in this SOW"
-      class="animate__fadeInUp"
-      style="animation-duration: 0.5s"
-    />
   </div>
 </template>
 
@@ -38,7 +23,6 @@ import {
 import { useRoute } from "vue-router";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import CreateAssumptionModal from "src/components/modal/CreateAssumptionModal.vue";
-import AssumptionExclusionQTable from "src/components/reusables/tables/AssumptionExclusionQTable.vue";
 import {
   UpdateSowExclusionMutation,
   DeleteSowExclusionMutation,
@@ -46,7 +30,7 @@ import {
 import { SowExclusionsQuery } from "src/graphql/query/sow/SowExclusion.js";
 
 export default defineComponent({
-  components: { CreateAssumptionModal, AssumptionExclusionQTable },
+  components: { CreateAssumptionModal },
   props: {
     readonly: {
       type: Boolean,

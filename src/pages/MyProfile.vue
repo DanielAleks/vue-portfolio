@@ -239,8 +239,6 @@
     :showViewButton="false"
     :handleRowClick="deleteRole"
   />
-
-  <TestAnything v-if="user && user.User.name === 'Daniel Aleksandrov'" class="mt-80" />
 </template>
 
 <script>
@@ -256,20 +254,19 @@ import {
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { useRoute } from "vue-router";
 import { useQuasar } from "quasar";
-import { UserQuery } from "src/graphql/query/User.js";
+// import { UserQuery } from "src/graphql/query/User.js";
 import {
   UpdateUserMutation,
   UploadUserAvatarMutation,
 } from "src/graphql/mutation/User.js";
 import { AccountsQuery } from "src/graphql/query/Account.js";
 import { searchOptions } from "src/components/search/search.js";
-import TestAnything from "src/pages/test-anything/TestAnything.vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
 import { IntrospectionQuery } from "src/graphql/query/Introspection.js";
 import ListQTable from "src/components/reusables/tables/ListQTable.vue";
 
 export default defineComponent({
-  components: { ListQTable, TestAnything },
+  components: { ListQTable },
   setup() {
     const route = useRoute();
     const userData = inject("userData");
@@ -310,22 +307,22 @@ export default defineComponent({
       }
     });
 
-    const { result: user, refetch: refetchUser } = useQuery(UserQuery, () => ({
-      _id: id.value,
-    }));
+    // const { result: user, refetch: refetchUser } = useQuery(UserQuery, () => ({
+    //   _id: id.value,
+    // }));
 
     const userRoles = ref([]);
 
-    watchEffect(() => {
-      if (user.value) {
-        // userAvatar.value = user.value.User.avatar;
-        state.optOut = user.value.User.optOutOfAutoTimeEntries;
-        state.bio = user.value.User.bio;
-        userRoles.value = user.value.User.Roles;
-        state.title = user.value.User.title;
-        state.name = user.value.User.name;
-      }
-    });
+    // watchEffect(() => {
+    //   if (user.value) {
+    //     // userAvatar.value = user.value.User.avatar;
+    //     state.optOut = user.value.User.optOutOfAutoTimeEntries;
+    //     state.bio = user.value.User.bio;
+    //     userRoles.value = user.value.User.Roles;
+    //     state.title = user.value.User.title;
+    //     state.name = user.value.User.name;
+    //   }
+    // });
 
     const {
       mutate: uploadUserAvatar,
@@ -342,7 +339,6 @@ export default defineComponent({
       console.log(error, "error");
     });
     onDoneUploadAvatar((result) => {
-      refetchUser();
       console.log(result, "result");
     });
 
@@ -354,7 +350,6 @@ export default defineComponent({
           updateState("reset");
 
           setTimeout(() => {
-            refetchUser();
           }, 1000);
 
           setTimeout(() => {
@@ -369,13 +364,14 @@ export default defineComponent({
     }, 3000);
 
     function updateState(type) {
-      if (type === "create") {
-        state.name = user && user._rawValue.User.name;
-        state.title = user && user._rawValue.User.title;
-        if (user && user._rawValue.User.AccountName !== "No Account Assigned") {
-          state.company = user && user._rawValue.User.AccountName;
-        }
-      } else if (type === "reset") {
+      // if (type === "create") {
+        // state.name = user && user._rawValue.User.name;
+        // state.title = user && user._rawValue.User.title;
+        // if (user && user._rawValue.User.AccountName !== "No Account Assigned") {
+        //   state.company = user && user._rawValue.User.AccountName;
+        // }
+      // } else 
+      if (type === "reset") {
         state.title = "";
         state.company = "";
         state.name = "";
@@ -429,7 +425,6 @@ export default defineComponent({
 
     onDone((result) => {
       console.log(result, "user updated info");
-      refetchUser();
     });
 
     const titleInput = ref(null);
@@ -481,30 +476,30 @@ export default defineComponent({
 
     function cancelEditing(type, value) {
       if (type === "name") {
-        if (value !== user._rawValue.User.name) {
+        if (value !== "TEST") {
           state.updateType = "name";
           updateUser();
           updateUserNotif("Name", value);
         }
       } else if (type === "title") {
-        if (value !== user._rawValue.User.title) {
+        if (value !== "TEST") {
           state.updateType = "title";
           updateUser();
           updateUserNotif("Position", value);
         }
       } else if (type === "account") {
-        if (value !== user._rawValue.User.AccountId) {
+        if (value !== "TEST") {
           state.updateType = "account";
           updateUser();
           updateUserNotif("Company", value);
         }
       } else if (type === "bio") {
-        if (value !== user._rawValue.User.bio && value !== null) {
+        if (value !== "TEST" && value !== null) {
           state.updateType = "bio";
           updateUser();
         }
       } else if (type === "optOut") {
-        if (value !== user._rawValue.User.optOut && value !== null) {
+        if (value !== "TEST" && value !== null) {
           state.updateType = "optOut";
           updateUser();
         }
@@ -595,7 +590,6 @@ export default defineComponent({
     return {
       state,
       setEditMode,
-      user,
       updateUser,
       setAccountId,
       cancelEditing,

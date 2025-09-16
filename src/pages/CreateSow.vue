@@ -25,7 +25,6 @@
             label="Accounts"
             value="companyName"
             :rows="accounts"
-            :loading="isAccountLoading"
             class="w-full"
             filled
             no-focus
@@ -60,7 +59,6 @@
             label="Sales Person"
             value="name"
             :rows="users"
-            :loading="isUserLoading"
             style="width: 100%"
             filled
             no-focus
@@ -160,7 +158,6 @@ import { useLazyQuery, useMutation, useQuery } from "@vue/apollo-composable";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 import { CreateSowMutation } from "src/graphql/mutation/sow/Sow.js";
-import { UsersQuery } from "src/graphql/query/User.js";
 import { AccountsQuery } from "src/graphql/query/Account.js";
 import SearchModel from "src/components/search/SearchModel.vue";
 import { CdwAMsQuery } from "src/graphql/query/CdwAM.js";
@@ -326,38 +323,38 @@ export default defineComponent({
     const searchOptionsBase = useStoreBase();
     const searchOptionsMilestone = useStoreMilestone();
 
-    const { result: usersData, loading: isUserLoading } = useQuery(UsersQuery, () => ({
-      name: searchOptionsUser.search,
-      page: searchOptionsUser.page,
-      first: 15,
-    }));
+    // const { result: usersData, loading: isUserLoading } = useQuery(UsersQuery, () => ({
+    //   name: searchOptionsUser.search,
+    //   page: searchOptionsUser.page,
+    //   first: 15,
+    // }));
 
     const users = ref([]);
-    const userLoading = ref(false);
-    const prevUserSearch = ref("");
-    watchEffect(() => {
-      if (isUserLoading.value) {
-        userLoading.value = true;
-      }
-      if (prevUserSearch.value !== searchOptionsUser.search) {
-        userLoading.value = true;
-        users.value = [];
-        prevUserSearch.value = searchOptionsUser.search;
-      }
-      if (usersData.value) {
-        userLoading.value = false;
-        let originalLength = users.value;
-        const filteredUsers = usersData.value.Users.data.filter(
-          (user) => !users.value.some((u) => u._id === user._id)
-        );
-        if (searchOptionsUser.page > 1) {
-          users.value = [...users.value, ...filteredUsers];
-        } else {
-          users.value = [...filteredUsers, ...users.value];
-        }
-        searchOptionsUser.setSpinner(users.value, originalLength);
-      }
-    });
+    // const userLoading = ref(false);
+    // const prevUserSearch = ref("");
+    // watchEffect(() => {
+    //   if (isUserLoading.value) {
+    //     userLoading.value = true;
+    //   }
+    //   if (prevUserSearch.value !== searchOptionsUser.search) {
+    //     userLoading.value = true;
+    //     users.value = [];
+    //     prevUserSearch.value = searchOptionsUser.search;
+    //   }
+    //   if (usersData.value) {
+    //     userLoading.value = false;
+    //     let originalLength = users.value;
+    //     const filteredUsers = usersData.value.Users.data.filter(
+    //       (user) => !users.value.some((u) => u._id === user._id)
+    //     );
+    //     if (searchOptionsUser.page > 1) {
+    //       users.value = [...users.value, ...filteredUsers];
+    //     } else {
+    //       users.value = [...filteredUsers, ...users.value];
+    //     }
+    //     searchOptionsUser.setSpinner(users.value, originalLength);
+    //   }
+    // });
 
     const { result: accountsData, loading: isAccountLoading } = useQuery(
       AccountsQuery,
@@ -538,7 +535,6 @@ export default defineComponent({
       users,
       accounts,
       isAccountLoading,
-      isUserLoading,
       focusTracker,
       cdwAMs,
       isCdwAMLoading,

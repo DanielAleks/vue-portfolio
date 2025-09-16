@@ -33,7 +33,6 @@ import {
 import { useQuery } from "@vue/apollo-composable";
 import SearchModel from "./SearchModel.vue";
 import { ImplementationTasksQuery } from "src/graphql/query/ImplementationTask.js";
-import { VulnerabilityScansQuery } from "src/graphql/query/VulnerabilityScan.js";
 import { ProductsQuery } from "src/graphql/query/Product.js";
 import { ServicesQuery } from "src/graphql/query/Service.js";
 import { ServiceBundlesQuery } from "src/graphql/query/ServiceBundle.js";
@@ -144,8 +143,6 @@ export default defineComponent({
         fetchServices();
       } else if (props.type === "Service Bundle") {
         fetchServiceBundles();
-      } else if (props.type === "Vulnerability Scan") {
-        fetchVulnerabilityScans();
       } else if (props.type == 'Requirement') {
         fetchRequirements();
       }
@@ -266,43 +263,6 @@ export default defineComponent({
             }
 
             searchOptionsBundle.setSpinner(componentResult.value, originalLength);
-          }
-        }
-      });
-    };
-
-    const fetchVulnerabilityScans = async () => {
-      const { result: vulnScanData, loading } = useQuery(VulnerabilityScansQuery, () => ({
-        DomainName: searchOptionsVulnScan.search,
-        page: searchOptionsVulnScan.page,
-        first: 20,
-      }));
-      const prevVulnScanSearch = ref("");
-      watchEffect(() => {
-        if (loading.value) {
-          isLoading.value = true;
-        }
-        if (searchOptionsVulnScan.search !== prevVulnScanSearch.value) {
-          isLoading.value = true;
-          componentResult.value = [];
-          prevVulnScanSearch.value = searchOptionsVulnScan.search;
-        }
-        if (vulnScanData.value) {
-          isLoading.value = false;
-          const originalLength = componentResult.value;
-          if (vulnScanData.value && vulnScanData.value.VulnerabilityScans) {
-            const filteredVulnScans = vulnScanData.value.VulnerabilityScans.data.filter(
-              (vulnScan) =>
-                !componentResult.value.some(
-                  (result) => result.id === vulnScan.id || result._id === vulnScan._id
-                )
-            );
-            if (searchOptionsVulnScan.page > 1) {
-              componentResult.value = [...componentResult.value, ...filteredVulnScans];
-            } else {
-              componentResult.value = [...filteredVulnScans, ...componentResult.value];
-            }
-            searchOptionsVulnScan.setSpinner(componentResult.value, originalLength);
           }
         }
       });

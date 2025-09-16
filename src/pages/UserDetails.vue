@@ -560,7 +560,7 @@ import { useQuery, useMutation } from "@vue/apollo-composable";
 import { useRoute } from "vue-router";
 import SearchModel from "src/components/search/SearchModel.vue";
 import { useQuasar } from "quasar";
-import { UserQuery } from "src/graphql/query/User.js";
+// import { UserQuery } from "src/graphql/query/User.js";
 import { AccountsQuery } from "src/graphql/query/Account.js";
 import {
   UpdateUserMutation,
@@ -607,9 +607,9 @@ export default defineComponent({
     const id = computed(() => route.params.id);
     const darkmode = computed(() => useDarkModeStore().darkmode);
 
-    const { result: userData, refetch: refetchUser } = useQuery(UserQuery, () => ({
-      _id: id.value,
-    }));
+    // const { result: userData, refetch: refetchUser } = useQuery(UserQuery, () => ({
+    //   _id: id.value,
+    // }));
 
     const ownedSows = ref([]);
     const ownedAccounts = ref([]);
@@ -617,37 +617,37 @@ export default defineComponent({
     const rows = ref([]);
     const loading = ref(true);
     const user = ref({})
-    watchEffect(() => {
-      if (userData.value) {
-        loading.value = false;
-        user.value = userData.value.User;
-        isUserApproved.value = userData.value.User.Approved;
-        console.log(userData.value, "USER");
-        rows.value = userData.value.User.Roles;
-        state.optOut = userData.value.User.optOutOfAutoTimeEntries;
-        state.isNotDraft = !userData.value.User.isDraft;
-        state.name = userData.value.User.name;
-        state.title = userData.value.User.title;
-        state.order = userData.value.User.order;
-        let userSows = userData.value.User.OwnedCompaniesSows;
-        ownedSows.value = userSows.map((sowItem) => {
-          return {
-            ...sowItem,
-            OpportunityStage:
-              sowItem && sowItem.Opportunity && sowItem.Opportunity.StageName,
-            AccountName: sowItem && sowItem.Company && sowItem.Company.companyName,
-          };
-        });
-        ownedAccounts.value = userData.value.User.OwnedCompanies;
-        if (userData.value.User.Resource !== null) {
-          ownedAccounts.value = [
-            ...ownedAccounts.value,
-            ...userData.value.User.Resource.Companies,
-          ];
-        }
-        // ownedAccounts.value
-      }
-    });
+    // watchEffect(() => {
+    //   if (userData.value) {
+    //     loading.value = false;
+    //     user.value = userData.value.User;
+    //     isUserApproved.value = userData.value.User.Approved;
+    //     console.log(userData.value, "USER");
+    //     rows.value = userData.value.User.Roles;
+    //     state.optOut = userData.value.User.optOutOfAutoTimeEntries;
+    //     state.isNotDraft = !userData.value.User.isDraft;
+    //     state.name = userData.value.User.name;
+    //     state.title = userData.value.User.title;
+    //     state.order = userData.value.User.order;
+    //     let userSows = userData.value.User.OwnedCompaniesSows;
+    //     ownedSows.value = userSows.map((sowItem) => {
+    //       return {
+    //         ...sowItem,
+    //         OpportunityStage:
+    //           sowItem && sowItem.Opportunity && sowItem.Opportunity.StageName,
+    //         AccountName: sowItem && sowItem.Company && sowItem.Company.companyName,
+    //       };
+    //     });
+    //     ownedAccounts.value = userData.value.User.OwnedCompanies;
+    //     if (userData.value.User.Resource !== null) {
+    //       ownedAccounts.value = [
+    //         ...ownedAccounts.value,
+    //         ...userData.value.User.Resource.Companies,
+    //       ];
+    //     }
+    //     // ownedAccounts.value
+    //   }
+    // });
 
     const { result: roles, loading: rolesLoading, error: rolesError } = useQuery(
       RolesQuery,
@@ -683,10 +683,6 @@ export default defineComponent({
       () => {
         if (route.path === "/user") {
           updateState("reset");
-
-          setTimeout(() => {
-            refetchUser();
-          }, 1000);
 
           setTimeout(() => {
             updateState("create");
@@ -780,7 +776,6 @@ export default defineComponent({
         ", updateType: ",
         state.updateType
       );
-      refetchUser();
     });
 
     const { result: introspectionData } = useQuery(IntrospectionQuery, () => ({
@@ -908,7 +903,6 @@ export default defineComponent({
     );
 
     onDoneApproveUser(() => {
-      refetchUser();
       $q.notify({
         message: "User Approved",
         icon: "recommend",
@@ -985,7 +979,6 @@ export default defineComponent({
       console.log(error, "error");
     });
     onDoneUploadAvatar((result) => {
-      refetchUser();
       console.log(result, "result");
     });
 

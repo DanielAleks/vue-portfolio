@@ -235,7 +235,7 @@ import { ImplementationGuidelinesQuery } from "src/graphql/query/ImplementationG
 import { searchOptions } from "src/components/search/search.js";
 import { useStoreUser } from "src/stores/searchStore.js";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import { UsersQuery } from "src/graphql/query/User.js";
+// import { UsersQuery } from "src/graphql/query/User.js";
 import CreateAdminComponentModal from "src/components/modal/CreateAdminComponentModal.vue";
 import AccordianQTableDeep from "src/components/reusables/tables/AccordianQTableDeep.vue";
 
@@ -877,43 +877,43 @@ export default defineComponent({
     const searchOptionsUser = useStoreUser();
     const users = ref([]);
     const isUsersLoading = ref(false);
-    const prevSearchUser = ref("");
-    const { result: usersData, loading: usersLoading, error: er } = useQuery(
-      UsersQuery,
-      () => ({
-        name: searchOptionsUser.search,
-        page: searchOptionsUser.page,
-        first: 15,
-      })
-    );
-    watchEffect(() => {
-      if (er.value) {
-        console.log(er.value);
-      }
-      if (usersLoading.value) {
-        isUsersLoading.value = true;
-      }
-      if (searchOptionsUser.search) {
-        if (prevSearchUser.value !== searchOptionsUser.search) {
-          isUsersLoading.value = true;
-          users.value = [];
-          prevSearchUser.value = searchOptionsUser.search;
-        }
-      }
-      if (usersData.value) {
-        isUsersLoading.value = false;
-        const originalLength = users.value;
-        const filteredUsers = usersData.value.Users.data.filter(
-          (user) => !users.value.some((a) => a._id === user._id)
-        );
-        if (searchOptionsUser.page > 1) {
-          users.value = [...users.value, ...filteredUsers];
-        } else {
-          users.value = [...filteredUsers, ...users.value];
-        }
-        searchOptionsUser.setSpinner(users.value, originalLength);
-      }
-    });
+    // const prevSearchUser = ref("");
+    // const { result: usersData, loading: usersLoading, error: er } = useQuery(
+    //   UsersQuery,
+    //   () => ({
+    //     name: searchOptionsUser.search,
+    //     page: searchOptionsUser.page,
+    //     first: 15,
+    //   })
+    // );
+    // watchEffect(() => {
+    //   if (er.value) {
+    //     console.log(er.value);
+    //   }
+    //   if (usersLoading.value) {
+    //     isUsersLoading.value = true;
+    //   }
+    //   if (searchOptionsUser.search) {
+    //     if (prevSearchUser.value !== searchOptionsUser.search) {
+    //       isUsersLoading.value = true;
+    //       users.value = [];
+    //       prevSearchUser.value = searchOptionsUser.search;
+    //     }
+    //   }
+    //   if (usersData.value) {
+    //     isUsersLoading.value = false;
+    //     const originalLength = users.value;
+    //     const filteredUsers = usersData.value.Users.data.filter(
+    //       (user) => !users.value.some((a) => a._id === user._id)
+    //     );
+    //     if (searchOptionsUser.page > 1) {
+    //       users.value = [...users.value, ...filteredUsers];
+    //     } else {
+    //       users.value = [...filteredUsers, ...users.value];
+    //     }
+    //     searchOptionsUser.setSpinner(users.value, originalLength);
+    //   }
+    // });
 
     const implementationGuidelines = ref([]);
     const isGuidelineLoading = ref(false);

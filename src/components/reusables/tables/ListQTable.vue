@@ -991,7 +991,6 @@ import { defineComponent, ref, watch, reactive, inject, computed, onMounted } fr
 import { useRoute } from "vue-router";
 import SowCollaborator from "src/components/reusables/SowCollaborator.vue";
 import { useDarkModeStore } from "src/stores/dark-mode.js";
-import { SkillTiers } from "src/graphql/query/static/SkillTier.js";
 import SelectOptionalQuantity from "./table-content/SelectOptionalQuantity.vue";
 import ListBuilderName from "./list-table-components/ListBuilderName.vue";
 
@@ -1463,7 +1462,7 @@ export default defineComponent({
     }
 
     // eventually this should be a dynamic prop, currently used for ImplementationType, guideline skillTier
-    const skillTierDropdownList = SkillTiers;
+    const skillTierDropdownList = [];
 
     function setDropdownItem(item, row) {
       console.log(item, "item");
