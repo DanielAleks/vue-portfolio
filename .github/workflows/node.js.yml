@@ -26,10 +26,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: yarn add nvm
+    - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     - run: nvm install 18
     - run: nvm use 18
-    # - run: yarnf
+    - run: yarn
     - run: yarn build
     - run: yarn test
     # - run: npm ci
