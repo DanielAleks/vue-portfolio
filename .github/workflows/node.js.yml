@@ -27,6 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    - run:  export NVM_DIR="$HOME/.nvm"
+    - run:  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    - run:  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     - run: node -v
     - run: nvm install 18
     - run: nvm use 18
