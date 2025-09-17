@@ -20,7 +20,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background: linear-gradient(135deg, #2c8878ff 0%, #635DFE 25%, #0B87F6 50%, #42ffc3ff 75%, #4facfe 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -145,7 +145,7 @@
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background: linear-gradient(135deg, #0033ccff 0%, #005effff 25%, #727aebff 50%, #1b95ffff 75%, #0230aeff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -195,9 +195,9 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, rgba(86, 137, 232, 1), #234abfff);
             color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(24, 65, 250, 0.4);
         }
 
         .btn-secondary {
@@ -213,7 +213,7 @@
         }
 
         .btn-primary:hover {
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 15px 40px rgba(30, 70, 246, 0.6);
         }
 
         .experience-section {
@@ -226,7 +226,7 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 4rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4d6dffff, #284bffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -338,6 +338,107 @@
             animation: float-up 15s linear infinite;
         }
 
+        .profile-section {
+            margin-bottom: 40px;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: scale(1.02);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            fill: #667eea;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            text-align: left;
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .contact-value a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: #5a67d8;
+        }
+
+        .contact-container {
+            background: white;
+            padding: 2rem;
+            width: 50%;
+            border-radius: 15px;
+            margin-left: 25%;
+            margin-bottom: 10rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 30px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-item {
+                padding: 12px 20px;
+            }
+        }
+
         @keyframes float-up {
             0% {
                 transform: translateY(100vh) rotate(0deg);
@@ -381,7 +482,7 @@
     <div class="container">
         <header>
             <nav>
-                <div class="logo">DA</div>
+                <div class="logo">DA - (509)-599-9171</div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -418,25 +519,78 @@
         </section>
 
         <section class="skills-section" id="skills">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Express.js</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Webpack</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">AWS</span>
+            <div>
+                <h2 class="section-title">Professional IT Skills</h2>
+                <p>Technologies and tools I used in a professional context (with my former employer: AISLabs).</p>
+                <div class="skills-grid">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Vue.js</span>
+                    <span class="skill-tag">Quasar</span>
+                    <span class="skill-tag">Tailwind</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">Hugo</span>
+                    <span class="skill-tag">Scss</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">Laravel</span>
+                    <span class="skill-tag">NPM/Yarn</span>
+                </div>
+
+                <hr style="border: 1px solid rgba(255,255,255,.2); margin-top: 3rem; margin-bottom: 3rem"/>
+                
+                <h2 class="section-title">Other Technologies</h2>
+                <p>Technologies that I've used in personal projects (outside of my professional work).</p>
+                <div class="skills-grid">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Angular</span>
+                    <span class="skill-tag">Redux</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Google Analytics</span>
+                    <span class="skill-tag">Netlify</span>
+                </div>
             </div>
         </section>
+
+        <section class="contact-container" id="contact">
+        <div class="profile-section">
+            <h1 class="name">Daniel Aleksandrov</h1>
+            <p class="title">Get in touch</p>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg class="contact-icon" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <div class="contact-details">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">
+                        <a href="tel:+15095999171">(509) 599-9171</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <svg class="contact-icon" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <div class="contact-details">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:daniel.aleksandrov73@gmail.com">daniel.aleksandrov73@gmail.com</a>
+                    </div>
+                </div>
+            </div>
     </div>
+        </section>
+
+        
+        </div>
 </template>
 
     <script>
