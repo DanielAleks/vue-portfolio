@@ -394,7 +394,7 @@
         }
 
         .contact-label {
-            font-size: 0.9rem;
+            font-size: 0.91rem;
             color: #7f8c8d;
             font-weight: 500;
             margin-bottom: 2px;
