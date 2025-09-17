@@ -1,8 +1,8 @@
 {
   "name": "ais-app",
   "version": "1.1.1",
-  "description": "AIS Labs Presents Project Central",
-  "productName": "AIS Project Central",
+  "productName": "QuasarVue Portfolio",
+  "description": "Frontend Portfolio showcasing app built with Quasar Framework and Vue.js",
   "author": "Daniel Aleksandrov daniel.aleksandrov73@aislabs.com",
   "parcel": "1.12.3",
   "private": true,
