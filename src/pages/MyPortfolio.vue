@@ -92,7 +92,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background: linear-gradient(45deg, #2a7af1ff, #60a5ffff, #3f62ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -145,7 +145,7 @@
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #0033ccff 0%, #005effff 25%, #727aebff 50%, #1b95ffff 75%, #0230aeff 100%);
+            background: linear-gradient(135deg, #0033ccff 0%, #005effff 25%, #639ef8ff 50%, #1b95ffff 75%, #0230aeff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -226,7 +226,7 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 4rem;
-            background: linear-gradient(135deg, #4d6dffff, #284bffff);
+            background: linear-gradient(135deg, #458af3ff, #789cfdff, #1070ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -234,7 +234,7 @@
 
         .experience-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -404,7 +404,8 @@
             font-size: 1.1rem;
             color: #2c3e50;
             font-weight: 600;
-        }
+            word-wrap: break-word;
+            }
 
         .contact-value a {
             color: #667eea;
@@ -416,6 +417,24 @@
             color: #5a67d8;
         }
 
+        .email-value {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 600;
+            word-wrap: break-word;
+        }
+
+        .email-value a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .email-value a:hover {
+            color: #5a67d8;
+        }
+
+
         .contact-container {
             background: white;
             padding: 2rem;
@@ -423,6 +442,38 @@
             border-radius: 15px;
             margin-left: 25%;
             margin-bottom: 10rem;
+        }
+
+        .go-to-site {
+            position: absolute; 
+            right: 2rem; 
+            top: 2rem;
+        }
+
+        .hyperlink {
+            color: #9cbfffff;
+            font-weight: 600;
+        }
+        .hyperlink:hover {
+            color: #77a4f8ff;
+        }
+        @media (orientation: portrait) {
+        .contact-container {
+            background: white;
+            padding: 2rem;
+            width: 90%;
+            border-radius: 15px;
+            margin-left: 5%;
+            margin-bottom: 10rem;
+        }
+        .email-value {
+            max-width: 180px;
+        }
+        .go-to-site {
+            position: relative;
+            margin-bottom: 4rem;
+            margin-left: 2rem;
+        }
         }
 
         @media (max-width: 600px) {
@@ -495,7 +546,9 @@
         <section class="hero" id="home">
             <h1>Daniel Aleksandrov</h1>
             <p class="subtitle">Front End Developer</p>
-            <p class="description">5 years of professional experience crafting exceptional digital experiences. Currently expanding into backend development to become a full-stack powerhouse.</p>
+            <p class="description">
+                Born and raised in Spokane, Washington after my family migrated from Ukraine. I developed a strong passion for technology early on. In Spokane, I learned to create modern, creative websites using HTML, CSS, and JavaScript. With Five years of professional experience as a Frontend Developer at a leading tech company, I am now eager to explore new opportunities, and expanding my expertise into backend development.
+            </p>
             <div class="cta-buttons">
                 <a href="#experience" class="btn btn-primary">View My Work</a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -506,16 +559,53 @@
             <h2 class="section-title">Professional Experience</h2>
             <div class="experience-grid">
                 <div class="experience-card">
-                    <h3>Frontend Developer</h3>
-                    <div class="company">AISLabs</div>
-                    <p>Led the development and management of aislabs.com, creating a cutting-edge web presence that showcased AI innovations. Architected and maintained Project Central, a comprehensive application that streamlined project management workflows for the entire organization.</p>
+                    <h3>Web Development using Hugo</h3>
+                    <div class="go-to-site"> 
+                        <a href="https://aislabs.com" target="_blank" class="btn btn-primary">Go To Site</a>
+                    </div>
+                    <div class="company">AIS Marketing Website</div>
+                    <p>Led the development and management of <a href="aislabs.com" class="hyperlink">aislabs.com</a>, redesigning the website from a blog-like site, to a more modern simplistic design that showcased AI innovations. Was responsible for having weekly Q&A's to improve and refine our marketing website and our other project: AIS Project Central.</p>
+                    <q-carousel
+                        swipeable
+                        animated
+                        v-model="slide"
+                        thumbnails
+                        infinite
+                        autoplay
+                        :vertical="isMobile ? false : true"
+                        height="500px"
+                        >
+                        <q-carousel-slide :name="4" img-src="src/assets/images/aislabs/AboutAIS.png" />
+                         <q-carousel-slide :name="2" img-src="src/assets/images/aislabs/ResourcesPage.png" />
+                        <q-carousel-slide :name="3" img-src="src/assets/images/aislabs/UseCases.png" />
+                        <q-carousel-slide :name="1" img-src="src/assets/images/aislabs/HomePageCropped.png" />
+                    </q-carousel>
                 </div>
-                <div class="experience-card">
-                    <h3>Full-Stack Journey</h3>
-                    <div class="company">Current Focus</div>
-                    <p>Actively expanding my skill set into backend development, exploring server-side technologies, databases, and API design. Building upon my solid frontend foundation to become a versatile full-stack developer.</p>
+            <div class="experience-card relative">
+                    <h3>Frontend Vue.js with Backend-collaboration</h3>
+                    <div class="go-to-site"> 
+                        <a href="http://aislabs.com/about-ais/innovation/projectcentral/" target="_blank" class="btn btn-primary">Go To Site</a>
+                    </div>
+
+                    <div class="company">AIS Project Central</div>
+                    <p>Built the frontend UI using Vue.js and Quasar, while collaborating with a Laravel backend developer as we integrated the GraphQL queries and CRUD mutations for Project Central. Unfortunately, this is a private resource, therefore I can only show a preview of Project Central.</p>
+                    <q-carousel
+                        swipeable
+                        animated
+                        v-model="slide"
+                        thumbnails
+                        infinite
+                        autoplay
+                        height="500px"
+                        :vertical="isMobile ? false : true"
+                        >
+                        <q-carousel-slide :name="4" img-src="src/assets/images/project-central/light/SowImplementationsView.png" />
+                         <q-carousel-slide :name="2" img-src="src/assets/images/project-central/light/AdminImplementationOpen.png" />
+                        <q-carousel-slide :name="3" img-src="src/assets/images/project-central/light/CreateAdminGuideline.png" />
+                        <q-carousel-slide :name="1" img-src="src/assets/images/project-central/light/SowBuilderView.png" />
+                    </q-carousel>
                 </div>
-            </div>
+                </div>
         </section>
 
         <section class="skills-section" id="skills">
@@ -558,8 +648,7 @@
 
         <section class="contact-container" id="contact">
         <div class="profile-section">
-            <h1 class="name">Daniel Aleksandrov</h1>
-            <p class="title">Get in touch</p>
+            <p class="name">Get in touch</p>
         </div>
 
         <div class="contact-info">
@@ -581,7 +670,7 @@
                 </svg>
                 <div class="contact-details">
                     <div class="contact-label">Email</div>
-                    <div class="contact-value">
+                    <div class="email-value" >
                         <a href="mailto:daniel.aleksandrov73@gmail.com">daniel.aleksandrov73@gmail.com</a>
                     </div>
                 </div>
@@ -594,7 +683,7 @@
 </template>
 
     <script>
-import { onMounted, defineComponent } from "vue";
+import { onMounted, defineComponent, ref } from "vue";
 
 export default defineComponent({
     name: "MyPortfolio",
@@ -618,6 +707,13 @@ export default defineComponent({
             }
         `;
         document.head.appendChild(style);
+
+        const slide = ref(1);
+
+        return {
+            isMobile: window.innerWidth <= 768,
+            slide,
+        };
     }
 })
     </script>

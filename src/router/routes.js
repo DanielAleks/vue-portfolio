@@ -344,8 +344,14 @@ const routes = [
   },
   {
     path: "",
-    name: "Dashboard",
+    name: "MyPortfolio",
     component: () => import("pages/MyPortfolio.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+    {
+    path: "/nwgroup-car-management",
+    name: "CarRepairManagement",
+    component: () => import("pages/NwgroupCarManagement.vue"),
     beforeEnter: beforeEnterFunction,
   },
 
