@@ -599,7 +599,7 @@
                         height="500px"
                         :vertical="isMobile ? false : true"
                         >
-                        <q-carousel-slide :name="4" img-src="src/assets/images/project-central/light/SowImplementationsView.png" />
+                        <q-carousel-slide :name="4" img-src="https://awsdaleksandrovstorage.s3.us-east-2.amazonaws.com/AboutAIS.png" />
                          <q-carousel-slide :name="2" img-src="src/assets/images/project-central/light/AdminImplementationOpen.png" />
                         <q-carousel-slide :name="3" img-src="src/assets/images/project-central/light/CreateAdminGuideline.png" />
                         <q-carousel-slide :name="1" img-src="src/assets/images/project-central/light/SowBuilderView.png" />
@@ -619,6 +619,7 @@
                     <span class="skill-tag">TypeScript</span>
                     <span class="skill-tag">Vue.js</span>
                     <span class="skill-tag">Quasar</span>
+                    <span class="skill-tag">Cypress</span>
                     <span class="skill-tag">Tailwind</span>
                     <span class="skill-tag">Bootstrap</span>
                     <span class="skill-tag">Hugo</span>
@@ -684,6 +685,8 @@
 
     <script>
 import { onMounted, defineComponent, ref } from "vue";
+// import {AWS} from "aws-sdk"
+// 
 
 export default defineComponent({
     name: "MyPortfolio",
@@ -691,7 +694,15 @@ export default defineComponent({
         onMounted(() => {
             document.getElementById("loading__container").style.display = "none";
         });
-   
+
+        // doesnt work AI
+        // const s3 = new AWS.S3();
+        // const url = s3.getSignedUrl('getObject', {
+        // Bucket: 'awsdaleksandrovstorage',
+        // Key: 'AboutAIS.png',
+        // Expires: 3600 // 1 hour
+        // });
+
         // Add CSS animation for fadeInUp
         const style = document.createElement('style');
         style.textContent = `
