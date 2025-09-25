@@ -306,11 +306,19 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
+            border-radius: 35px;
             padding: 0.8rem 1.5rem;
             color: rgba(255, 255, 255, 0.9);
             transition: all 0.3s ease;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .skill-tag > img {
+            object-fit: contain;
+            height: 40px;
+            width: 40px;
         }
 
         .skill-tag:hover {
@@ -565,7 +573,7 @@
                     </div>
                     <div class="company">AIS Marketing Website</div>
                     <p>Led the development and management of <a href="aislabs.com" class="hyperlink">aislabs.com</a>, redesigning the website from a blog-like site, to a more modern simplistic design that showcased AI innovations. Was responsible for having weekly Q&A's to improve and refine our marketing website and our other project: AIS Project Central.</p>
-                    <q-carousel
+                    <!-- <q-carousel
                         swipeable
                         animated
                         v-model="slide"
@@ -579,7 +587,7 @@
                          <q-carousel-slide :name="2" img-src="src/assets/images/aislabs/ResourcesPage.png" />
                         <q-carousel-slide :name="3" img-src="src/assets/images/aislabs/UseCases.png" />
                         <q-carousel-slide :name="1" img-src="src/assets/images/aislabs/HomePageCropped.png" />
-                    </q-carousel>
+                    </q-carousel> -->
                 </div>
             <div class="experience-card relative">
                     <h3>Frontend Vue.js with Backend-collaboration</h3>
@@ -589,7 +597,7 @@
 
                     <div class="company">AIS Project Central</div>
                     <p>Built the frontend UI using Vue.js and Quasar, while collaborating with a Laravel backend developer as we integrated the GraphQL queries and CRUD mutations for Project Central. Unfortunately, this is a private resource, therefore I can only show a preview of Project Central.</p>
-                    <q-carousel
+                   <!-- <q-carousel
                         swipeable
                         animated
                         v-model="slide"
@@ -603,7 +611,7 @@
                          <q-carousel-slide :name="2" img-src="src/assets/images/project-central/light/AdminImplementationOpen.png" />
                         <q-carousel-slide :name="3" img-src="src/assets/images/project-central/light/CreateAdminGuideline.png" />
                         <q-carousel-slide :name="1" img-src="src/assets/images/project-central/light/SowBuilderView.png" />
-                    </q-carousel>
+                    </q-carousel> -->
                 </div>
                 </div>
         </section>
@@ -613,23 +621,23 @@
                 <h2 class="section-title">Professional IT Skills</h2>
                 <p>Technologies and tools I used in a professional context (with my former employer: AISLabs).</p>
                 <div class="skills-grid">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">TypeScript</span>
-                    <span class="skill-tag">Vue.js</span>
-                    <span class="skill-tag">Quasar</span>
-                    <span class="skill-tag">Cypress</span>
-                    <span class="skill-tag">Tailwind</span>
-                    <span class="skill-tag">Bootstrap</span>
-                    <span class="skill-tag">Hugo</span>
-                    <span class="skill-tag">Scss</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">AWS</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">Laravel</span>
-                    <span class="skill-tag">NPM/Yarn</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/html.png" alt="HTML5" />HTML5</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/css.png" alt="CSS3" />CSS3</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/javaScript.png" alt="JavaScript" />JavaScript</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/typeScript.png" alt="TypeScript" />TypeScript</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/vue.png" alt="Vue.js" />Vue.js</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/quasar.png" alt="Quasar" />Quasar</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/cypress.png" alt="Cypress" />Cypress</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/tailwind.png" alt="Tailwind" />Tailwind</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/bootstrap.png" alt="Bootstrap" />Bootstrap</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/hugo.png" alt="Hugo" />Hugo</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/scss.png" alt="Scss" />Scss</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/git.png" alt="Git" />Git</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/aws.png" alt="AWS" />AWS</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/mongodb.png" alt="MongoDB" />MongoDB</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/php-logo.png" alt="PHP" />PHP</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/laravel.png" alt="Laravel" />Laravel</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/yarn.png" alt="NPM/Yarn" />NPM/Yarn</span>
                 </div>
 
                 <hr style="border: 1px solid rgba(255,255,255,.2); margin-top: 3rem; margin-bottom: 3rem"/>
@@ -637,12 +645,12 @@
                 <h2 class="section-title">Other Technologies</h2>
                 <p>Technologies that I've used in personal projects (outside of my professional work).</p>
                 <div class="skills-grid">
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Angular</span>
-                    <span class="skill-tag">Redux</span>
-                    <span class="skill-tag">Figma</span>
-                    <span class="skill-tag">Google Analytics</span>
-                    <span class="skill-tag">Netlify</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/react.png" alt="React" />React</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/angular.png" alt="Angular" />Angular</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/redux.png" alt="Redux" />Redux</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/figma.png" alt="Figma" />Figma</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/google-analytics.png" alt="Google Analytics" />Google Analytics</span>
+                    <span class="skill-tag"><img src="src/assets/images/icons/netlify.png" alt="Netlify" />Netlify</span>
                 </div>
             </div>
         </section>
