@@ -354,6 +354,18 @@ const routes = [
     component: () => import("pages/NwgroupCarManagement.vue"),
     beforeEnter: beforeEnterFunction,
   },
+  {
+    path: "/business",
+    name: "Business",
+    component: () => import("pages/BusinessIdeas.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/business-development",
+    name: "BusinessDevelopment",
+    component: () => import("pages/BusinessDevelopment.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
 
   // Always leave this as last one,
   // but you can also remove it

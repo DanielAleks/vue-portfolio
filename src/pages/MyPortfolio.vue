@@ -7,10 +7,13 @@
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: #f9f9f9;
+            color: #2b2b2bff;
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        .light-bg {
         }
 
         .background-animation {
@@ -105,7 +108,7 @@
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(46, 46, 46, 0.8);
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
@@ -136,6 +139,7 @@
         }
 
         .hero {
+            margin-top: -6rem;
             padding: 8rem 0;
             text-align: center;
             position: relative;
@@ -160,13 +164,13 @@
         .hero .subtitle {
             font-size: clamp(1.2rem, 3vw, 2rem);
             margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: #2e2e2ee6;
             font-weight: 300;
         }
 
         .hero .description {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: #2e2e2ee6;
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
@@ -178,6 +182,7 @@
             gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-left: 12.5rem;
         }
 
         .btn {
@@ -219,6 +224,11 @@
         .experience-section {
             padding: 6rem 0;
             position: relative;
+            background: #18263eff;
+            width: 100vw;
+            margin-left: -16rem;
+            padding-left: 10vw;
+            padding-right: 10vw;
         }
 
         .section-title {
@@ -226,6 +236,8 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 4rem;
+            width: 100vw;
+            margin-left: -12.5rem;
             background: linear-gradient(135deg, #458af3ff, #789cfdff, #1070ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -240,7 +252,7 @@
         }
 
         .experience-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 129, 227, 0.5);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
@@ -257,7 +269,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(104, 104, 104, 0.5), transparent);
             transition: left 0.5s ease;
         }
 
@@ -303,7 +315,7 @@
         }
 
         .skill-tag {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 123, 255, 0.4);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 35px;
@@ -465,6 +477,14 @@
         .hyperlink:hover {
             color: #77a4f8ff;
         }
+        .header-img {
+            height: 50vh;
+            width: 100vw;
+            margin-top: -7rem;
+            object-fit: cover;
+            margin-left: -15vw;
+            object-position: 10% 10%;
+        }
         @media (orientation: portrait) {
         .contact-container {
             background: white;
@@ -535,7 +555,7 @@
         }
     </style>
     <template>
-    <div class="background-animation"></div>
+    <div class="light-bg"></div>
     <div class="floating-elements" id="floatingElements"></div>
     
     <div class="container">
@@ -549,13 +569,14 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+        <img class="header-img" src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
         </header>
 
+
         <section class="hero" id="home">
-            <h1>Daniel Aleksandrov</h1>
-            <p class="subtitle">Front End Developer</p>
+            <p class="subtitle">Top Tier Web Development</p>
             <p class="description">
-                Born and raised in Spokane, Washington after my family migrated from Ukraine. I developed a strong passion for technology early on. In Spokane, I learned to create modern, creative websites using HTML, CSS, and JavaScript. With Five years of professional experience as a Frontend Developer at a leading tech company, I am now eager to explore new opportunities, and expanding my expertise into backend development.
+                We build great websites, let us know if you need a website. I developed a strong passion for technology early on. In Spokane, I learned to create modern, creative websites using HTML, CSS, and JavaScript. With Five years of professional experience as a Frontend Developer at a leading tech company, I am now eager to explore new opportunities, and expanding my expertise into backend development.
             </p>
             <div class="cta-buttons">
                 <a href="#experience" class="btn btn-primary">View My Work</a>
