@@ -361,6 +361,12 @@ const routes = [
     beforeEnter: beforeEnterFunction,
   },
   {
+    path: "/awr",
+    name: "Authority Window Repair",
+    component: () => import("pages/AuthorityWindowRepair.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
     path: "/business-development",
     name: "BusinessDevelopment",
     component: () => import("pages/BusinessDevelopment.vue"),
