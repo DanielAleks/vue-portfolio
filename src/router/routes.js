@@ -345,7 +345,7 @@ const routes = [
   {
     path: "",
     name: "MyPortfolio",
-    component: () => import("pages/MyPortfolio.vue"),
+    component: () => import("pages/AuthorityWindowRepair.vue"),
     beforeEnter: beforeEnterFunction,
   },
     {

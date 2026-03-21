@@ -9,23 +9,54 @@
   .logo-b { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--lgray); margin-top:-2px; }
   .menu { color:var(--white); background:none; border:none; font-size:22px; cursor:pointer; }
 
-  /* HERO */
-  .hero { position:relative; overflow:hidden; background:var(--bg); min-height:480px; display:flex; flex-direction:column; justify-content:flex-end; }
-  .hero-photo { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80') center/cover; opacity:0.15; }
-  /* fire gradient from bottom */
-  .hero-fire { position:absolute; bottom:0; left:0; right:0; height:300px; background:linear-gradient(to top, rgba(255,107,26,0.3) 0%, transparent 100%); }
-  .hero-vignette { position:absolute; inset:0; background:radial-gradient(ellipse at center top, rgba(30,58,95,0.4) 0%, transparent 60%); }
-  /* floating geometry */
-  .geo1 { position:absolute; top:40px; right:-30px; width:160px; height:160px; border:1px solid rgba(255,107,26,0.15); border-radius:50%; }
-  .geo2 { position:absolute; top:70px; right:0px; width:90px; height:90px; border:1px solid rgba(255,107,26,0.2); border-radius:50%; }
-  .hero-content { position:relative; z-index:4; padding:0 20px 40px; }
-  .hero-sup { font-family:'Exo 2',sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--o); margin-bottom:10px; }
-  .hero h1 { font-family:'Exo 2',sans-serif; font-size:54px; font-weight:900; color:var(--white); line-height:0.92; margin-bottom:10px; letter-spacing:-1px; }
-  .hero h1 span { color:var(--o); }
-  .hero-sub { font-size:13px; color:var(--lgray); line-height:1.7; margin-bottom:20px; max-width:320px; font-weight:400; }
-  .hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,26,0.12); border:1px solid rgba(255,107,26,0.3); border-radius:6px; padding:8px 14px; margin-bottom:28px; }
-  .hero-tag span { font-family:'Exo 2',sans-serif; font-size:12px; font-weight:700; color:var(--o); letter-spacing:0.5px; }
-  .hero-btns { display:flex; flex-direction:column; gap:10px; }
+
+  /* HERO FULL */
+  .hero {
+    position: relative; min-height: 520px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80') center top / cover;
+    filter: brightness(0.35) saturate(0.7);
+  }
+  .hero-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, var(--bg) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2; padding: 0 24px 40px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange); color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 68px; font-weight: 900; text-transform: uppercase;
+    line-height: 0.9; color: var(--white); margin-bottom: 4px;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-sub {
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 24px;
+  }
+  .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .pill {
+    background: rgba(255,255,255,0.08); color: var(--white);
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    padding: 6px 14px; border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .pill.orange { background: var(--orange-glow); border-color: rgba(232,93,4,0.4); color: var(--orange); }
+  .hero-cta { display: flex; flex-direction: column; gap: 10px; }
+
+
   .btn-fire { background:linear-gradient(135deg, var(--o2), var(--o)); color:white; padding:16px; border:none; border-radius:10px; font-family:'Exo 2',sans-serif; font-size:17px; font-weight:800; letter-spacing:1px; text-decoration:none; text-align:center; display:block; cursor:pointer; }
   .btn-ghost { background:rgba(255,255,255,0.06); color:var(--white); padding:14px; border:1px solid rgba(255,255,255,0.12); border-radius:10px; font-family:'Raleway',sans-serif; font-size:14px; font-weight:600; text-decoration:none; text-align:center; display:block; }
 
@@ -89,6 +120,15 @@
   .c-lbl { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#9A8870; font-weight:600; }
   .c-val { font-family:'Exo 2',sans-serif; font-size:14px; font-weight:700; }
 
+  .btn-call {
+    background: var(--orange); color: white;
+    padding: 16px; border: none; border-radius: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+
   footer { background:var(--bg); padding:24px 20px; text-align:center; }
   footer p { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(238,242,247,0.3); margin-bottom:10px; }
   .fl { display:flex; justify-content:center; gap:20px; }
@@ -97,25 +137,29 @@
 <template>
 <header>
   <div>
-    <div class="logo-a">AUTHORITY <span>WIN</span></div>
-    <div class="logo-b">Window &amp; Repair</div>
+    <div class="logo-top">Authority</div>
+    <div class="logo-bot">Window ▪ Repair</div>
   </div>
-  <button class="menu">☰</button>
+  <button class="hamburger">☰</button>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-photo"></div>
-  <div class="hero-fire"></div>
-  <div class="hero-vignette"></div>
-  <div class="geo1"></div><div class="geo2"></div>
+  <div class="hero-img"></div>
+  <div class="hero-grad"></div>
   <div class="hero-content">
-    <div class="hero-sup">Authority Window &amp; Repair</div>
-    <h1>Window<br><span>Repair</span><br>Done Right</h1>
-    <p class="hero-sub">Maximize your home's comfort with reliable, expert solutions for crystal-clear views.</p>
-    <div class="hero-tag"><span>👷 Technician: Daniel Chapurin · 7 Yrs · 4.9★</span></div>
-    <div class="hero-btns">
-      <a class="btn-fire" href="tel:6304735256">📞 Call 630-473-5256</a>
-      <a class="btn-ghost" href="#estimate">Get Free Estimate →</a>
+    <div class="hero-tag">⭐ Window Technician</div>
+    <h1>Daniel<br><em>Chapurin</em></h1>
+    <div class="hero-sub">Authority Window & Repair</div>
+    <div class="hero-pills">
+      <span class="pill orange">7 Yrs Experience</span>
+      <span class="pill">Certified</span>
+      <span class="pill">5-Star Rated</span>
+      <span class="pill">Same-Day Available</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-call" href="tel:6304735256">📞 Call 630-473-5256</a>
+      <a class="btn-ghost" href="#estimate">Request Free Estimate</a>
     </div>
   </div>
 </section>
