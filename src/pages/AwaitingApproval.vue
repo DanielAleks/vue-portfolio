@@ -68,12 +68,6 @@ export default defineComponent({
 </script>
 
 <style>
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-</style>
-
-<style>
 .hover-unblur-expand {
   transition: all 1.5s ease-in-out;
 }

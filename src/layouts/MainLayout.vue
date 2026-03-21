@@ -1777,10 +1777,6 @@ export default defineComponent({
 </script>
 
 <style>
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
 .logo-animation {
   transition: all 0.3s ease-in-out;
   filter: brightness(1.05);
