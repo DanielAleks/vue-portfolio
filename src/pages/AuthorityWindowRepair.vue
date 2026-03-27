@@ -7,10 +7,8 @@
 
   <div
     style="
-      position: fixed;
-      bottom: 3rem;
-      right: 3rem;
-      background: lightgoldenrodyellow;
+    margin-top: 2rem;
+    background: white;
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

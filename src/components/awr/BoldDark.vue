@@ -112,9 +112,9 @@
   }
 
   /* SERVICE CARDS */
-  .svc-grid { display: flex; flex-direction: column; gap: 2px; }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
   .svc-card {
-    background: var(--surface); padding: 20px;
+    background: var(--surface); padding: 1px;
     display: flex; align-items: center; gap: 16px;
     border-left: 3px solid transparent;
     transition: border-color 0.2s, background 0.2s;
@@ -122,7 +122,7 @@
   }
   .svc-card:active { border-left-color: var(--orange); background: var(--surface2); }
   .svc-card-icon {
-    width: 52px; height: 52px; flex-shrink: 0;
+    width: 30px; height: 30px; flex-shrink: 0;
     background: var(--orange-glow);
     border: 1px solid rgba(232,93,4,0.3);
     border-radius: 8px;
@@ -452,7 +452,7 @@
     <div class="svc-card">
       <div class="svc-card-icon">🔧</div>
       <div>
-        <h3>Window Repair</h3>
+        <h4>Window Repair</h4>
         <p>Glass, seals, hardware — fixed same day.</p>
       </div>
       <div class="svc-arrow">›</div>
@@ -460,7 +460,7 @@
     <div class="svc-card">
       <div class="svc-card-icon">🪟</div>
       <div>
-        <h3>Replacement</h3>
+        <h4>Replacement</h4>
         <p>Full replacement, all window types.</p>
       </div>
       <div class="svc-arrow">›</div>
@@ -468,7 +468,7 @@
     <div class="svc-card">
       <div class="svc-card-icon">🚨</div>
       <div>
-        <h3>Emergency Glass</h3>
+        <h4>Emergency Glass</h4>
         <p>Urgent same-day glass replacement.</p>
       </div>
       <div class="svc-arrow">›</div>
@@ -476,7 +476,7 @@
     <div class="svc-card">
       <div class="svc-card-icon">❄️</div>
       <div>
-        <h3>Energy Upgrade</h3>
+        <h4>Energy Upgrade</h4>
         <p>Double-pane, low-E, weatherstripping.</p>
       </div>
       <div class="svc-arrow">›</div>

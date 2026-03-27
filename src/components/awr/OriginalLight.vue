@@ -70,8 +70,6 @@ header {
 .hero {
   background: var(--brown);
   position: relative;
-  overflow: hidden;
-  padding: 48px 24px 56px;
   text-align: center;
 }
 .hero::before {
@@ -487,15 +485,15 @@ footer p {
  
   /* HERO */
   .hero{position:relative;overflow:hidden;}
-  .hero-img{height:300px;position:relative;}
+  .hero-img{height:75vh;position:relative; width: 100%}
   .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80')center/cover;filter:brightness(.28) saturate(.8);}
   .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,17,10,.4) 0%,rgba(24,17,10,.92) 100%);}
-  .hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+  .hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;padding:24px; margin-top: 2rem}
   .hero-pre{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(250,240,230,.6);margin-bottom:8px;font-weight:600;}
   .hero h1{font-family:'Montserrat',sans-serif;font-size:34px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:6px;}
   .hero h1 mark{background:none;color:var(--o);}
   /* OVERLAP CARD */
-  .overlap-card{position:relative;z-index:5;margin:-36px 16px 0;background:var(--white);border-radius:18px;padding:24px 20px;box-shadow:0 14px 48px rgba(24,17,10,.14);border-top:3px solid var(--o);}
+  .overlap-card{position:relative;z-index:5;margin:-40vh 16px 3rem;background:var(--white);border-radius:18px;padding:24px 20px;box-shadow:0 14px 48px rgba(24,17,10,.14);border-top:3px solid var(--o);}
   .tech-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--cream2);}
   .tech-dot{width:10px;height:10px;background:var(--o);border-radius:50%;flex-shrink:0;}
   .tech-name{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;}
@@ -594,7 +592,7 @@ footer p {
  <header>
   <div class="logo-wrap">
     <div class="logo-badge"><span>A</span></div>
-    <div><div class="logo-name">Authority</div><div class="logo-sub">Window &amp; Repair</div></div>
+    <div><div class="logo-name">Authority</div><div class="logo-sub">Window Repair</div></div>
   </div>
   <button class="menu">☰</button>
 </header>

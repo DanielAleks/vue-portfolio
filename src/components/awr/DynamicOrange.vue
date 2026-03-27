@@ -10,6 +10,11 @@
   .menu { color:var(--white); background:none; border:none; font-size:22px; cursor:pointer; }
 
 
+  .logo-bot, .logo-top {
+    color: #dddddd;
+    font-weight: 700;
+    font-style: italic;
+  }
   /* HERO FULL */
   .hero {
     position: relative; min-height: 520px;
@@ -44,7 +49,7 @@
   .hero h1 em { color: var(--orange); font-style: normal; }
   .hero-sub {
     font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gray); margin-bottom: 24px;
+    color: lightgrey; margin-bottom: 24px;
   }
   .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
   .pill {
@@ -53,7 +58,7 @@
     padding: 6px 14px; border-radius: 100px;
     border: 1px solid rgba(255,255,255,0.12);
   }
-  .pill.orange { background: var(--orange-glow); border-color: rgba(232,93,4,0.4); color: var(--orange); }
+  .pill.orange { background: var(--orange-glow); border-color: rgba(232,93,4,0.4); color: orange; }
   .hero-cta { display: flex; flex-direction: column; gap: 10px; }
 
 
@@ -137,8 +142,7 @@
 <template>
 <header>
   <div>
-    <div class="logo-top">Authority</div>
-    <div class="logo-bot">Window ▪ Repair</div>
+    <div class="logo-bot">Authority Window Repair</div>
   </div>
   <button class="hamburger">☰</button>
 </header>
