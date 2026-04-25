@@ -276,7 +276,7 @@
   .svc-card p{font-size:12px;color:#7A6A58;line-height:1.5;}
  
   /* ── BEFORE / AFTER SLIDER ── */
-  .ba-section{background:var(--surf); padding-top: 5rem; padding-bottom: 5rem; padding-left: 1rem; padding-right: 1rem}
+  .ba-section{background:var(--surf); padding-top: 5rem; padding-bottom: 5rem}
   .ba-section .sec-tag{color:var(--o);}
   .ba-section .sec-title{color:var(--white);}
   .ba-section .sec-title span{color:var(--o);}
@@ -502,7 +502,7 @@
     <div class="fg"><label>Your Name</label><input type="text" placeholder="John Smith"></div>
     <div class="fg"><label>Phone Number</label><input type="tel" placeholder="(630) 000-0000"></div>
     <div class="fg"><label>Service Needed</label>
-      <select ><option value="">Select a service...</option><option>Window Repair</option><option>Window Replacement</option><option>Emergency Glass</option><option>Energy Upgrade</option></select>
+      <select style="color: darkslategrey" ><option value="">Select a service...</option><option>Window Repair</option><option>Window Replacement</option><option>Emergency Glass</option><option>Energy Upgrade</option></select>
     </div>
     <div class="fg"><label>Details</label><textarea placeholder="Number of windows, issue description, any urgency..."></textarea></div>
     <button class="btn-sub" onclick="alert('Request sent! Daniel will contact you shortly.')">Submit Request →</button>
