@@ -86,6 +86,7 @@ const routes = [
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
+  
       {
         path: "projects",
         name: "ProjectOverview",
@@ -370,6 +371,13 @@ const routes = [
     path: "/business-development",
     name: "BusinessDevelopment",
     component: () => import("pages/BusinessDevelopment.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/washington-electrical",
+    name: "WashingtonElectrical",
+    component: () => import("src/pages/WashingtonElectrical.vue"),
+    meta: { layout: ListLayout },
     beforeEnter: beforeEnterFunction,
   },
 
