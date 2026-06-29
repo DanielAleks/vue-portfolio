@@ -312,6 +312,7 @@ h1 em {
   font-size: 12px;
   color: #6b7a8d;
   line-height: 1.5;
+  margin-bottom: .5rem;
 }
 .process {
   padding: 52px 36px;
@@ -433,31 +434,12 @@ h1 em {
   font-size: 12px;
   font-weight: 600;
 }
-.faq {
-  padding: 52px 36px;
-  background: #fff;
-}
-.faq-list {
-  margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.faq-item {
-  border-bottom: 1px solid #e8ecf0;
-  padding: 18px 0;
-}
-.faq-q {
-  font-size: 14px;
-  font-weight: 700;
-  color: #0d1f3c;
-  margin-bottom: 6px;
-}
-.faq-a {
-  font-size: 13px;
-  color: #6b7a8d;
-  line-height: 1.6;
-}
+
+.faq{padding:60px 44px;border-bottom:1px solid #1a1a1a;}
+.faq-list{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:28px;}
+.faq-item{border-bottom:1px solid #111;padding:16px 0;}
+.faq-q{font-size:13px;font-weight:700;margin-bottom:5px;}
+.faq-a{font-size:12px;color:#555;line-height:1.7;}
 .final-cta {
   background: #1a6be0;
   padding: 48px 36px;
@@ -522,6 +504,26 @@ footer {
   padding: 4px 10px;
   border-radius: 3px;
 }
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.svc{background:#fff;padding:20px;border:1px solid #d0c8b8;}
+/* .svc-price{font-family:'Helvetica Neue',sans-serif;display:inline-block;background:#eaf3de;color:#3b6d11;font-size:10px;font-weight:700;padding:3px 10px;margin-bottom:8px;} */
+.svc-t{font-size:14px;font-weight:700;color:#1a2310;margin-bottom:5px;}
+.svc-d{font-family:'Helvetica Neue',sans-serif;font-size:12px;color:#5a6a4a;line-height:1.5;}
+.round-blue-btn {
+  background: #1A6BE0;
+  color: white;
+  padding: 0.25rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border: none;
+  border-radius: 100px;
+}
+.round-blue-btn:hover {
+  background: #458bee;
+  scale: 1.01;
+  /* background: #1A6BE0; */
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .hero,
   .wu-grid,
@@ -547,13 +549,6 @@ footer {
 }
 </style>
 <template>
-  <nav>
-    <div class="logo">Washington <span>Electrical</span></div>
-    <div class="nav-links">
-      <span>Services</span><span>Areas</span><span>About</span><span>Blog</span>
-    </div>
-    <div class="nav-phone">(253) 234-5359</div>
-  </nav>
 
   <div class="hero">
     <div>
@@ -564,7 +559,7 @@ footer {
         treat every home like our own — clean work, honest pricing, done right.
       </p>
       <div class="ctas">
-        <button class="btn-p">Get a Free Quote</button>
+        <button class="btn-p" style="border-radius: 100px">Get a Free Quote</button>
         <button class="btn-s">Call (253) 234-5359</button>
       </div>
       <div class="trust-row">
@@ -705,44 +700,56 @@ footer {
           Level 2 home charging. Fully permitted and inspected. We handle the
           panel too.
         </div>
+          <button class="round-blue-btn" style="margin-top: .5rem;"><p>Learn More</p></button>
       </div>
       <div class="svc">
+        <div class="svc-price">From $4000</div>
         <div class="svc-t">Panel Upgrades</div>
         <div class="svc-d">
           Full service upgrades, Zinsco and Federal Pacific replacements, SPAN
           smart panels.
         </div>
+          <button class="round-blue-btn" style="margin-top: .5rem;"><p>Learn More</p></button>
       </div>
       <div class="svc">
+        <div class="svc-price">From $1200</div>
         <div class="svc-t">Wiring Upgrades</div>
         <div class="svc-d">
           Knob-and-tube removal with minimal drywall disruption. Modern, safe
           systems.
         </div>
+          <button class="round-blue-btn" style="margin-top: .5rem;"><p>Learn More</p></button>
       </div>
       <div class="svc">
+        <div class="svc-price">From $399</div>
         <div class="svc-t">Lighting Upgrades</div>
         <div class="svc-d">
           Recessed cans, custom fixture installs, high-ceiling work — done
           cleanly.
         </div>
+          <button class="round-blue-btn" style="margin-top: .5rem;"><p>Learn More</p></button>
       </div>
       <div class="svc">
+        <div class="svc-price">From $199</div>
         <div class="svc-t">Outlet Install</div>
         <div class="svc-d">
           Sparking outlets, loose plugs, tripping breakers — quick diagnosis and
           fix.
         </div>
+          <button class="round-blue-btn" style="margin-top: .5rem;"><p>Learn More</p></button>
       </div>
       <div class="svc">
+        <div class="svc-price">$150 per hour / $200 first hour </div>
         <div class="svc-t">Service Call</div>
         <div class="svc-d">
           Electrical diagnostic starting at a flat fee. We find it and fix it
           right.
         </div>
+          <button class="round-blue-btn" style="margin-top: .5rem;"><p>Learn More</p></button>
       </div>
     </div>
   </div>
+
 
   <div class="process">
     <div class="sec-kicker">How it works</div>
@@ -777,65 +784,6 @@ footer {
     </div>
   </div>
 
-  <div class="reviews">
-    <div class="sec-kicker">Customer reviews</div>
-    <div class="sec-h">What our neighbors are saying</div>
-    <div class="rev-grid">
-      <div class="rev">
-        <div class="rev-top">
-          <div class="av" style="background: #1a6be0">DG</div>
-          <div>
-            <div class="rev-name">Damon Graves · 3 months ago</div>
-            <div class="rev-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="rev-body">
-          "Very happy with the work done by the crew. Russ had a quote for me
-          the day after his initial visit — great communication throughout."
-        </div>
-      </div>
-      <div class="rev">
-        <div class="rev-top">
-          <div class="av" style="background: #16a34a">JC</div>
-          <div>
-            <div class="rev-name">John Curthoys · 4 months ago</div>
-            <div class="rev-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="rev-body">
-          "Thorough in their investigation and communicated our options clearly.
-          Did great work and cleaned up after themselves."
-        </div>
-      </div>
-      <div class="rev">
-        <div class="rev-top">
-          <div class="av" style="background: #9333ea">KS</div>
-          <div>
-            <div class="rev-name">Kent Stevenson · 5 months ago</div>
-            <div class="rev-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="rev-body">
-          "Very professional, knowledgeable, and clean. Great personality —
-          would recommend Washington Electrical to anyone."
-        </div>
-      </div>
-      <div class="rev">
-        <div class="rev-top">
-          <div class="av" style="background: #dc2626">MB</div>
-          <div>
-            <div class="rev-name">Mark Bishop · 4 months ago</div>
-            <div class="rev-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="rev-body">
-          "Fast, friendly, and fair. Had my panel upgraded without any hassle.
-          The team was in and out and left everything tidy."
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="areas">
     <div class="sec-kicker">Service area</div>
     <div class="sec-h">We come to you across the South Sound</div>
@@ -858,51 +806,18 @@ footer {
     </div>
   </div>
 
-  <div class="faq">
-    <div class="sec-kicker">Common questions</div>
-    <div class="sec-h">Things people ask us</div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">How much does a panel upgrade cost?</div>
-        <div class="faq-a">
-          Panel upgrades vary depending on the size and condition of your
-          current setup. We provide a written estimate before any work begins —
-          no surprises.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do you pull permits?</div>
-        <div class="faq-a">
-          Yes, always. We pull all required permits and schedule inspections. It
-          protects your home and ensures the work is done to code.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">How long does a wiring upgrade take?</div>
-        <div class="faq-a">
-          Most wiring upgrades take 1–3 days depending on the size of the home.
-          We work cleanly and minimize disruption to your daily routine.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">
-          Can you install a Level 2 EV charger in my garage?
-        </div>
-        <div class="faq-a">
-          Yes — EV charger installations start at $799 and include everything
-          from wiring to permitting. We'll check your panel capacity first and
-          handle any upgrades needed.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do you offer discounts?</div>
-        <div class="faq-a">
-          Yes — we offer senior and military discounts. Just mention it when you
-          reach out and we'll apply it to your estimate.
-        </div>
-      </div>
-    </div>
+<div class="faq">
+  <div class="sec-label">FAQ</div>
+  <div class="sec-h">Common questions</div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q">AAAHow much does a panel upgrade cost?</div><div class="faq-a">Depends on your setup. We provide a written estimate before any work — no surprises.</div></div>
+    <div class="faq-item"><div class="faq-q">Do you pull permits?</div><div class="faq-a">Yes, always. Permits protect your home and are required for insurance and resale.</div></div>
+    <div class="faq-item"><div class="faq-q">How long does wiring work take?</div><div class="faq-a">Usually 1–3 days. We minimize drywall damage and disruption throughout.</div></div>
+    <div class="faq-item"><div class="faq-q">Can you install an EV charger if my panel is full?</div><div class="faq-a">Yes — we check capacity first and can upgrade the panel as part of the same job.</div></div>
+    <div class="faq-item"><div class="faq-q">Do you offer senior or military discounts?</div><div class="faq-a">Yes — just mention it when you call or submit our form.</div></div>
+    <div class="faq-item"><div class="faq-q">What areas do you cover?</div><div class="faq-a">Fife, Tacoma, Federal Way, and the broader South Sound region.</div></div>
   </div>
+</div>
 
   <div class="final-cta">
     <div class="fc-left">

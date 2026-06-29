@@ -1,4 +1,5 @@
 <style lang="scss" scoped>
+
 .layout-btn-container {
   // display: grid;
   // grid-template-columns: repeat(3, 1fr);
@@ -7,6 +8,11 @@
 .layout-container {
   // mobile first to desktop second approach
   padding-top: 100px; /* Adjust this value based on your navbar height */
+}
+.top-banner {
+  width: 100%;
+  height: 80vh;
+  margin-top: 5rem;
 }
 @media (min-width: 600px) {
   .layout-btn-container {
@@ -49,7 +55,7 @@
     />
     <q-btn
       label="Neighborhood Trust"
-      color="primary"
+      color="grey-5"
       :flat="layoutType === 'NeighborhoodTrust' ? false : true"
       @click="changeLayout('NeighborhoodTrust')"
       no-caps
@@ -59,7 +65,7 @@
     />
     <q-btn
       label="Modern Minimal"
-      color="primary"
+      color="grey-5"
       :flat="layoutType === 'ModernMinimal' ? false : true"
       @click="changeLayout('ModernMinimal')"
       no-caps
@@ -69,7 +75,7 @@
     />
     <q-btn
       label="Pacific NW"
-      color="primary"
+      color="grey-5"
       :flat="layoutType === 'PacificNW' ? false : true"
       @click="changeLayout('PacificNW')"
       no-caps
@@ -79,7 +85,7 @@
     />
     <q-btn
       label="Neon Night"
-      color="primary"
+      color="grey-5"
       :flat="layoutType === 'NeonNight' ? false : true"
       @click="changeLayout('NeonNight')"
       no-caps
@@ -89,7 +95,7 @@
     />
     <q-btn
       label="Stark Contrast"
-      color="primary"
+      color="grey-5"
       :flat="layoutType === 'StarkContrast' ? false : true"
       @click="changeLayout('StarkContrast')"
       no-caps
@@ -98,6 +104,8 @@
       class="q-mx-md q-px-md"
     />
   </div>
+
+  <img :src="TopBannerImg" class="top-banner" />
 
   <div class="layout-container">
     <!-- displays which layout is being used -->
@@ -118,6 +126,7 @@ import ModernMinimal from "src/layouts/ModernMinimal.vue";
 import PacificNW from "src/layouts/PacificNW.vue";
 import StarkContrast from "src/layouts/StarkContrast.vue";
 import NeighborhoodTrust from "src/layouts/NeighborhoodTrust.vue";
+import TopBannerImg from "src/assets/images/washington-electrical/we-top-banner-with-nav.png";
 
 export default {
   name: "WashingtonElectrical",
@@ -155,6 +164,7 @@ export default {
     return {
       layoutType,
       changeLayout,
+    TopBannerImg,
     };
   },
 };
