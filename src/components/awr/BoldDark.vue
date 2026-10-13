@@ -80,7 +80,7 @@
   .stats {
     display: grid; grid-template-columns: repeat(3, 1fr);
     background: var(--surface);
-    border-top: 2px solid var(--orange);
+    border-top: 5px solid #F7601C;
   }
   .stat { padding: 20px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.06); }
   .stat:last-child { border-right: none; }
@@ -224,16 +224,46 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Raleway',sans-serif;background:var(--cream);color:#1A1208; margin:0 auto;overflow-x:hidden}
  
-  /* ── HEADER ── */
-  header{background:var(--bg);padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);}
-  .logo-a{font-family:'Exo 2',sans-serif;font-size:17px;font-weight:900;color:var(--white);letter-spacing:.5px;}
-  .logo-a span{color:var(--o);}
-  .logo-b{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);margin-top:-3px;}
-  .menu{color:var(--white);background:none;border:none;font-size:22px;cursor:pointer;}
+  /* ── NAVBAR SHARED ── */
+  .top-nav{position:absolute;top:0;z-index:140;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;}
+  .brand-wrap{text-decoration:none;display:flex;flex-direction:column;gap:2px;line-height:1;}
+  .nav-main{display:none;align-items:center;gap:34px; justify-content:space-between}
+  .nav-item{font-family:'Raleway',sans-serif;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap;}
+  .nav-item-dd{display:flex;align-items:center;gap:8px;}
+  .nav-item-dd .chev{font-size:13px;opacity:.9;transform:translateY(-1px);}
+  .estimate-btn{display:none; margin-left: 5rem; text-decoration:none;font-family:'Exo 2',sans-serif;font-size:18px;font-weight:700;letter-spacing:.2px;padding:12px 24px;border-radius:999px;line-height:1;}
+  .nav-toggle{background:none;border:none;font-size:28px;line-height:1;cursor:pointer;}
+
+  /* ── IMAGE-1 NAVBAR CSS (saved existing) ── */
+  .top-nav.image-1{background:rgba(30,20,12,.78);backdrop-filter:blur(5px);border-bottom:1px solid rgba(255,255,255,.08);}
+  .top-nav.image-1 .brand-top{font-family:'Exo 2',sans-serif;font-size:31px;font-weight:800;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px var(--o);text-transform:uppercase;}
+  .top-nav.image-1 .brand-bot{display:inline-block;width:max-content;background:var(--o);color:#0f0f0f;font-family:'Exo 2',sans-serif;font-size:28px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:3px 10px 4px;border-radius:2px;}
+  .top-nav.image-1 .nav-item{color:var(--white);}
+  .top-nav.image-1 .nav-item:hover{color:#FFE1CB;}
+  .top-nav.image-1 .estimate-btn{background:var(--o);color:white;box-shadow:0 6px 22px rgba(255,107,26,.3);}
+  .top-nav.image-1 .estimate-btn:hover{background:#ff7a2f;}
+  .top-nav.image-1 .nav-toggle{color:var(--white);}
+
+  /* ── IMAGE-2 NAVBAR CSS (new) ── */
+  .top-nav.image-2{background:transparent;backdrop-filter:none;border-bottom:none;box-shadow:none;}
+  .top-nav.image-2 .brand-top{font-family:'Exo 2',sans-serif;font-size:18px;font-weight:800;letter-spacing:3px;color:transparent;-webkit-text-stroke:1px #ff7d2f;text-transform:uppercase;text-shadow:none;}
+  .top-nav.image-2 .brand-bot{display:inline-block;width:max-content;background:transparent;color:#ff8c40;font-family:'Exo 2',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:0;border-radius:0;}
+  .top-nav.image-2 .nav-item{color:#f8f9fb;}
+  .top-nav.image-2 .nav-item:hover{color:#ffd4b2;}
+  .top-nav.image-2 .estimate-btn{background:#F8621C;color:#fff;border:1px solid rgba(255,140,64,.6);box-shadow:none;}
+  .top-nav.image-2 .estimate-btn:hover{background:rgba(255,140,64,.12);}
+  .top-nav.image-2 .nav-toggle{color:#f8f9fb;}
+
+  @media (min-width: 1100px){
+    .top-nav{padding:14px 20px;}
+    .nav-main{display:flex;}
+    .estimate-btn{display:inline-flex;align-items:center;justify-content:center;}
+    .nav-toggle{display:none;}
+  }
  
   /* ── HERO ── */
   .hero{position:relative;background:var(--bg);overflow:hidden;min-height:500px;display:flex;flex-direction:column;justify-content:flex-end;}
-  .hero-photo{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80')center/cover;opacity:.18;}
+  .hero-photo{position:absolute;inset:0;background:url('/src/assets/images/awr/old-wooden-window.jpg')center/cover;opacity:.18;transform:rotate(180deg);transform-origin:center;}
   .hero-fire{position:absolute;bottom:0;left:0;right:0;height:320px;background:linear-gradient(to top,rgba(232,74,0,.35) 0%,transparent 100%);}
   .hero-top-glow{position:absolute;top:-80px;left:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,107,26,.12),transparent 65%);}
   /* animated particles */
@@ -346,12 +376,23 @@
 <template>
 
 <div>
-<header>
-  <div>
-    <div class="logo-a">AUTHORITY <span>WIN</span></div>
-    <div class="logo-b">Window &amp; Repair</div>
-  </div>
-  <button class="menu">☰</button>
+<header class="top-nav image-2">
+  <a class="brand-wrap" href="#" style="margin-right: 3rem">
+    <span class="brand-top">Authority</span>
+    <span class="brand-bot">Window ▪ Repair</span>
+  </a>
+
+  <nav class="nav-main" aria-label="Primary navigation">
+    <a class="nav-item" href="#">Home</a>
+    <a class="nav-item" href="#">Services</a>
+    <a class="nav-item nav-item-dd" href="#"><span>Window Repair</span><span class="chev">▾</span></a>
+    <a class="nav-item" href="#">Window Installation</a>
+    <a class="nav-item" href="#">Window Replacement</a>
+    <a class="nav-item" href="#">Contact</a>
+  </nav>
+
+  <a class="estimate-btn" href="#estimate">Get Estimate</a>
+  <button class="nav-toggle" aria-label="Open navigation">☰</button>
 </header>
  
 <!-- HERO -->
@@ -363,11 +404,11 @@
     <div class="spark"></div><div class="spark"></div><div class="spark"></div>
     <div class="spark"></div><div class="spark"></div>
   </div>
-  <div class="hero-inner">
+  <div class="hero-inner" style="margin-top: 5rem;">
     <div class="hero-sup">Authority Window &amp; Repair</div>
-    <h1 style="line-height: 4rem">Window<br><span>Repair</span> Done Right</h1>
+    <h1 style="line-height: 4rem">Don't Throw your <i>Window</i> Out the Window!</h1>
     <p class="hero-sub">Maximize your home's comfort with reliable, expert solutions for crystal-clear views.</p>
-    <div class="hero-btns">
+    <div class="hero-btns" style="margin-bottom: 5rem">
       <a class="btn-fire" href="tel:6304735256">📞 Call 630-473-5256</a>
       <a class="btn-ghost" href="#estimate">Get Free Estimate →</a>
     </div>
@@ -376,14 +417,14 @@
  
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-n">7+</div><div class="stat-l">Years Exp</div></div>
+  <!-- <div class="stat"><div class="stat-n">7+</div><div class="stat-l">Years Exp</div></div>
   <div class="stat"><div class="stat-n">850+</div><div class="stat-l">Jobs Done</div></div>
-  <div class="stat"><div class="stat-n">4.9★</div><div class="stat-l">Rated</div></div>
+  <div class="stat"><div class="stat-n">4.9★</div><div class="stat-l">Rated</div></div> -->
 </div>
  
 <!-- QUOTE -->
-<div class="quote-section padding-15">
-  <blockquote>"The job isn't done until the customer is completely satisfied — every time."</blockquote>
+<div class="quote-section" style="padding-left: 30vw; padding-right: 30vw">
+  <blockquote>We finish the job when your windows are clear, sealed, and working exactly as they should.</blockquote>
   <cite>Start with Authority Window &amp; Repair</cite>
 </div>
 

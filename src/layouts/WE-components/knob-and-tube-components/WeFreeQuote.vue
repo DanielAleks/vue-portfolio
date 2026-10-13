@@ -59,7 +59,7 @@ export default {
 }
 
 .quote-card {
-    width: min(900px, 100%);
+    width: min(900px, 50%);
     background: #ffffff;
     border-radius: 1.3rem;
     box-shadow: 0 20px 50px rgba(18, 51, 77, 0.18);
@@ -79,7 +79,7 @@ export default {
 
 .quote-subtitle {
     margin: 0.75rem auto 1.55rem;
-    max-width: 44rem;
+    max-width: 30rem;
     text-align: center;
     color: #5e7892;
     font-family: "Nunito Sans", "Segoe UI", sans-serif;
@@ -88,6 +88,8 @@ export default {
 }
 
 .quote-progress-row {
+    width: 90%;
+    margin-left: 5%;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -120,15 +122,15 @@ export default {
 }
 
 .quote-input {
-    width: 100%;
-    height: 4.1rem;
+    margin-left: 5%;
+    width: 90%;
+    height: 3rem;
     border: 1.5px solid #c8d5e2;
     border-radius: 0.65rem;
-    padding: 0 1.05rem;
     text-align: center;
     color: #2d4c66;
     font-family: "Nunito Sans", "Segoe UI", sans-serif;
-    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-size: clamp(1.2rem, 2vw, 1rem);
     letter-spacing: 0.18em;
     outline: none;
 }
@@ -144,7 +146,8 @@ export default {
 
 .quote-continue {
     margin-top: 1rem;
-    width: 100%;
+    margin-left: 5%;
+    width: 90%;
     height: 3.55rem;
     border: 0;
     border-radius: 999px;

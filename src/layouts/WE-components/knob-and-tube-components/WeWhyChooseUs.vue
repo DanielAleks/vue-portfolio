@@ -12,7 +12,7 @@
 				<article v-for="item in benefits" :key="item" class="we-why__card">
 					<span class="we-why__icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<circle cx="10" cy="10" r="10" fill="currentColor" />
+							<circle cx="10" cy="10" r="10" fill="#153f60" />
 							<path d="M6.1 10.4 8.6 13l5.3-5.7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>
 					</span>
@@ -34,8 +34,8 @@ export default {
 				'No Pressure Quotes',
 				'Upfront, Honest Pricing',
 				'Local & Trusted in the South Sound',
-				'Clean, Code Compliant Installs',
-				'Fast, Flexible Scheduling'
+				'Fast, Flexible Scheduling',
+				'Clean and Code Compliant Installs'
 			]
 		}
 	}
@@ -58,7 +58,7 @@ export default {
 	text-align: center;
 	color: #0f3a5b;
 	font-family: "Archivo Black", "Arial Black", sans-serif;
-	font-size: clamp(2rem, 4.2vw, 3.7rem);
+	font-size: clamp(2rem, 4.2vw, 2rem);
 	line-height: 1.05;
 }
 
@@ -68,7 +68,7 @@ export default {
 	text-align: center;
 	color: #4f6e8a;
 	font-family: "Nunito Sans", "Segoe UI", sans-serif;
-	font-size: clamp(1rem, 2.1vw, 1.9rem);
+	font-size: clamp(1rem, 2.1vw, 1.2rem);
 	line-height: 1.34;
 }
 
@@ -81,12 +81,17 @@ export default {
 .we-why__card {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.8rem;
 	min-height: 4.65rem;
 	padding: 0.85rem 1rem;
 	border: 1px solid #d2dbe4;
 	border-radius: 0.7rem;
 	background: #f8fbfe;
+}
+
+.we-why__card:nth-child(7) {
+	grid-column: 1 / -1;
 }
 
 .we-why__icon {
@@ -98,7 +103,6 @@ export default {
 
 .we-why__icon svg {
 	width: 100%;
-	height: 100%;
 	display: block;
 }
 
@@ -106,7 +110,7 @@ export default {
 	margin: 0;
 	color: #0f3a5b;
 	font-family: "Nunito Sans", "Segoe UI", sans-serif;
-	font-size: clamp(1.1rem, 2.2vw, 2rem);
+	font-size: clamp(1.1rem, 2.2vw, 1.3rem);
 	font-weight: 700;
 	line-height: 1.2;
 }

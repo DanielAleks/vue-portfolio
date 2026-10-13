@@ -554,18 +554,12 @@ footer {
     
     <div>
       <!-- <WEHeader/> -->
-      <FreeQuoteForm/>
+      <!-- <FreeQuoteForm/> -->
       <!-- <WhyChooseUs/> -->
       <!-- <SatisfactionGuaranteed/> -->
     </div>
 
     <div>
-      <div class="badge">✓ Licensed · Bonded · Insured · WASHIEL776C3</div>
-      <h1>Trusted <em>electricians</em><br />in Fife, WA</h1>
-      <p class="sub">
-        Family-owned electrical company serving the South Sound since 2023. We
-        treat every home like our own — clean work, honest pricing, done right.
-      </p>
       <div class="ctas">
         <button class="btn-p" style="border-radius: 100px">Get a Free Quote</button>
         <button class="btn-s">Call (253) 234-5359</button>
@@ -609,90 +603,6 @@ footer {
       <div class="rating-row">
         <span class="stars-big">★★★★★</span>
         <span class="rating-text">5.0 · 47 Google reviews</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="stats-container">
-    <div class="sp-inner">
-      <div class="sp-stat">
-        <div class="sp-num">5.0★</div>
-        <div class="sp-lab">Google rating</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-stat">
-        <div class="sp-num">$799</div>
-        <div class="sp-lab">EV chargers from</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-stat">
-        <div class="sp-num">24H</div>
-        <div class="sp-lab">Mon–Sat service</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-stat">
-        <div class="sp-num">BBB</div>
-        <div class="sp-lab">Accredited business</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-stat">
-        <div class="sp-num">0</div>
-        <div class="sp-lab">Shortcuts taken</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="why-us">
-    <div class="sec-kicker">Why choose us</div>
-    <div class="sec-h">The Washington Electrical difference</div>
-    <div class="wu-grid">
-      <div class="wu-card">
-        <div class="wu-icon">🏠</div>
-        <div class="wu-t">We treat your home with respect</div>
-        <div class="wu-d">
-          Minimal drywall damage on every wiring job. We protect your space and
-          clean up when we're done.
-        </div>
-      </div>
-      <div class="wu-card">
-        <div class="wu-icon">📋</div>
-        <div class="wu-t">Quote before we start — always</div>
-        <div class="wu-d">
-          Transparent pricing, no surprises. You approve everything before we
-          pick up a tool.
-        </div>
-      </div>
-      <div class="wu-card">
-        <div class="wu-icon">✅</div>
-        <div class="wu-t">Code-compliant, permit-pulled</div>
-        <div class="wu-d">
-          Every job is fully permitted and inspected. Your home stays safe and
-          insurable.
-        </div>
-      </div>
-      <div class="wu-card">
-        <div class="wu-icon">👨‍👩‍👦</div>
-        <div class="wu-t">Family-owned, locally operated</div>
-        <div class="wu-d">
-          We're your neighbors in Fife. Our reputation is built one home at a
-          time.
-        </div>
-      </div>
-      <div class="wu-card">
-        <div class="wu-icon">⚡</div>
-        <div class="wu-t">Same-day response</div>
-        <div class="wu-d">
-          Call or text and we'll have a quote to you the same day. Mon–Sat, 24
-          hours.
-        </div>
-      </div>
-      <div class="wu-card">
-        <div class="wu-icon">🎖️</div>
-        <div class="wu-t">Senior and military discounts</div>
-        <div class="wu-d">
-          We're proud to serve those who've served. Discounts available — just
-          mention it when you call.
-        </div>
       </div>
     </div>
   </div>
@@ -759,7 +669,7 @@ footer {
   </div>
 
 
-  <div class="process">
+  <!-- <div class="process">
     <div class="sec-kicker">How it works</div>
     <div class="sec-h">From call to complete in 3 steps</div>
     <div class="steps">
@@ -790,76 +700,11 @@ footer {
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="areas">
-    <div class="sec-kicker">Service area</div>
-    <div class="sec-h">We come to you across the South Sound</div>
-    <div class="area-tags">
-      <div class="area-tag">Fife</div>
-      <div class="area-tag">Tacoma</div>
-      <div class="area-tag">Federal Way</div>
-      <div class="area-tag">Auburn</div>
-      <div class="area-tag">Puyallup</div>
-      <div class="area-tag">Lakewood</div>
-      <div class="area-tag">Gig Harbor</div>
-      <div class="area-tag">Kent</div>
-      <div class="area-tag">Renton</div>
-      <div class="area-tag">SeaTac</div>
-      <div class="area-tag">Sumner</div>
-      <div class="area-tag">Bonney Lake</div>
-      <div class="area-tag">University Place</div>
-      <div class="area-tag">DuPont</div>
-      <div class="area-tag">Burien</div>
-    </div>
-  </div>
-
-<div class="faq">
-  <div class="sec-label">FAQ</div>
-  <div class="sec-h">Common questions</div>
-  <div class="faq-list">
-    <div class="faq-item"><div class="faq-q">AAAHow much does a panel upgrade cost?</div><div class="faq-a">Depends on your setup. We provide a written estimate before any work — no surprises.</div></div>
-    <div class="faq-item"><div class="faq-q">Do you pull permits?</div><div class="faq-a">Yes, always. Permits protect your home and are required for insurance and resale.</div></div>
-    <div class="faq-item"><div class="faq-q">How long does wiring work take?</div><div class="faq-a">Usually 1–3 days. We minimize drywall damage and disruption throughout.</div></div>
-    <div class="faq-item"><div class="faq-q">Can you install an EV charger if my panel is full?</div><div class="faq-a">Yes — we check capacity first and can upgrade the panel as part of the same job.</div></div>
-    <div class="faq-item"><div class="faq-q">Do you offer senior or military discounts?</div><div class="faq-a">Yes — just mention it when you call or submit our form.</div></div>
-    <div class="faq-item"><div class="faq-q">What areas do you cover?</div><div class="faq-a">Fife, Tacoma, Federal Way, and the broader South Sound region.</div></div>
-  </div>
-</div>
-
-  <div class="final-cta">
-    <div class="fc-left">
-      <h3>Ready to get started?</h3>
-      <p>We respond same day. Written quote before any work begins.</p>
-    </div>
-    <div class="fc-right">
-      <button class="fc-btn">Request a free quote</button>
-      <div class="fc-disc">
-        Or call/text (253) 234-5359 · Senior and military discounts available
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="foot-l">
-      © 2024 Washington Electrical · Fife, WA ·
-      Service@Washingtonelectrical.net
-    </div>
-    <div class="foot-r">
-      <div class="foot-badge">Licensed</div>
-      <div class="foot-badge">Bonded</div>
-      <div class="foot-badge">Insured</div>
-      <div class="foot-badge">WASHIEL776C3</div>
-    </div>
-  </footer>
+  </div> -->
 </template>
 
 <script>
-import FreeQuoteForm from "../layouts/WE-components/FreeQuoteForm.vue";
 export default {
   name: "CleanPro",
-  components: {
-    FreeQuoteForm,
-  },
 };
 </script>

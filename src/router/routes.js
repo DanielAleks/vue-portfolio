@@ -338,15 +338,21 @@ const routes = [
     beforeEnter: beforeEnterFunction,
   },
   {
-    path: "/daniel-aleksandrov",
-    name: "MyPortfolio",
+    path: "/pc",
+    name: "Project Central",
     component: () => import("src/pages/MyPortfolio.vue"),
     beforeEnter: beforeEnterFunction,
   },
   {
-    path: "",
+    path: "/",
     name: "MyPortfolio",
-    component: () => import("pages/AuthorityWindowRepair.vue"),
+    component: () => import("pages/WedDesign.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+    {
+    path: "/portfolio",
+    name: "MyPortfolio",
+    component: () => import("pages/WedDesign.vue"),
     beforeEnter: beforeEnterFunction,
   },
     {
@@ -368,7 +374,7 @@ const routes = [
     beforeEnter: beforeEnterFunction,
   },
   {
-    path: "/business-development",
+    path: "/business-C",
     name: "BusinessDevelopment",
     component: () => import("pages/BusinessDevelopment.vue"),
     beforeEnter: beforeEnterFunction,

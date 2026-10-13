@@ -8,6 +8,7 @@
         <ExpertKnobAndTubeRewiring/>
         <ServingLocations/>
         <Questions/>
+        <GetStarted/>
         <WeFooter/>
     </div>
 </template>
@@ -22,6 +23,7 @@ import ExpertKnobAndTubeRewiring from './knob-and-tube-components/WeExpertKnobAn
 import ServingLocations from './knob-and-tube-components/WeServingLocations.vue';
 import Questions from './knob-and-tube-components/WeQuestions.vue';
 import WeFooter from './knob-and-tube-components/WeFooter.vue';
+import GetStarted from './knob-and-tube-components/WeGetStarted.vue';
 
 export default {
   name: "WashingtonElectrical",
@@ -34,6 +36,7 @@ export default {
     ExpertKnobAndTubeRewiring,
     ServingLocations,
     Questions,
+    GetStarted,
     WeFooter
   },
 };

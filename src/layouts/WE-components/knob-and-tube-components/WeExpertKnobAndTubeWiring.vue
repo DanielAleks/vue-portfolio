@@ -14,13 +14,10 @@
 
 			<div class="we-services__grid">
 				<article v-for="service in services" :key="service.title" class="we-services__card">
+					<!-- <div class="we-services__card-icon" aria-hidden="true">{{ service.icon }}</div> -->
 					<h3 class="we-services__card-title">{{ service.title }}</h3>
 					<p class="we-services__card-copy">{{ service.copy }}</p>
 				</article>
-			</div>
-
-			<div class="we-services__cta-wrap">
-				<button type="button" class="we-services__cta">Get My Free Estimate</button>
 			</div>
 		</div>
 	</section>
@@ -68,7 +65,9 @@ export default {
 
 <style scoped>
 .we-services {
-	background: #143e5d;
+	background:
+		radial-gradient(circle at top left, rgba(255, 106, 61, 0.28) 0%, transparent 30%),
+		linear-gradient(135deg, #0f3553 0%, #143e5d 45%, #19517b 100%);
 	padding: clamp(1.75rem, 4vw, 3.25rem) 0.8rem 2.2rem;
 }
 
@@ -84,6 +83,7 @@ export default {
 	font-family: "Archivo Black", "Arial Black", sans-serif;
 	font-size: clamp(2rem, 4.4vw, 3.8rem);
 	line-height: 1.07;
+	text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
 .we-services__subtitle {
@@ -103,11 +103,61 @@ export default {
 }
 
 .we-services__card {
-	background: #ffffff;
-	border-radius: 0.85rem;
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(145deg, #ffffff 0%, #f5faff 45%, #eaf4ff 100%);
+	border-radius: 1rem;
 	padding: 1rem 1rem 1.05rem;
-	border: 1px solid rgba(223, 232, 241, 0.9);
-	box-shadow: 0 8px 20px rgba(5, 29, 47, 0.16);
+	border: 1px solid rgba(223, 232, 241, 0.95);
+	box-shadow: 0 14px 30px rgba(5, 29, 47, 0.16);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.we-services__card:nth-child(7) {
+	grid-column: 1 / -1;
+	max-width: 50%;
+	margin: 0 auto;
+}
+
+.we-services__card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 0.32rem;
+	background: linear-gradient(90deg, #4f91f7 0%, #1a6be0 50%, #0f4fb3 100%);
+}
+
+.we-services__card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), transparent 45%);
+	pointer-events: none;
+}
+
+.we-services__card:hover {
+	transform: translateY(-5px) scale(1.01);
+	box-shadow: 0 20px 36px rgba(5, 29, 47, 0.2);
+	border-color: rgba(26, 107, 224, 0.32);
+}
+
+.we-services__card-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.25rem;
+	height: 3.25rem;
+	margin-bottom: 0.8rem;
+	border-radius: 0.95rem;
+	background: linear-gradient(135deg, #4f91f7 0%, #1a6be0 100%);
+	color: #ffffff;
+	box-shadow: 0 10px 20px rgba(26, 107, 224, 0.28);
+	font-size: 1.45rem;
+	line-height: 1;
+	transform: rotate(-2deg);
+	border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
 .we-services__card-title {

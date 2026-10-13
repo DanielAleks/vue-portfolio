@@ -112,7 +112,7 @@
 
   <div >
     <!-- displays which layout is being used -->
-    <CleanPro v-if="layoutType === 'CleanProHIDE'" />
+    <CleanPro v-if="layoutType === 'CleanPro'" />
     <NeonNight v-else-if="layoutType === 'NeonNight'" />
     <ModernMinimal v-else-if="layoutType === 'ModernMinimal'" />
     <PacificNW v-else-if="layoutType === 'PacificNW'" />
