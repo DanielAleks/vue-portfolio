@@ -83,7 +83,7 @@ const beforeEnterFunction = (to, from, next) =>
 
 const routes = [
   {
-    path: "/",
+    path: "/pc",
     component: () => import("layouts/MainLayout.vue"),
     children: [
   
