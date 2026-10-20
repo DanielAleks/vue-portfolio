@@ -95,7 +95,7 @@
       </div>
       <div class="about-copy">
         <p class="eyebrow">02 / A note from me</p>
-        <h2>Hi, I’m Alex.<br /><span>Your new favorite collaborator.</span></h2>
+        <h2>Hi, I’m Daniel.<br /><span>Your new favorite collaborator.</span></h2>
         <p>
           I started Forma for the founders, makers, and small-but-mighty teams who deserve a
           website that feels every bit as thoughtful as their work.
@@ -105,7 +105,7 @@
           and a close-knit team that cares about getting the details right.
         </p>
         <a class="text-link" href="#contact">A bit more about us <span aria-hidden="true">↗</span></a>
-        <div class="signature">Alex Morgan <span>Founder &amp; creative director</span></div>
+        <div class="signature">Daniel Aleksandrov <span>Founder &amp; creative director</span></div>
       </div>
     </section>
 
@@ -229,7 +229,6 @@
 
     <section id="contact" class="contact">
       <div class="contact-inner">
-        <p class="eyebrow"><span class="eyebrow-dot"></span> 04 / Your next chapter</p>
         <h2>Let’s make something<br /><span>that feels like you.</span></h2>
         <p class="contact-description">
           Tell us what you’re dreaming up. We’ll bring the coffee, ask the right questions, and

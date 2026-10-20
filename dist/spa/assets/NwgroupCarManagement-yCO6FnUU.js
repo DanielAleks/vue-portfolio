@@ -1,0 +1,1 @@
+import{_ as e,k as n,$ as t}from"./index-CY5o1Z9h.js";const o=n({name:"NwgroupCarManagement",setup(){t(()=>{document.getElementById("loading__container").style.display="none"})}});function a(r,s,p,c,_,d){return" test "}const u=e(o,[["render",a]]);export{u as default};
