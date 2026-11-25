@@ -71,11 +71,11 @@ try {
 
 function beforeEnterAction(to, from, next) {
   next();
-//   const isAuthenticated = LocalStorage.getItem("isLoggedIn");
-//   setTimeout(() => {
-//     if (isAuthenticated) {
-//     } else next("/login");
-//   }, 100);
+  //   const isAuthenticated = LocalStorage.getItem("isLoggedIn");
+  //   setTimeout(() => {
+  //     if (isAuthenticated) {
+  //     } else next("/login");
+  //   }, 100);
 }
 
 const beforeEnterFunction = (to, from, next) =>
@@ -86,7 +86,7 @@ const routes = [
   //   path: "/",
   //   component: () => import("layouts/MainLayout.vue"),
   //   children: [
-  
+
   //     {
   //       path: "projects",
   //       name: "ProjectOverview",
@@ -327,6 +327,12 @@ const routes = [
   //   ],
   // },
   {
+    path: "/",
+    name: "",
+    component: () => import("pages/FreshStartLLC.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
     path: "/login",
     name: "Login",
     component: () => import("layouts/LoginLayout.vue"),
@@ -343,31 +349,80 @@ const routes = [
     component: () => import("src/pages/MyPortfolio.vue"),
     beforeEnter: beforeEnterFunction,
   },
+
   {
-    path: "/",
+    path: "/freshstart",
     name: "Home",
-    component: () => import("pages/ClearViewLLC.vue"),
+    component: () => import("pages/FreshStartLLC.vue"),
     beforeEnter: beforeEnterFunction,
   },
-    {
+  {
+    path: "/freshstart/services",
+    name: "FreshStartServices",
+    component: () => import("layouts/fresh-start/FSServices.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/services/packing-help",
+    name: "FreshStartPackingHelp",
+    component: () => import("layouts/fresh-start/PackingHelp.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/services/loading-transportation",
+    name: "FreshStartLoadingTransportation",
+    component: () => import("layouts/fresh-start/LoadingTransportation.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/services/unloading-settling",
+    name: "FreshStartUnloadingSettling",
+    component: () => import("layouts/fresh-start/UnloadingSettling.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/how-it-works",
+    name: "FreshStartHowItWorks",
+    component: () => import("layouts/fresh-start/FSHowItWorks.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/about",
+    name: "FreshStartAbout",
+    component: () => import("layouts/fresh-start/FSAbout.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/contact",
+    name: "FreshStartContact",
+    component: () => import("layouts/fresh-start/FSContact.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
+    path: "/freshstart/get-started",
+    name: "FreshStartGetStarted",
+    component: () => import("layouts/fresh-start/FSGetStarted.vue"),
+    beforeEnter: beforeEnterFunction,
+  },
+  {
     path: "/clearview",
     name: "WindowsCompany",
     component: () => import("pages/ClearViewLLC.vue"),
     beforeEnter: beforeEnterFunction,
   },
-   {
+  {
     path: "/portfolio",
     name: "MyPortfolio",
     component: () => import("pages/WedDesign.vue"),
     beforeEnter: beforeEnterFunction,
   },
-   {
+  {
     path: "/dev",
     name: "Dev",
     component: () => import("pages/WedDesign.vue"),
     beforeEnter: beforeEnterFunction,
   },
-    {
+  {
     path: "/nwgroup-car-management",
     name: "CarRepairManagement",
     component: () => import("pages/NwgroupCarManagement.vue"),
